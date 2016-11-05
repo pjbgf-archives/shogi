@@ -67,7 +67,16 @@ namespace Core.Shogi.Pieces
 
         private bool HasMovedDiagnonallyInRange(string toPosition)
         {
-            return false;
+            var columnDiff = toPosition[0] - Position[0];
+            var rowDiff = toPosition[1] - Position[1];
+
+            if (columnDiff < 0)
+                columnDiff *= -1;
+
+            if (rowDiff < 0)
+                rowDiff *= -1;
+
+            return (rowDiff == columnDiff);
         }
 
         private bool HasMovedBackwardsDiagnonally(string toPosition)

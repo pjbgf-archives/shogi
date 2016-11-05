@@ -14,15 +14,6 @@ namespace Core.Shogi.Tests.Pieces
             Assert.AreEqual('K', king.ShortName);
         }
 
-        public void NotAllowIllegalMoves(Player player, string positionFrom, string positionTo)
-        {
-            var king = new King(player, positionFrom);
-
-            var isMoveLegal = king.IsMoveLegal(positionTo);
-
-            Assert.IsFalse(isMoveLegal);
-        }
-
         [TestCase(Player.Black, "7i", "7h", TestName = "BeAbleToMoveForwardAsBlackPlayer")]
         [TestCase(Player.White, "7a", "7b", TestName = "BeAbleToMoveForwardAsWhitePlayer")]
         [TestCase(Player.Black, "7i", "8h", TestName = "BeAbleToMoveForwardLeftAsBlackPlayer")]
