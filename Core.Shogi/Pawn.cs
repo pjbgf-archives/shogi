@@ -1,6 +1,6 @@
-﻿namespace Core.Shogi.Tests
+﻿namespace Core.Shogi
 {
-    internal class Pawn : Piece
+    public class Pawn : Piece
     {
         private bool _isFirstMove = true;
 

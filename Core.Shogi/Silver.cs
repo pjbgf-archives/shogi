@@ -1,6 +1,6 @@
-﻿namespace Core.Shogi.Tests
+﻿namespace Core.Shogi
 {
-    internal class Silver : Piece
+    public class Silver : Piece
     {
         public Silver(Player ownerPlayer, string position) : base(ownerPlayer, position)
         {

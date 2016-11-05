@@ -1,6 +1,6 @@
-﻿namespace Core.Shogi.Tests
+﻿namespace Core.Shogi
 {
-    internal class King : Piece
+    public class King : Piece
     {
         public King(Player ownerPlayer, string position) : base(ownerPlayer, position)
         {

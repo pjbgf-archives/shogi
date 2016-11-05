@@ -1,4 +1,4 @@
-﻿namespace Core.Shogi.Tests
+﻿namespace Core.Shogi
 {
     public enum BoardResult
     {

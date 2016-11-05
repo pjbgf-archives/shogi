@@ -1,6 +1,6 @@
-﻿namespace Core.Shogi.Tests
+﻿namespace Core.Shogi
 {
-    internal class Lance : Piece
+    public class Lance : Piece
     {
         public Lance(Player ownerPlayer, string position) : base(ownerPlayer, position)
         {

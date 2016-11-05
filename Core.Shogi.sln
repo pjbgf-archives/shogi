@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Core.Shogi.Tests", "Core.Shogi.Tests/Core.Shogi.Tests.xproj", "{2383344E-B017-4A11-A18A-7283CBF77E7F}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Core.Shogi", "Core.Shogi\Core.Shogi.xproj", "{11057E2F-7F15-430F-BCCD-EA823F741879}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2383344E-B017-4A11-A18A-7283CBF77E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2383344E-B017-4A11-A18A-7283CBF77E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2383344E-B017-4A11-A18A-7283CBF77E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11057E2F-7F15-430F-BCCD-EA823F741879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11057E2F-7F15-430F-BCCD-EA823F741879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11057E2F-7F15-430F-BCCD-EA823F741879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11057E2F-7F15-430F-BCCD-EA823F741879}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

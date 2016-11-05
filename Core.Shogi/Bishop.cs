@@ -1,6 +1,6 @@
-﻿namespace Core.Shogi.Tests
+﻿namespace Core.Shogi
 {
-    internal class Bishop : Piece
+    public class Bishop : Piece
     {
         public Bishop(Player ownerPlayer, string position) : base(ownerPlayer, position)
         {

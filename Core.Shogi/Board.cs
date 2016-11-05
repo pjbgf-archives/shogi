@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Core.Shogi.Tests
+namespace Core.Shogi
 {
     public class Board
     {

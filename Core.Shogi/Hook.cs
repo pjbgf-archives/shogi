@@ -1,6 +1,6 @@
-﻿namespace Core.Shogi.Tests
+﻿namespace Core.Shogi
 {
-    internal class Hook : Piece
+    public class Hook : Piece
     {
         public Hook(Player ownerPlayer, string position) : base(ownerPlayer, position)
         {
