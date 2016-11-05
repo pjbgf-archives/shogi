@@ -18,7 +18,8 @@ namespace Core.Shogi
                 (CanMoveBack && HasMovedBack(toPosition)) ||
                 (CanMoveForwards && HasMovedForwards(toPosition)) ||
                 (CanMoveForwardsDiagnonally && HasMovedForwardsDiagnonally(toPosition)) ||
-                (CanMoveBackwardsDiagnonally && HasMovedBackwardsDiagnonally(toPosition))
+                (CanMoveBackwardsDiagnonally && HasMovedBackwardsDiagnonally(toPosition)) ||
+                (CanMoveForwardInRange && HasMovedForwardInRange(toPosition))
             )
                 return true;
 
@@ -30,7 +31,7 @@ namespace Core.Shogi
             Position = toPosition;
         }
 
-        protected bool HasMovedBack(string toPosition)
+        private bool HasMovedBack(string toPosition)
         {
             if (OwnerPlayer == Player.Black)
                 return (Position[0] == toPosition[0] && (Position[1] + 1 == toPosition[1]));
@@ -38,7 +39,7 @@ namespace Core.Shogi
             return (Position[0] == toPosition[0] && (Position[1] - 1 == toPosition[1]));
         }
 
-        protected bool HasMovedForwards(string toPosition)
+        private bool HasMovedForwards(string toPosition)
         {
             if (OwnerPlayer == Player.Black)
                 return (Position[0] == toPosition[0] && (Position[1] - 1 == toPosition[1]));
@@ -46,7 +47,15 @@ namespace Core.Shogi
             return (Position[0] == toPosition[0] && (Position[1] + 1 == toPosition[1]));
         }
 
-        protected bool HasMovedForwardsDiagnonally(string toPosition)
+        private bool HasMovedForwardInRange(string toPosition)
+        {
+            if (OwnerPlayer == Player.Black)
+                return (Position[0] == toPosition[0] && (Position[1] > toPosition[1]));
+
+            return (Position[0] == toPosition[0] && (Position[1] < toPosition[1]));
+        }
+
+        private bool HasMovedForwardsDiagnonally(string toPosition)
         {
             if (OwnerPlayer == Player.Black)
                 return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] - 1 == toPosition[1]));
@@ -54,7 +63,7 @@ namespace Core.Shogi
             return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] + 1 == toPosition[1]));
         }
 
-        protected bool HasMovedBackwardsDiagnonally(string toPosition)
+        private bool HasMovedBackwardsDiagnonally(string toPosition)
         {
             if (OwnerPlayer == Player.Black)
                 return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] + 1 == toPosition[1]));
@@ -64,6 +73,7 @@ namespace Core.Shogi
 
         protected bool CanMoveBack = false;
         protected bool CanMoveForwards = false;
+        protected bool CanMoveForwardInRange = false;
         protected bool CanMoveForwardsDiagnonally = false;
         protected bool CanMoveBackwardsDiagnonally = false;
     }
