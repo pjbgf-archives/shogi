@@ -2,15 +2,20 @@ namespace Core.Shogi
 {
     public abstract class Piece
     {
+        public Player OwnerPlayer { get; }
+        public string Position { get; private set; }
+        public char ShortName { get; protected set; }
+        public bool CanMoveBack { get; protected set; }
+        public bool CanMoveForwards { get; protected set; }
+        public bool CanMoveForwardInRange { get; protected set; }
+        public bool CanMoveForwardsDiagnonally { get; protected set; }
+        public bool CanMoveBackwardsDiagnonally { get; protected set; }
+
         protected Piece(Player ownerPlayer, string position)
         {
             OwnerPlayer = ownerPlayer;
             Position = position;
         }
-
-        public Player OwnerPlayer { get; }
-        public string Position { get; private set; }
-        public char ShortName { get; protected set; }
 
         public virtual bool IsMoveLegal(string toPosition)
         {
@@ -70,11 +75,5 @@ namespace Core.Shogi
 
             return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] - 1 == toPosition[1]));
         }
-
-        protected bool CanMoveBack = false;
-        protected bool CanMoveForwards = false;
-        protected bool CanMoveForwardInRange = false;
-        protected bool CanMoveForwardsDiagnonally = false;
-        protected bool CanMoveBackwardsDiagnonally = false;
     }
 }
