@@ -36,6 +36,26 @@ namespace Core.Shogi.Tests
         }
 
         [Test]
+        public void NotAllowPlayerToMoveIntoNonExistentColumn()
+        {
+            var board = new Board();
+
+            var result = board.Move(Player.Black, "9i", "10i");
+
+            Assert.AreEqual(BoardResult.InvalidOperation, result);
+        }
+
+        [Test]
+        public void NotAllowPlayerToMoveIntoNonExistentRow()
+        {
+            var board = new Board();
+
+            var result = board.Move(Player.Black, "5i", "5j");
+
+            Assert.AreEqual(BoardResult.InvalidOperation, result);
+        }
+
+        [Test]
         public void AllowPlayerToMakeLegalMove()
         {
             var board = new Board();

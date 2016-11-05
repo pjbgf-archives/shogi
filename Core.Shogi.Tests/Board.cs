@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Core.Shogi.Tests
 {
@@ -64,6 +65,9 @@ namespace Core.Shogi.Tests
 
         public BoardResult Move(Player player, string fromPosition, string toPosition)
         {
+            if (!Regex.IsMatch(toPosition, "^[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant))
+                return BoardResult.InvalidOperation;
+
             if (player != CurrentTurn)
                 return BoardResult.NotPlayersTurn;
 
