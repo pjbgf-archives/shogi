@@ -3,25 +3,21 @@
 namespace Core.Shogi.Tests
 {
     [TestFixture]
-    public class GoldShould
+    public class KingShould
     {
         [Test]
         public void HavePAsShortName()
         {
-            var gold = new Gold(Player.Black, "6i");
+            var king = new King(Player.Black, "5i");
 
-            Assert.AreEqual('G', gold.ShortName);
+            Assert.AreEqual('K', king.ShortName);
         }
 
-        [TestCase(Player.Black, "5e", "6f", TestName = "NotMoveBackLeftAsBlackPlayer")]
-        [TestCase(Player.Black, "5e", "4f", TestName = "NotMoveBackRightAsBlackPlayer")]
-        [TestCase(Player.White, "5e", "4d", TestName = "NotMoveBackLeftAsWhitePlayer")]
-        [TestCase(Player.White, "5e", "6d", TestName = "NotMoveBackRightAsWhitePlayer")]
         public void NotAllowIllegalMoves(Player player, string positionFrom, string positionTo)
         {
-            var gold = new Gold(player, positionFrom);
+            var king = new King(player, positionFrom);
 
-            var isMoveLegal = gold.IsMoveLegal(positionTo);
+            var isMoveLegal = king.IsMoveLegal(positionTo);
 
             Assert.IsFalse(isMoveLegal);
         }
@@ -30,15 +26,19 @@ namespace Core.Shogi.Tests
         [TestCase(Player.White, "7a", "7b", TestName = "BeAbleToMoveForwardAsWhitePlayer")]
         [TestCase(Player.Black, "7i", "8h", TestName = "BeAbleToMoveForwardLeftAsBlackPlayer")]
         [TestCase(Player.White, "7a", "6b", TestName = "BeAbleToMoveForwardLeftAsWhitePlayer")]
-        [TestCase(Player.Black, "7i", "6h", TestName = "BeAbleToMoveForwardRightAsBlackPlayer")]
-        [TestCase(Player.White, "7a", "8b", TestName = "BeAbleToMoveForwardRightAsWhitePlayer")]
+        [TestCase(Player.Black, "5e", "6f", TestName = "BeAbleToBackLeftAsBlackPlayer")]
+        [TestCase(Player.White, "5e", "4d", TestName = "BeAbleToBackLeftAsWhitePlayer")]
         [TestCase(Player.Black, "6h", "6i", TestName = "BeAbleToMoveBackAsBlackPlayer")]
         [TestCase(Player.White, "6b", "6a", TestName = "BeAbleToMoveBackAsWhitePlayer")]
+        [TestCase(Player.Black, "5e", "4f", TestName = "BeAbleToBackRightAsBlackPlayer")]
+        [TestCase(Player.White, "5e", "6d", TestName = "BeAbleToBackRightAsWhitePlayer")]
+        [TestCase(Player.Black, "7i", "6h", TestName = "BeAbleToMoveForwardRightAsBlackPlayer")]
+        [TestCase(Player.White, "7a", "8b", TestName = "BeAbleToMoveForwardRightAsWhitePlayer")]
         public void AllowValidMoves(Player player, string positionFrom, string positionTo)
         {
-            var gold = new Gold(player, positionFrom);
+            var king = new King(player, positionFrom);
 
-            var isMoveLegal = gold.IsMoveLegal(positionTo);
+            var isMoveLegal = king.IsMoveLegal(positionTo);
 
             Assert.IsTrue(isMoveLegal);
         }
