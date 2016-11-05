@@ -1,4 +1,4 @@
-﻿namespace Core.Shogi
+﻿namespace Core.Shogi.Pieces
 {
     public class Gold : Piece
     {

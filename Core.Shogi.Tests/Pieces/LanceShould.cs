@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using Core.Shogi.Pieces;
+using NUnit.Framework;
 
-namespace Core.Shogi.Tests
+namespace Core.Shogi.Tests.Pieces
 {
     [TestFixture]
     public class LanceShould
