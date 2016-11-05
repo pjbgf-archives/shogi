@@ -24,16 +24,16 @@ namespace Core.Shogi.Tests
             Assert.IsFalse(isMoveLegal);
         }
 
-        [TestCase(Player.Black, "7i", "7h", TestName = "BeAbleToMoveForwardsAsBlackPlayer")]
-        [TestCase(Player.White, "7a", "7b", TestName = "BeAbleToMoveForwardsAsWhitePlayer")]
-        [TestCase(Player.Black, "7i", "8h", TestName = "BeAbleToMoveForwardsLeftAsBlackPlayer")]
-        [TestCase(Player.Black, "7i", "6h", TestName = "BeAbleToMoveForwardsRightAsBlackPlayer")]
-        [TestCase(Player.White, "7a", "6b", TestName = "BeAbleToMoveForwardsLeftAsWhitePlayer")]
-        [TestCase(Player.White, "7a", "8b", TestName = "BeAbleToMoveForwardsRightAsWhitePlayer")]
-        [TestCase(Player.Black, "5e", "6f", TestName = "BeAbleToMoveBackwardsLeftAsBlackPlayer")]
-        [TestCase(Player.Black, "5e", "4f", TestName = "BeAbleToMoveBackwardsRightAsBlackPlayer")]
-        [TestCase(Player.White, "5e", "4d", TestName = "BeAbleToMoveBackwardsLeftAsWhitePlayer")]
-        [TestCase(Player.White, "5e", "6d", TestName = "BeAbleToMoveBackwardsRightAsWhitePlayer")]
+        [TestCase(Player.Black, "7i", "7h", TestName = "BeAbleToMoveForwardAsBlackPlayer")]
+        [TestCase(Player.White, "7a", "7b", TestName = "BeAbleToMoveForwardAsWhitePlayer")]
+        [TestCase(Player.Black, "7i", "8h", TestName = "BeAbleToMoveForwardLeftAsBlackPlayer")]
+        [TestCase(Player.Black, "7i", "6h", TestName = "BeAbleToMoveForwardRightAsBlackPlayer")]
+        [TestCase(Player.White, "7a", "6b", TestName = "BeAbleToMoveForwardLeftAsWhitePlayer")]
+        [TestCase(Player.White, "7a", "8b", TestName = "BeAbleToMoveForwardRightAsWhitePlayer")]
+        [TestCase(Player.Black, "5e", "6f", TestName = "BeAbleToMoveBackLeftAsBlackPlayer")]
+        [TestCase(Player.Black, "5e", "4f", TestName = "BeAbleToMoveBackRightAsBlackPlayer")]
+        [TestCase(Player.White, "5e", "4d", TestName = "BeAbleToMoveBackLeftAsWhitePlayer")]
+        [TestCase(Player.White, "5e", "6d", TestName = "BeAbleToMoveBackRightAsWhitePlayer")]
         public void AllowValidMoves(Player player, string positionFrom, string positionTo)
         {
             var silver = new Silver(player, positionFrom);
