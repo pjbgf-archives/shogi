@@ -7,7 +7,7 @@ namespace Core.Shogi.Tests.Pieces
     public class LanceShould
     {
         [Test]
-        public void HavePAsShortName()
+        public void Have_L_AsShortName()
         {
             var lance = new Lance(Player.Black, "5i");
 

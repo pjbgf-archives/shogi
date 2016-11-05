@@ -7,7 +7,7 @@ namespace Core.Shogi.Tests.Pieces
     public class GoldShould
     {
         [Test]
-        public void HavePAsShortName()
+        public void Have_G_AsShortName()
         {
             var gold = new Gold(Player.Black, "6i");
 

@@ -7,7 +7,7 @@ namespace Core.Shogi.Tests.Pieces
     public class KingShould
     {
         [Test]
-        public void HavePAsShortName()
+        public void Have_K_AsShortName()
         {
             var king = new King(Player.Black, "5i");
 

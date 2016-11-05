@@ -7,15 +7,15 @@ namespace Core.Shogi.Tests.Pieces
     public class PawnShould
     {
         [Test]
-        public void HavePAsShortName()
+        public void Have_P_AsShortName()
         {
             var pawn = new Pawn(Player.Black, "1g");
             
             Assert.AreEqual('P', pawn.ShortName);
         }
 
-        [TestCase(Player.Black, "1g", "1h", TestName = "NotMoveBackwardsAsBlackPlayer")]
-        [TestCase(Player.White, "1c", "1b", TestName = "NotMoveBackwardsAsWhitePlayer")]
+        [TestCase(Player.Black, "1g", "1h", TestName = "NotMoveBackwardAsBlackPlayer")]
+        [TestCase(Player.White, "1c", "1b", TestName = "NotMoveBackwardAsWhitePlayer")]
         [TestCase(Player.Black, "5g", "6g", TestName = "NotMoveLeftAsBlackPlayer")]
         [TestCase(Player.White, "5c", "4c", TestName = "NotMoveLeftAsWhitePlayer")]
         [TestCase(Player.Black, "5g", "4g", TestName = "NotMoveRightAsBlackPlayer")]
