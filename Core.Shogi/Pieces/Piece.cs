@@ -11,6 +11,7 @@ namespace Core.Shogi.Pieces
         public bool CanMoveDiagnonallyInRange { get; protected set; }
         public bool CanMoveForwardsDiagnonally { get; protected set; }
         public bool CanMoveBackwardsDiagnonally { get; protected set; }
+        public bool CanMoveHorizontallyAndVerticallyInRange { get; protected set; }
 
         protected Piece(Player ownerPlayer, string position)
         {
@@ -25,7 +26,8 @@ namespace Core.Shogi.Pieces
                    (CanMoveForwardsDiagnonally && HasMovedForwardsDiagnonally(toPosition)) ||
                    (CanMoveBackwardsDiagnonally && HasMovedBackwardsDiagnonally(toPosition)) ||
                    (CanMoveDiagnonallyInRange && HasMovedDiagnonallyInRange(toPosition)) ||
-                   (CanMoveForwardInRange && HasMovedForwardInRange(toPosition));
+                   (CanMoveForwardInRange && HasMovedForwardInRange(toPosition) ||
+                   (CanMoveHorizontallyAndVerticallyInRange && HasMovedHorizontallyOrVerticallyInRange(toPosition)));
         }
 
         public virtual void Move(string toPosition)
@@ -85,6 +87,11 @@ namespace Core.Shogi.Pieces
                 return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] + 1 == toPosition[1]));
 
             return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] - 1 == toPosition[1]));
+        }
+
+        protected bool HasMovedHorizontallyOrVerticallyInRange(string toPosition)
+        {
+            return (Position[0] == toPosition[0] || Position[1] == toPosition[1]);
         }
     }
 }
