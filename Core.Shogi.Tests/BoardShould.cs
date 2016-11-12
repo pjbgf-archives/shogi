@@ -129,7 +129,9 @@ namespace Core.Shogi.Tests
 
             board.StartGame();
 
-            Assert.AreEqual(Player.White, board.CurrentTurn);
+            _boardInputBlackPlayer.WhenForAnyArgs(x => x.AskForNextMove()).Do(x =>
+                        Assert.AreEqual(Player.White, board.CurrentTurn)
+            );
         }
     }
 }

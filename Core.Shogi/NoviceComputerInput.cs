@@ -4,12 +4,12 @@ using Core.Shogi.Pieces;
 
 namespace Core.Shogi
 {
-    public class MoveAdvisor
+    public class NoviceComputerInputShould
     {
         private readonly BoardState _boardState;
         private readonly Player _player;
 
-        public MoveAdvisor(BoardState boardState, Player player)
+        public NoviceComputerInputShould(BoardState boardState, Player player)
         {
             _boardState = boardState;
             _player = player;

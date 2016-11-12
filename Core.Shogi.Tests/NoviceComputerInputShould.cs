@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Core.Shogi.Tests
 {
     [TestFixture]
-    public class MoveAdvisorShould
+    public class NoviceComputerInputShould
     {
         readonly BoardState _boardState = new BoardState();
 
@@ -24,7 +24,7 @@ namespace Core.Shogi.Tests
             _boardState.Add(new Bishop(Player.Black, "5c"));
             _boardState.Add(new Lance(Player.Black, "2e"));
 
-            var moveAdvisor = new MoveAdvisor(_boardState, Player.Black);
+            var moveAdvisor = new Shogi.NoviceComputerInputShould(_boardState, Player.Black);
             var bestMove = moveAdvisor.GetBestMove();
 
             Assert.AreEqual("3a", bestMove);

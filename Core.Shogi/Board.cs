@@ -113,7 +113,7 @@ namespace Core.Shogi
         public void AskPlayerForNextMove()
         {
             var nextMove = _boardInputBlackPlayer?.AskForNextMove();
-            Move(nextMove);
+           // Move(nextMove);
         }
 
         public void StartGame()
