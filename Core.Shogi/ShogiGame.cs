@@ -28,8 +28,9 @@
             {
                 var nextMove = currentPlayer.AskForNextMove();
                 var result = Move(nextMove);
-                if (result == BoardResult.ValidOperation)
-                    AskPlayerForNextMove(nextPlayer, currentPlayer);
+                Render();
+//                if (result == BoardResult.ValidOperation)
+//                    AskPlayerForNextMove(nextPlayer, currentPlayer);
             }
         }
 

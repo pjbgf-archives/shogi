@@ -4,8 +4,12 @@
     {
         public static void Main(string[] args)
         {
-            var board = new ShogiGame(new BoardConsoleRender(), new BoardConsoleInput(), null, new Board());
-            board.Start(TODO);
+            var board = new Board();
+            var blackPlayer = BoardConsoleInput.CreateFor(Player.Black);
+            var whitePlayer = NoviceComputerInput.CreateFor(Player.White, board);
+
+            var shogiGame = new ShogiGame(new BoardConsoleRender(), blackPlayer, whitePlayer, board);
+            shogiGame.Start();
         }
     }
 }
