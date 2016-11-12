@@ -11,9 +11,9 @@ namespace Core.Shogi.Pieces
         public bool CanMoveBack { get; protected set; }
         public bool CanMoveForwards { get; protected set; }
         public bool CanMoveForwardInRange { get; protected set; }
-        public bool CanMoveDiagnonallyInRange { get; protected set; }
-        public bool CanMoveForwardsDiagnonally { get; protected set; }
-        public bool CanMoveBackwardsDiagnonally { get; protected set; }
+        public bool CanMoveDiagonallyInRange { get; protected set; }
+        public bool CanMoveForwardsDiagonally { get; protected set; }
+        public bool CanMoveBackwardsDiagonally { get; protected set; }
         public bool CanMoveHorizontallyAndVerticallyInRange { get; protected set; }
 
         public List<KeyValuePair<MovementValue, string>> PossibleMovements { get; protected set; }
@@ -29,9 +29,9 @@ namespace Core.Shogi.Pieces
         {
             return (CanMoveBack && HasMovedBack(toPosition)) ||
                    (CanMoveForwards && HasMovedForwards(toPosition)) ||
-                   (CanMoveForwardsDiagnonally && HasMovedForwardsDiagnonally(toPosition)) ||
-                   (CanMoveBackwardsDiagnonally && HasMovedBackwardsDiagnonally(toPosition)) ||
-                   (CanMoveDiagnonallyInRange && HasMovedDiagnonallyInRange(toPosition)) ||
+                   (CanMoveForwardsDiagonally && HasMovedForwardsDiagonally(toPosition)) ||
+                   (CanMoveBackwardsDiagonally && HasMovedBackwardsDiagonally(toPosition)) ||
+                   (CanMoveDiagonallyInRange && HasMovedDiagonallyInRange(toPosition)) ||
                    (CanMoveForwardInRange && HasMovedForwardInRange(toPosition) ||
                    (CanMoveHorizontallyAndVerticallyInRange && HasMovedHorizontallyOrVerticallyInRange(toPosition)));
         }
@@ -68,7 +68,7 @@ namespace Core.Shogi.Pieces
             return (Position[0] == toPosition[0] && (Position[1] < toPosition[1]));
         }
 
-        private bool HasMovedForwardsDiagnonally(string toPosition)
+        private bool HasMovedForwardsDiagonally(string toPosition)
         {
             if (OwnerPlayer == Player.Black)
                 return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] - 1 == toPosition[1]));
@@ -76,7 +76,7 @@ namespace Core.Shogi.Pieces
             return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] + 1 == toPosition[1]));
         }
 
-        private bool HasMovedDiagnonallyInRange(string toPosition)
+        private bool HasMovedDiagonallyInRange(string toPosition)
         {
             var columnDiff = toPosition[0] - Position[0];
             var rowDiff = toPosition[1] - Position[1];
@@ -90,7 +90,7 @@ namespace Core.Shogi.Pieces
             return (rowDiff == columnDiff);
         }
 
-        private bool HasMovedBackwardsDiagnonally(string toPosition)
+        private bool HasMovedBackwardsDiagonally(string toPosition)
         {
             if (OwnerPlayer == Player.Black)
                 return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] + 1 == toPosition[1]));

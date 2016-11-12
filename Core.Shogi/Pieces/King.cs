@@ -6,9 +6,9 @@
         {
             ShortName = 'K';
             CanMoveBack = true;
-            CanMoveBackwardsDiagnonally = true;
+            CanMoveBackwardsDiagonally = true;
             CanMoveForwards = true;
-            CanMoveForwardsDiagnonally = true;
+            CanMoveForwardsDiagonally = true;
         }
     }
 }

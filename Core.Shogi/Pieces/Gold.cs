@@ -6,7 +6,7 @@
         {
             ShortName = 'G';
             CanMoveBack = true;
-            CanMoveForwardsDiagnonally = true;
+            CanMoveForwardsDiagonally = true;
             CanMoveForwards = true;
         }
     }

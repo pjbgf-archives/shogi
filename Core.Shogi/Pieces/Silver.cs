@@ -6,8 +6,8 @@
         {
             ShortName = 'S';
             CanMoveForwards = true;
-            CanMoveForwardsDiagnonally = true;
-            CanMoveBackwardsDiagnonally = true;
+            CanMoveForwardsDiagonally = true;
+            CanMoveBackwardsDiagonally = true;
         }
     }
 }
