@@ -6,17 +6,18 @@ namespace Core.Shogi
     public class Board
     {
         private readonly IBoardRender _boardRender;
+        private readonly IBoardInput _boardInputBlackPlayer;
         readonly BoardState _boardState = new BoardState();
         public Player CurrentTurn = Player.Black;
 
         public Board()
         {
-            ResetBoard();
         }
 
-        public Board(IBoardRender boardRender) : this()
+        public Board(IBoardRender boardRender, IBoardInput boardInputBlackPlayer) : this()
         {
             _boardRender = boardRender;
+            _boardInputBlackPlayer = boardInputBlackPlayer;
         }
 
         public Board(BoardState boardState, Player currentTurn)
@@ -93,6 +94,8 @@ namespace Core.Shogi
                 _boardState.Remove(fromPosition);
                 _boardState.Add(piece);
 
+                Render();
+
                 return BoardResult.ValidOperation;
             }
 
@@ -101,7 +104,13 @@ namespace Core.Shogi
 
         public void Render()
         {
-            _boardRender.Refresh(_boardState);
+            _boardRender?.Refresh(_boardState);
+        }
+
+        public void StartGame()
+        {
+            ResetBoard();
+            Render();
         }
     }
 }

@@ -4,6 +4,7 @@
         "debugType": "portable"
     },
     "dependencies": {
+        "NSubstitute": "2.0.0-rc",
         "NUnit": "3.4.1",
         "dotnet-test-nunit": "3.4.0-beta-2",
         "Core.Shogi": "*"

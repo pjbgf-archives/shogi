@@ -9,8 +9,16 @@ namespace Core.Shogi.Console
     {
         public static void Main(string[] args)
         {
-            var board = new Board(new BoardConsoleRender());
+            var board = new Board(new BoardConsoleRender(), new BoardConsoleInput());
             board.Render();
+        }
+    }
+
+    internal class BoardConsoleInput : IBoardInput
+    {
+        public void AskForNextMove()
+        {
+
         }
     }
 }

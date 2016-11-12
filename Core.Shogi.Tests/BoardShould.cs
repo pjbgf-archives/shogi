@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using NSubstitute;
+using NUnit.Framework;
 
 namespace Core.Shogi.Tests
 {
@@ -19,6 +20,7 @@ namespace Core.Shogi.Tests
         public void NotAllowBlackToMoveWhitesPiece()
         {
             var board = new Board();
+            board.StartGame();
 
             var result = board.Move(Player.Black, "1c", "1d");
 
@@ -29,6 +31,7 @@ namespace Core.Shogi.Tests
         public void NotAllowPlayerToMoveIntoAPositionFilledBySamePlayer()
         {
             var board = new Board();
+            board.StartGame();
 
             var result = board.Move(Player.Black, "2h", "2g");
 
@@ -59,6 +62,7 @@ namespace Core.Shogi.Tests
         public void AllowPlayerToMakeLegalMove()
         {
             var board = new Board();
+            board.StartGame();
 
             var result = board.Move(Player.Black, "1g", "1f");
 
@@ -69,10 +73,36 @@ namespace Core.Shogi.Tests
         public void AllowPlayerToCapturePieces()
         {
             var board = new Board();
+            board.StartGame();
 
             var result = board.Move(Player.Black, "1g", "1f");
 
             Assert.AreEqual(BoardResult.ValidOperation, result);
+        }
+
+        [Test]
+        public void RenderItSelfOnStart()
+        {
+            var boardRenderMock = Substitute.For<IBoardRender>();
+            var boardInputBlackPlayer = Substitute.For<IBoardInput>();
+            var board = new Board(boardRenderMock, boardInputBlackPlayer);
+
+            board.StartGame();
+
+            boardRenderMock.Received(1).Refresh(Arg.Any<BoardState>());
+        }
+
+        [Test]
+        public void RenderItSelfAfterMove()
+        {
+            var boardRenderMock = Substitute.For<IBoardRender>();
+            var boardInputBlackPlayer = Substitute.For<IBoardInput>();
+            var board = new Board(boardRenderMock, boardInputBlackPlayer);
+
+            board.StartGame();
+            board.Move(Player.Black, "1g", "1f");
+
+            boardRenderMock.Received(2).Refresh(Arg.Any<BoardState>());
         }
     }
 }
