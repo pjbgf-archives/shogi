@@ -5,39 +5,27 @@ namespace Core.Shogi
 {
     public class Board
     {
-        private readonly IBoardRender _boardRender;
-        private readonly IBoardInput _blackPlayer;
-        private readonly IBoardInput _whitePlayer;
         readonly BoardState _boardState = new BoardState();
         public Player CurrentTurn = Player.Black;
 
         public Board()
         {
+            ResetBoard();
         }
 
-        public Board(IBoardRender boardRender, IBoardInput blackPlayer, IBoardInput whitePlayer) : this()
-        {
-            _boardRender = boardRender;
-            _blackPlayer = blackPlayer;
-            _whitePlayer = whitePlayer;
-        }
+        //TODO: Tell Don't Ask!
+        public BoardState State => _boardState;
 
-        public Board(BoardState boardState, Player currentTurn)
+        public Board(BoardState boardState, Player currentTurn) : this()
         {
             _boardState = boardState;
             CurrentTurn = currentTurn;
         }
 
-        private void ResetBoard()
+        public void ResetBoard()
         {
             CurrentTurn = Player.Black;
             _boardState.Reset();
-        }
-
-        //TODO: Refactor to align domain abstraction level
-        public BoardResult Move(string moveDescription)
-        {
-            return Move(CurrentTurn, moveDescription.Substring(0, 2), moveDescription.Substring(2, 2));
         }
 
         public BoardResult Move(Player player, string fromPosition, string toPosition)
@@ -60,31 +48,10 @@ namespace Core.Shogi
                 _boardState.Remove(fromPosition);
                 _boardState.Add(piece);
 
-                //TODO: SRP
-                Render();
-
                 return BoardResult.ValidOperation;
             }
 
             return BoardResult.InvalidOperation;
-        }
-
-        public void AskPlayerForNextMove()
-        {
-            var nextMove = _blackPlayer?.AskForNextMove();
-            // Move(nextMove);
-        }
-
-        public void StartGame()
-        {
-            ResetBoard();
-            Render();
-            AskPlayerForNextMove();
-        }
-
-        private void Render()
-        {
-            _boardRender?.Refresh(_boardState);
         }
     }
 }

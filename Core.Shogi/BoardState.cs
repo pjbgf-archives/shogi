@@ -41,6 +41,7 @@ namespace Core.Shogi
         {
             Clear();
 
+            //TODO: Review, not sure whether this is the right place for this.
             Add(new Lance(Player.White, "1a"));
             Add(new Knight(Player.White, "2a"));
             Add(new Silver(Player.White, "3a"));

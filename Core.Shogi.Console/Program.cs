@@ -4,8 +4,8 @@
     {
         public static void Main(string[] args)
         {
-            var board = new Board(new BoardConsoleRender(), new BoardConsoleInput());
-            board.StartGame();
+            var board = new ShogiGame(new BoardConsoleRender(), new BoardConsoleInput(), null, new Board());
+            board.Start();
         }
     }
 }
