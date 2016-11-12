@@ -76,6 +76,11 @@ namespace Core.Shogi
         }
 
         //TODO: Refactor to align domain abstraction level
+        public BoardResult Move(string moveDescription)
+        {
+            return Move(CurrentTurn, moveDescription.Substring(0, 2), moveDescription.Substring(2, 2));
+        }
+
         public BoardResult Move(Player player, string fromPosition, string toPosition)
         {
             if (!Regex.IsMatch(toPosition, "^[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant))
@@ -108,11 +113,7 @@ namespace Core.Shogi
         public void AskPlayerForNextMove()
         {
             var nextMove = _boardInputBlackPlayer?.AskForNextMove();
-        }
-
-        public void Render()
-        {
-            _boardRender?.Refresh(_boardState);
+            Move(nextMove);
         }
 
         public void StartGame()
@@ -120,6 +121,11 @@ namespace Core.Shogi
             ResetBoard();
             Render();
             AskPlayerForNextMove();
+        }
+
+        private void Render()
+        {
+            _boardRender?.Refresh(_boardState);
         }
     }
 }

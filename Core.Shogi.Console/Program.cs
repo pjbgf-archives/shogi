@@ -5,7 +5,7 @@
         public static void Main(string[] args)
         {
             var board = new Board(new BoardConsoleRender(), new BoardConsoleInput());
-            board.Render();
+            board.StartGame();
         }
     }
 }

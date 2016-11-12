@@ -120,5 +120,16 @@ namespace Core.Shogi.Tests
 
             _boardInputBlackPlayer.Received(1).AskForNextMove();
         }
+
+        [Test]
+        public void ChangeCurrentPlayerTurnAfterMove()
+        {
+            _boardInputBlackPlayer.AskForNextMove().Returns("1g1f");
+            var board = new Board(_boardRenderMock, _boardInputBlackPlayer);
+
+            board.StartGame();
+
+            Assert.AreEqual(Player.White, board.CurrentTurn);
+        }
     }
 }
