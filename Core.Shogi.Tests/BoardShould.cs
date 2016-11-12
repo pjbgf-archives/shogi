@@ -6,6 +6,16 @@ namespace Core.Shogi.Tests
     [TestFixture]
     public class BoardShould
     {
+        private IBoardRender _boardRenderMock;
+        private IBoardInput _boardInputBlackPlayer;
+
+        [SetUp]
+        public void BeforeEachTest()
+        {
+            _boardRenderMock = Substitute.For<IBoardRender>();
+            _boardInputBlackPlayer = Substitute.For<IBoardInput>();
+        }
+
         [Test]
         public void NotAllowWhiteToPlayFirst()
         {
@@ -83,26 +93,32 @@ namespace Core.Shogi.Tests
         [Test]
         public void RenderItSelfOnStart()
         {
-            var boardRenderMock = Substitute.For<IBoardRender>();
-            var boardInputBlackPlayer = Substitute.For<IBoardInput>();
-            var board = new Board(boardRenderMock, boardInputBlackPlayer);
+            var board = new Board(_boardRenderMock, _boardInputBlackPlayer);
 
             board.StartGame();
 
-            boardRenderMock.Received(1).Refresh(Arg.Any<BoardState>());
+            _boardRenderMock.Received(1).Refresh(Arg.Any<BoardState>());
         }
 
         [Test]
         public void RenderItSelfAfterMove()
         {
-            var boardRenderMock = Substitute.For<IBoardRender>();
-            var boardInputBlackPlayer = Substitute.For<IBoardInput>();
-            var board = new Board(boardRenderMock, boardInputBlackPlayer);
+            var board = new Board(_boardRenderMock, _boardInputBlackPlayer);
 
             board.StartGame();
             board.Move(Player.Black, "1g", "1f");
 
-            boardRenderMock.Received(2).Refresh(Arg.Any<BoardState>());
+            _boardRenderMock.Received(2).Refresh(Arg.Any<BoardState>());
+        }
+
+        [Test]
+        public void AskBlackPlayerMoveAfterStart()
+        {
+            var board = new Board(_boardRenderMock, _boardInputBlackPlayer);
+
+            board.StartGame();
+
+            _boardInputBlackPlayer.Received(1).AskForNextMove();
         }
     }
 }

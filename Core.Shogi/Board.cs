@@ -30,6 +30,7 @@ namespace Core.Shogi
         {
             CurrentTurn = Player.Black;
 
+            //TODO: Initial state can be refactored out of this class.
             _boardState.Clear();
             _boardState.Add(new Lance(Player.White, "1a"));
             _boardState.Add(new Knight(Player.White, "2a"));
@@ -74,6 +75,7 @@ namespace Core.Shogi
             _boardState.Add(new Lance(Player.Black, "9i"));
         }
 
+        //TODO: Refactor to align domain abstraction level
         public BoardResult Move(Player player, string fromPosition, string toPosition)
         {
             if (!Regex.IsMatch(toPosition, "^[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant))
@@ -94,12 +96,18 @@ namespace Core.Shogi
                 _boardState.Remove(fromPosition);
                 _boardState.Add(piece);
 
+                //TODO: SRP
                 Render();
 
                 return BoardResult.ValidOperation;
             }
 
             return BoardResult.InvalidOperation;
+        }
+
+        public void AskPlayerForNextMove()
+        {
+            var nextMove = _boardInputBlackPlayer?.AskForNextMove();
         }
 
         public void Render()
@@ -111,6 +119,7 @@ namespace Core.Shogi
         {
             ResetBoard();
             Render();
+            AskPlayerForNextMove();
         }
     }
 }

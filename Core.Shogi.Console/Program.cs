@@ -13,12 +13,4 @@ namespace Core.Shogi.Console
             board.Render();
         }
     }
-
-    internal class BoardConsoleInput : IBoardInput
-    {
-        public void AskForNextMove()
-        {
-
-        }
-    }
 }

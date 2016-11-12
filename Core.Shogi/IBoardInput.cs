@@ -2,6 +2,6 @@ namespace Core.Shogi
 {
     public interface IBoardInput
     {
-        void AskForNextMove();
+        string AskForNextMove();
     }
 }
