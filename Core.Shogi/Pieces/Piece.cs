@@ -23,7 +23,6 @@ namespace Core.Shogi.Pieces
             OwnerPlayer = ownerPlayer;
             PossibleMovements = new List<KeyValuePair<MovementValue, string>>();
             Position = position;
-            RecalculatePossibleMovements();
         }
 
         public virtual bool IsMoveLegal(string toPosition)
@@ -40,14 +39,6 @@ namespace Core.Shogi.Pieces
         public virtual void Move(string toPosition)
         {
             Position = toPosition;
-            RecalculatePossibleMovements();
-        }
-
-        private void RecalculatePossibleMovements()
-        {
-            PossibleMovements.Clear();
-            PossibleMovements.Add(new KeyValuePair<MovementValue, string>(MovementValue.CheckMate, "3a"));
-            PossibleMovements.Add(new KeyValuePair<MovementValue, string>(MovementValue.AtRiskOfBeingCaptured, "1a"));
         }
 
         private bool HasMovedBack(string toPosition)

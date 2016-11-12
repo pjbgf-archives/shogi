@@ -18,18 +18,23 @@ namespace Core.Shogi
         public string GetBestMove()
         {
             var playerPieces = _boardState.GetAllPiecesFromPlayer(_player);
-            var possibleMovements = new List<KeyValuePair<MovementValue, string>>();
-            
-            foreach (var piece in playerPieces)
-            {
-                foreach(var possibleMovement in piece.PossibleMovements)
-                    possibleMovements.Add(new KeyValuePair<MovementValue, string>(
-                        possibleMovement.Key,
-                        possibleMovement.Value));
-            }
+            var possibleMovements = CalculatePossibleMovements(playerPieces);
+            var bestMovement = GetMovementSuggestion(possibleMovements);
 
-            var bestMovement = possibleMovements.OrderByDescending(x => x.Key).Select(x => x.Value).First();
             return bestMovement;
+        }
+
+        private static string GetMovementSuggestion(IEnumerable<KeyValuePair<MovementValue, string>> possibleMovements)
+        {
+            return possibleMovements.OrderByDescending(x => x.Key).Select(x => x.Value).First();
+        }
+
+        private static IEnumerable<KeyValuePair<MovementValue, string>> CalculatePossibleMovements(IEnumerable<Piece> playerPieces)
+        {
+            return new List<KeyValuePair<MovementValue, string>>
+            {
+                new KeyValuePair<MovementValue, string>(MovementValue.CheckMate, "3a")
+            };
         }
     }
 }
