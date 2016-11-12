@@ -7,11 +7,13 @@ namespace Core.Shogi.Tests.Pieces
     public class BishopShould
     {
         [Test]
-        public void Have_B_AsShortName()
+        //TODO: SRP? Should be better named
+        public void DescribeSimpleMovements()
         {
-            var bishop = new Bishop(Player.Black, "2b");
+            var bishop = new Bishop(Player.Black, "8h");
+            string moveDescription = bishop.Move("6f");
 
-            Assert.AreEqual('B', bishop.ShortName);
+            Assert.AreEqual("B8h-6f", moveDescription);
         }
 
         [TestCase(Player.Black, "1g", "1h", TestName = "NotMoveBackwardAsBlackPlayer")]

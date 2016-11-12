@@ -36,9 +36,12 @@ namespace Core.Shogi.Pieces
                    (CanMoveHorizontallyAndVerticallyInRange && HasMovedHorizontallyOrVerticallyInRange(toPosition)));
         }
 
-        public virtual void Move(string toPosition)
+        public virtual string Move(string toPosition)
         {
+            var movementDescription = $"{ShortName}{Position}-{toPosition}";
             Position = toPosition;
+
+            return movementDescription;
         }
 
         private bool HasMovedBack(string toPosition)

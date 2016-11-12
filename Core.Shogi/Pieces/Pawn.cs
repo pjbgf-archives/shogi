@@ -17,10 +17,10 @@
             return (Position[0] == toPosition[0] && (Position[1] + 1 == toPosition[1] || _isFirstMove && Position[1] + 2 == toPosition[1]));
         }
 
-        public override void Move(string toPosition)
+        public override string Move(string toPosition)
         {
             _isFirstMove = false;
-            base.Move(toPosition);
+            return base.Move(toPosition);
         }
     }
 }
