@@ -6,7 +6,8 @@ namespace Core.Shogi
     public class Board
     {
         private readonly IBoardRender _boardRender;
-        private readonly IBoardInput _boardInputBlackPlayer;
+        private readonly IBoardInput _blackPlayer;
+        private readonly IBoardInput _whitePlayer;
         readonly BoardState _boardState = new BoardState();
         public Player CurrentTurn = Player.Black;
 
@@ -14,10 +15,11 @@ namespace Core.Shogi
         {
         }
 
-        public Board(IBoardRender boardRender, IBoardInput boardInputBlackPlayer) : this()
+        public Board(IBoardRender boardRender, IBoardInput blackPlayer, IBoardInput whitePlayer) : this()
         {
             _boardRender = boardRender;
-            _boardInputBlackPlayer = boardInputBlackPlayer;
+            _blackPlayer = blackPlayer;
+            _whitePlayer = whitePlayer;
         }
 
         public Board(BoardState boardState, Player currentTurn)
@@ -69,7 +71,7 @@ namespace Core.Shogi
 
         public void AskPlayerForNextMove()
         {
-            var nextMove = _boardInputBlackPlayer?.AskForNextMove();
+            var nextMove = _blackPlayer?.AskForNextMove();
             // Move(nextMove);
         }
 

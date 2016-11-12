@@ -7,13 +7,15 @@ namespace Core.Shogi.Tests
     public class BoardShould
     {
         private IBoardRender _boardRenderMock;
-        private IBoardInput _boardInputBlackPlayer;
+        private IBoardInput _blackPlayer;
+        private IBoardInput _whitePlayer;
 
         [SetUp]
         public void BeforeEachTest()
         {
             _boardRenderMock = Substitute.For<IBoardRender>();
-            _boardInputBlackPlayer = Substitute.For<IBoardInput>();
+            _blackPlayer = Substitute.For<IBoardInput>();
+            _whitePlayer = Substitute.For<IBoardInput>();
         }
 
         [Test]
@@ -93,7 +95,7 @@ namespace Core.Shogi.Tests
         [Test]
         public void RenderItSelfOnStart()
         {
-            var board = new Board(_boardRenderMock, _boardInputBlackPlayer);
+            var board = new Board(_boardRenderMock, _blackPlayer, _whitePlayer);
 
             board.StartGame();
 
@@ -103,7 +105,7 @@ namespace Core.Shogi.Tests
         [Test]
         public void RenderItSelfAfterMove()
         {
-            var board = new Board(_boardRenderMock, _boardInputBlackPlayer);
+            var board = new Board(_boardRenderMock, _blackPlayer, _whitePlayer);
 
             board.StartGame();
             board.Move(Player.Black, "1g", "1f");
@@ -114,22 +116,22 @@ namespace Core.Shogi.Tests
         [Test]
         public void AskBlackPlayerMoveAfterStart()
         {
-            var board = new Board(_boardRenderMock, _boardInputBlackPlayer);
+            var board = new Board(_boardRenderMock, _blackPlayer, _whitePlayer);
 
             board.StartGame();
 
-            _boardInputBlackPlayer.Received(1).AskForNextMove();
+            _blackPlayer.Received(1).AskForNextMove();
         }
 
         [Test]
         public void ChangeCurrentPlayerTurnAfterMove()
         {
-            _boardInputBlackPlayer.AskForNextMove().Returns("1g1f");
-            var board = new Board(_boardRenderMock, _boardInputBlackPlayer);
+            _blackPlayer.AskForNextMove().Returns("1g1f");
+            var board = new Board(_boardRenderMock, _blackPlayer, _whitePlayer);
 
             board.StartGame();
 
-            _boardInputBlackPlayer.WhenForAnyArgs(x => x.AskForNextMove()).Do(x =>
+            _blackPlayer.WhenForAnyArgs(x => x.AskForNextMove()).Do(x =>
                         Assert.AreEqual(Player.White, board.CurrentTurn)
             );
         }
