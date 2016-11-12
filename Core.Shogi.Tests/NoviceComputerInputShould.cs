@@ -24,8 +24,8 @@ namespace Core.Shogi.Tests
             _boardState.Add(new Bishop(Player.Black, "5c"));
             _boardState.Add(new Lance(Player.Black, "2e"));
 
-            var moveAdvisor = new Shogi.NoviceComputerInputShould(_boardState, Player.Black);
-            var bestMove = moveAdvisor.GetBestMove();
+            var moveAdvisor = new Shogi.NoviceComputerInput(_boardState, Player.Black);
+            var bestMove = moveAdvisor.AskForNextMove();
 
             Assert.AreEqual("3a", bestMove);
         }

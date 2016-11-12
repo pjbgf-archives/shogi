@@ -4,18 +4,18 @@ using Core.Shogi.Pieces;
 
 namespace Core.Shogi
 {
-    public class NoviceComputerInputShould
+    public class NoviceComputerInput : IBoardInput
     {
         private readonly BoardState _boardState;
         private readonly Player _player;
 
-        public NoviceComputerInputShould(BoardState boardState, Player player)
+        public NoviceComputerInput(BoardState boardState, Player player)
         {
             _boardState = boardState;
             _player = player;
         }
 
-        public string GetBestMove()
+        public string AskForNextMove()
         {
             var playerPieces = _boardState.GetAllPiecesFromPlayer(_player);
             var possibleMovements = CalculatePossibleMovements(playerPieces);
