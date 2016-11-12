@@ -19,13 +19,18 @@
         {
             _board.ResetBoard();
             Render();
-            AskCurrentPlayerForNextMove();
+            AskPlayerForNextMove(_blackPlayer, _whitePlayer);
         }
 
-        void AskCurrentPlayerForNextMove()
+        void AskPlayerForNextMove(IBoardInput currentPlayer, IBoardInput nextPlayer)
         {
-            var nextMove = _blackPlayer?.AskForNextMove();
-            Move(nextMove);
+            if (currentPlayer != null && nextPlayer != null)
+            {
+                var nextMove = currentPlayer.AskForNextMove();
+                var result = Move(nextMove);
+                if (result == BoardResult.ValidOperation)
+                    AskPlayerForNextMove(nextPlayer, currentPlayer);
+            }
         }
 
         private void Render()
@@ -35,8 +40,7 @@
 
         public BoardResult Move(string moveDescription)
         {
-            return BoardResult.ValidOperation;
-//            return _board.Move(CurrentTurn, moveDescription.Substring(0, 2), moveDescription.Substring(2, 2));
+            return _board.Move(Player.Black, moveDescription.Substring(0, 2), moveDescription.Substring(2, 2));
         }
     }
 }

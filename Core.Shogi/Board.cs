@@ -28,7 +28,8 @@ namespace Core.Shogi
             _boardState.Reset();
         }
 
-        public BoardResult Move(Player player, string fromPosition, string toPosition)
+        //TODO: Refactoring to keep right level of abstraction
+        public virtual BoardResult Move(Player player, string fromPosition, string toPosition)
         {
             if (!Regex.IsMatch(toPosition, "^[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant))
                 return BoardResult.InvalidOperation;
