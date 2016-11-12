@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Core.Shogi.Pieces
 {
     public abstract class Piece
@@ -13,10 +16,14 @@ namespace Core.Shogi.Pieces
         public bool CanMoveBackwardsDiagnonally { get; protected set; }
         public bool CanMoveHorizontallyAndVerticallyInRange { get; protected set; }
 
+        public List<KeyValuePair<MovementValue, string>> PossibleMovements { get; protected set; }
+
         protected Piece(Player ownerPlayer, string position)
         {
             OwnerPlayer = ownerPlayer;
+            PossibleMovements = new List<KeyValuePair<MovementValue, string>>();
             Position = position;
+            RecalculatePossibleMovements();
         }
 
         public virtual bool IsMoveLegal(string toPosition)
@@ -33,6 +40,13 @@ namespace Core.Shogi.Pieces
         public virtual void Move(string toPosition)
         {
             Position = toPosition;
+            RecalculatePossibleMovements();
+        }
+
+        private void RecalculatePossibleMovements()
+        {
+            PossibleMovements.Clear();
+            PossibleMovements.Add(new KeyValuePair<MovementValue, string>(MovementValue.CheckMate, "3a"));
         }
 
         private bool HasMovedBack(string toPosition)

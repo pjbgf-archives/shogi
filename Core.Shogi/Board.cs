@@ -15,6 +15,12 @@ namespace Core.Shogi
             ResetBoard();
         }
 
+        public Board(Dictionary<string, Piece> boardState, Player currentTurn)
+        {
+            _pieces = boardState;
+            CurrentTurn = currentTurn;
+        }
+
         private void ResetBoard()
         {
             CurrentTurn = Player.Black;
