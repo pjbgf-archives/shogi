@@ -5,12 +5,18 @@ namespace Core.Shogi
 {
     public class Board
     {
+        private readonly IBoardRender _boardRender;
         readonly BoardState _boardState = new BoardState();
         public Player CurrentTurn = Player.Black;
 
         public Board()
         {
             ResetBoard();
+        }
+
+        public Board(IBoardRender boardRender) : this()
+        {
+            _boardRender = boardRender;
         }
 
         public Board(BoardState boardState, Player currentTurn)
@@ -91,6 +97,11 @@ namespace Core.Shogi
             }
 
             return BoardResult.InvalidOperation;
+        }
+
+        public void Render()
+        {
+            _boardRender.Refresh(_boardState);
         }
     }
 }
