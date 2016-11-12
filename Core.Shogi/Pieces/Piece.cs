@@ -47,6 +47,7 @@ namespace Core.Shogi.Pieces
         {
             PossibleMovements.Clear();
             PossibleMovements.Add(new KeyValuePair<MovementValue, string>(MovementValue.CheckMate, "3a"));
+            PossibleMovements.Add(new KeyValuePair<MovementValue, string>(MovementValue.AtRiskOfBeingCaptured, "1a"));
         }
 
         private bool HasMovedBack(string toPosition)

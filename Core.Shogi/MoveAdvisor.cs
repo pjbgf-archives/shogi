@@ -6,10 +6,10 @@ namespace Core.Shogi
 {
     public class MoveAdvisor
     {
-        private readonly Dictionary<string, Piece> _boardState;
+        private readonly BoardState _boardState;
         private readonly Player _player;
 
-        public MoveAdvisor(Dictionary<string, Piece> boardState, Player player)
+        public MoveAdvisor(BoardState boardState, Player player)
         {
             _boardState = boardState;
             _player = player;
@@ -17,7 +17,7 @@ namespace Core.Shogi
 
         public string GetBestMove()
         {
-            var playerPieces = _boardState.Values.Where(x => x.OwnerPlayer == _player);
+            var playerPieces = _boardState.GetAllPiecesFromPlayer(_player);
             var possibleMovements = new List<KeyValuePair<MovementValue, string>>();
             
             foreach (var piece in playerPieces)

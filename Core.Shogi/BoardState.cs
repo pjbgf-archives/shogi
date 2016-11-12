@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Core.Shogi.Pieces;
 
 namespace Core.Shogi
@@ -29,6 +31,11 @@ namespace Core.Shogi
             _pieces.TryGetValue(fromPosition, out piece);
 
             return piece;
+        }
+
+        public IEnumerable<Piece> GetAllPiecesFromPlayer(Player player)
+        {
+            return _pieces.Values.Where(x => x.OwnerPlayer == player);
         }
     }
 }

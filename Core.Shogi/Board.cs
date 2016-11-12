@@ -45,7 +45,6 @@ namespace Core.Shogi
             _boardState.Add(new Pawn(Player.White, "8c"));
             _boardState.Add(new Pawn(Player.White, "9c"));
 
-
             _boardState.Add(new Pawn(Player.Black, "1g"));
             _boardState.Add(new Pawn(Player.Black, "2g"));
             _boardState.Add(new Pawn(Player.Black, "3g"));
