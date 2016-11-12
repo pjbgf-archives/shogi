@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Core.Shogi.Pieces;
 
@@ -6,8 +5,7 @@ namespace Core.Shogi
 {
     public class Board
     {
-        readonly Dictionary<string, Piece> _pieces = new Dictionary<string, Piece>(81);
-
+        readonly BoardState _boardState = new BoardState();
         public Player CurrentTurn = Player.Black;
 
         public Board()
@@ -15,9 +13,9 @@ namespace Core.Shogi
             ResetBoard();
         }
 
-        public Board(Dictionary<string, Piece> boardState, Player currentTurn)
+        public Board(BoardState boardState, Player currentTurn)
         {
-            _pieces = boardState;
+            _boardState = boardState;
             CurrentTurn = currentTurn;
         }
 
@@ -25,49 +23,49 @@ namespace Core.Shogi
         {
             CurrentTurn = Player.Black;
 
-            _pieces.Clear();
-            _pieces.Add("1a", new Lance(Player.White, "1a"));
-            _pieces.Add("2a", new Knight(Player.White, "2a"));
-            _pieces.Add("3a", new Silver(Player.White, "3a"));
-            _pieces.Add("4a", new Gold(Player.White, "4a"));
-            _pieces.Add("5a", new King(Player.White, "5a"));
-            _pieces.Add("6a", new Gold(Player.White, "6a"));
-            _pieces.Add("7a", new Silver(Player.White, "7a"));
-            _pieces.Add("8a", new Knight(Player.White, "8a"));
-            _pieces.Add("9a", new Lance(Player.White, "9a"));
-            _pieces.Add("8b", new Rook(Player.White, "8b"));
-            _pieces.Add("2b", new Bishop(Player.White, "2b"));
-            _pieces.Add("1c", new Pawn(Player.White, "1c"));
-            _pieces.Add("2c", new Pawn(Player.White, "2c"));
-            _pieces.Add("3c", new Pawn(Player.White, "3c"));
-            _pieces.Add("4c", new Pawn(Player.White, "4c"));
-            _pieces.Add("5c", new Pawn(Player.White, "5c"));
-            _pieces.Add("6c", new Pawn(Player.White, "6c"));
-            _pieces.Add("7c", new Pawn(Player.White, "7c"));
-            _pieces.Add("8c", new Pawn(Player.White, "8c"));
-            _pieces.Add("9c", new Pawn(Player.White, "9c"));
+            _boardState.Clear();
+            _boardState.Add(new Lance(Player.White, "1a"));
+            _boardState.Add(new Knight(Player.White, "2a"));
+            _boardState.Add(new Silver(Player.White, "3a"));
+            _boardState.Add(new Gold(Player.White, "4a"));
+            _boardState.Add(new King(Player.White, "5a"));
+            _boardState.Add(new Gold(Player.White, "6a"));
+            _boardState.Add(new Silver(Player.White, "7a"));
+            _boardState.Add(new Knight(Player.White, "8a"));
+            _boardState.Add(new Lance(Player.White, "9a"));
+            _boardState.Add(new Rook(Player.White, "8b"));
+            _boardState.Add(new Bishop(Player.White, "2b"));
+            _boardState.Add(new Pawn(Player.White, "1c"));
+            _boardState.Add(new Pawn(Player.White, "2c"));
+            _boardState.Add(new Pawn(Player.White, "3c"));
+            _boardState.Add(new Pawn(Player.White, "4c"));
+            _boardState.Add(new Pawn(Player.White, "5c"));
+            _boardState.Add(new Pawn(Player.White, "6c"));
+            _boardState.Add(new Pawn(Player.White, "7c"));
+            _boardState.Add(new Pawn(Player.White, "8c"));
+            _boardState.Add(new Pawn(Player.White, "9c"));
 
 
-            _pieces.Add("1g", new Pawn(Player.Black, "1g"));
-            _pieces.Add("2g", new Pawn(Player.Black, "2g"));
-            _pieces.Add("3g", new Pawn(Player.Black, "3g"));
-            _pieces.Add("4g", new Pawn(Player.Black, "4g"));
-            _pieces.Add("5g", new Pawn(Player.Black, "5g"));
-            _pieces.Add("6g", new Pawn(Player.Black, "6g"));
-            _pieces.Add("7g", new Pawn(Player.Black, "7g"));
-            _pieces.Add("8g", new Pawn(Player.Black, "8g"));
-            _pieces.Add("9g", new Pawn(Player.Black, "9g"));
-            _pieces.Add("8h", new Bishop(Player.Black, "8h"));
-            _pieces.Add("2h", new Rook(Player.Black, "2h"));
-            _pieces.Add("1i", new Lance(Player.Black, "1i"));
-            _pieces.Add("2i", new Knight(Player.Black, "2i"));
-            _pieces.Add("3i", new Silver(Player.Black, "3i"));
-            _pieces.Add("4i", new Gold(Player.Black, "4i"));
-            _pieces.Add("5i", new King(Player.Black, "5i"));
-            _pieces.Add("6i", new Gold(Player.Black, "6i"));
-            _pieces.Add("7i", new Silver(Player.Black, "7i"));
-            _pieces.Add("8i", new Knight(Player.Black, "8i"));
-            _pieces.Add("9i", new Lance(Player.Black, "9i"));
+            _boardState.Add(new Pawn(Player.Black, "1g"));
+            _boardState.Add(new Pawn(Player.Black, "2g"));
+            _boardState.Add(new Pawn(Player.Black, "3g"));
+            _boardState.Add(new Pawn(Player.Black, "4g"));
+            _boardState.Add(new Pawn(Player.Black, "5g"));
+            _boardState.Add(new Pawn(Player.Black, "6g"));
+            _boardState.Add(new Pawn(Player.Black, "7g"));
+            _boardState.Add(new Pawn(Player.Black, "8g"));
+            _boardState.Add(new Pawn(Player.Black, "9g"));
+            _boardState.Add(new Bishop(Player.Black, "8h"));
+            _boardState.Add(new Rook(Player.Black, "2h"));
+            _boardState.Add(new Lance(Player.Black, "1i"));
+            _boardState.Add(new Knight(Player.Black, "2i"));
+            _boardState.Add(new Silver(Player.Black, "3i"));
+            _boardState.Add(new Gold(Player.Black, "4i"));
+            _boardState.Add(new King(Player.Black, "5i"));
+            _boardState.Add(new Gold(Player.Black, "6i"));
+            _boardState.Add(new Silver(Player.Black, "7i"));
+            _boardState.Add(new Knight(Player.Black, "8i"));
+            _boardState.Add(new Lance(Player.Black, "9i"));
         }
 
         public BoardResult Move(Player player, string fromPosition, string toPosition)
@@ -78,31 +76,22 @@ namespace Core.Shogi
             if (player != CurrentTurn)
                 return BoardResult.NotPlayersTurn;
 
-            var piece = GetPiece(fromPosition);
+            var piece = _boardState.GetPiece(fromPosition);
             if (player != piece.OwnerPlayer)
                 return BoardResult.NotPlayersPiece;
 
-            var targetPiece = GetPiece(toPosition);
+            var targetPiece = _boardState.GetPiece(toPosition);
             if (piece.IsMoveLegal(toPosition) && (targetPiece == null || targetPiece?.OwnerPlayer != player))
             {
                 piece.Move(toPosition);
 
-                _pieces.Remove(fromPosition);
-                _pieces.Add(toPosition, piece);
+                _boardState.Remove(fromPosition);
+                _boardState.Add(piece);
 
                 return BoardResult.ValidOperation;
             }
 
             return BoardResult.InvalidOperation;
-        }
-
-        private Piece GetPiece(string fromPosition)
-        {
-            Piece piece;
-
-            _pieces.TryGetValue(fromPosition, out piece);
-
-            return piece;
         }
     }
 }
