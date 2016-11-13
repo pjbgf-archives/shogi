@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Core.Shogi.Pieces;
+﻿using Core.Shogi.Pieces;
 using NUnit.Framework;
 
 namespace Core.Shogi.Tests
@@ -23,21 +22,23 @@ namespace Core.Shogi.Tests
             var moveAdvisor = NoviceComputerPlayer.CreateFor(Player.Black, board);
             var bestMove = moveAdvisor.AskForNextMove();
 
-            Assert.AreEqual("3a", bestMove);
+            Assert.AreEqual("5c3a", bestMove);
         }
 
         [Test]
-        [Ignore("Potentially wrong place for this test.")]
-        public void BeAbleToProvidePawnMove()
+        [Ignore("Lacking implementation to make test pass.")]
+        public void FavourLowerRiskMoves()
         {
             var boardState = new BoardState();
             boardState.Add(new Pawn(Player.Black, "9g"));
+            boardState.Add(new Pawn(Player.Black, "8g"));
+            boardState.Add(new Lance(Player.White, "9a"));
 
             var board = new Board(boardState, Player.Black);
             var moveAdvisor = NoviceComputerPlayer.CreateFor(Player.Black, board);
             var bestMove = moveAdvisor.AskForNextMove();
 
-            Assert.AreEqual("9f", bestMove);
+            Assert.AreEqual("8g8f", bestMove);
         }
     }
 }
