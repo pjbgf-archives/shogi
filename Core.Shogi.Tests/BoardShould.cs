@@ -80,9 +80,16 @@ namespace Core.Shogi.Tests
         }
 
         [Test]
-        [Ignore("Some design considerations needed to get this test done")]
         public void NotAllowPlayerToCaptureOwnPiece()
         {
+            var boardState = new BoardState();
+            boardState.Add(new Rook(Player.Black, "1f"));
+            boardState.Add(new Pawn(Player.Black, "1g"));
+            var board = new Board(boardState, Player.Black);
+
+            var result = board.Move(Player.Black, "1g", "1f");
+
+            Assert.AreEqual(BoardResult.InvalidOperation, result);
         }
 
         [Test]
