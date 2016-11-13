@@ -66,13 +66,15 @@ namespace Core.Shogi.Tests
         }
 
         [Test]
-        public void AllowPlayerToCapturePieces()
+        [Ignore("Some design considerations needed to get this test done")]
+        public void AllowPlayerToCaptureOpponentPiece()
         {
-            var board = new Board();
+        }
 
-            var result = board.Move(Player.Black, "1g", "1f");
-
-            Assert.AreEqual(BoardResult.ValidOperation, result);
+        [Test]
+        [Ignore("Some design considerations needed to get this test done")]
+        public void NotAllowPlayerToCaptureOwnPiece()
+        {
         }
 
         [Test]
