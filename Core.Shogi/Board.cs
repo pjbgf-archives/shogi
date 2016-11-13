@@ -1,12 +1,11 @@
 using System.Text.RegularExpressions;
-using Core.Shogi.Pieces;
 
 namespace Core.Shogi
 {
     public class Board
     {
         readonly BoardState _boardState = new BoardState();
-        public Player CurrentTurn = Player.Black;
+        public Player CurrentPlayer = Player.Black;
 
         public Board()
         {
@@ -16,15 +15,15 @@ namespace Core.Shogi
         //TODO: Tell Don't Ask!
         public BoardState State => _boardState;
 
-        public Board(BoardState boardState, Player currentTurn) : this()
+        public Board(BoardState boardState, Player currentPlayer) : this()
         {
             _boardState = boardState;
-            CurrentTurn = currentTurn;
+            CurrentPlayer = currentPlayer;
         }
 
         public void ResetBoard()
         {
-            CurrentTurn = Player.Black;
+            CurrentPlayer = Player.Black;
             _boardState.Reset();
         }
 
@@ -34,7 +33,7 @@ namespace Core.Shogi
             if (!Regex.IsMatch(toPosition, "^[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant))
                 return BoardResult.InvalidOperation;
 
-            if (player != CurrentTurn)
+            if (player != CurrentPlayer)
                 return BoardResult.NotPlayersTurn;
 
             var piece = _boardState.GetPiece(fromPosition);
@@ -48,6 +47,7 @@ namespace Core.Shogi
 
                 _boardState.Remove(fromPosition);
                 _boardState.Add(piece);
+                CurrentPlayer = (player == Player.Black) ? Player.White : Player.Black;
 
                 return BoardResult.ValidOperation;
             }

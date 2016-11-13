@@ -31,9 +31,12 @@
                 Render();
 
                 if (result != BoardResult.ValidOperation)
+                {
                     _boardRender.InvalidOperation(result);
+                    //AskPlayerForNextMove(currentPlayer, nextPlayer);
+                }
 
-                    if (result == BoardResult.ValidOperation)
+                if (result == BoardResult.ValidOperation)
                     AskPlayerForNextMove(nextPlayer, currentPlayer);
             }
         }

@@ -1,5 +1,4 @@
-﻿using NSubstitute;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Core.Shogi.Tests
 {
@@ -74,6 +73,16 @@ namespace Core.Shogi.Tests
             var result = board.Move(Player.Black, "1g", "1f");
 
             Assert.AreEqual(BoardResult.ValidOperation, result);
+        }
+
+        [Test]
+        public void UpdateCurrentPlayerAfterValidMove()
+        {
+            var board = new Board();
+
+            board.Move(Player.Black, "1g", "1f");
+
+            Assert.AreEqual(Player.White, board.CurrentPlayer);
         }
     }
 }
