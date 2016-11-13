@@ -1,4 +1,5 @@
-﻿using Core.Shogi.Pieces;
+﻿using System.Collections.Generic;
+using Core.Shogi.Pieces;
 using NUnit.Framework;
 
 namespace Core.Shogi.Tests.Pieces
@@ -56,6 +57,19 @@ namespace Core.Shogi.Tests.Pieces
             var isMoveLegal = lance.IsMoveLegal(positionTo);
 
             Assert.IsTrue(isMoveLegal);
+        }
+
+        [TestCase(Player.Black, "9i", new string[] {"9h", "9g", "9f", "9e", "9d", "9c", "9b", "9a"},
+             TestName = "AsBlackPlayer")]
+        [TestCase(Player.White, "1a", new string[] {"1b", "1c","1d", "1e","1f", "1g","1h", "1i"}, TestName = "AsWhitePlayer")]
+        public void KnowAllItsPossibleMoves(Player player, string position,
+            IEnumerable<string> expectedPossibleMovements)
+        {
+            var lance = new Lance(player, position);
+
+            var possibleMovements = lance.GetPossibleMovements();
+
+            Assert.AreEqual(expectedPossibleMovements, possibleMovements);
         }
     }
 }

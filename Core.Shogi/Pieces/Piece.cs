@@ -34,7 +34,7 @@ namespace Core.Shogi.Pieces
                    (CanMoveBackwardsDiagonally && HasMovedBackwardsDiagonally(toPosition)) ||
                    (CanMoveDiagonallyInRange && HasMovedDiagonallyInRange(toPosition)) ||
                    (CanMoveForwardInRange && HasMovedForwardInRange(toPosition) ||
-                   (CanMoveHorizontallyAndVerticallyInRange && HasMovedHorizontallyOrVerticallyInRange(toPosition)));
+                    (CanMoveHorizontallyAndVerticallyInRange && HasMovedHorizontallyOrVerticallyInRange(toPosition)));
         }
 
         public virtual string Move(string toPosition)
@@ -72,9 +72,11 @@ namespace Core.Shogi.Pieces
         private bool HasMovedForwardsDiagonally(string toPosition)
         {
             if (OwnerPlayer == Player.Black)
-                return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] - 1 == toPosition[1]));
+                return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) &&
+                        (Position[1] - 1 == toPosition[1]));
 
-            return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] + 1 == toPosition[1]));
+            return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) &&
+                    (Position[1] + 1 == toPosition[1]));
         }
 
         private bool HasMovedDiagonallyInRange(string toPosition)
@@ -94,9 +96,11 @@ namespace Core.Shogi.Pieces
         private bool HasMovedBackwardsDiagonally(string toPosition)
         {
             if (OwnerPlayer == Player.Black)
-                return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] + 1 == toPosition[1]));
+                return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) &&
+                        (Position[1] + 1 == toPosition[1]));
 
-            return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) && (Position[1] - 1 == toPosition[1]));
+            return ((Position[0] + 1 == toPosition[0] || Position[0] - 1 == toPosition[0]) &&
+                    (Position[1] - 1 == toPosition[1]));
         }
 
         protected bool HasMovedHorizontallyOrVerticallyInRange(string toPosition)
@@ -114,6 +118,16 @@ namespace Core.Shogi.Pieces
                     possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(Position[1] - 1)));
                 else
                     possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(Position[1] + 1)));
+            }
+
+            if (CanMoveForwardInRange)
+            {
+                if (OwnerPlayer == Player.Black)
+                    for (int i = Position[1] - 1; i >= 'a'; i--)
+                        possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(i)));
+                else
+                    for (int i = Position[1] + 1; i <= 'i'; i++)
+                        possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(i)));
             }
 
             return possibleMovements;
