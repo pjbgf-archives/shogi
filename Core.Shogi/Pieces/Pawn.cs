@@ -1,4 +1,6 @@
-﻿namespace Core.Shogi.Pieces
+﻿using System.Collections.Generic;
+
+namespace Core.Shogi.Pieces
 {
     public class Pawn : Piece
     {
@@ -7,6 +9,7 @@
         public Pawn(Player ownerPlayer, string position) : base(ownerPlayer, position)
         {
             ShortName = 'P';
+            CanMoveForwards = true;
         }
 
         public override bool IsMoveLegal(string toPosition)

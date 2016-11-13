@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -101,6 +102,21 @@ namespace Core.Shogi.Pieces
         protected bool HasMovedHorizontallyOrVerticallyInRange(string toPosition)
         {
             return (Position[0] == toPosition[0] || Position[1] == toPosition[1]);
+        }
+
+        public virtual IEnumerable<string> GetPossibleMovements()
+        {
+            var possibleMovements = new List<string>();
+
+            if (CanMoveForwards)
+            {
+                if (OwnerPlayer == Player.Black)
+                    possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(Position[1] - 1)));
+                else
+                    possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(Position[1] + 1)));
+            }
+
+            return possibleMovements;
         }
     }
 }

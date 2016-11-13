@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
+using System.Threading;
 using Core.Shogi.Pieces;
 
 namespace Core.Shogi
@@ -23,6 +25,8 @@ namespace Core.Shogi
             return new NoviceComputerPlayer(player, board);
         }
 
+        public Player Player { get; private set; }
+
         public string AskForNextMove()
         {
             //TODO: Breaking Demeter's Law
@@ -33,8 +37,6 @@ namespace Core.Shogi
             return bestMovement;
         }
 
-        public Player Player { get; private set; }
-
         private static string GetMovementSuggestion(IEnumerable<KeyValuePair<MovementValue, string>> possibleMovements)
         {
             return possibleMovements.OrderByDescending(x => x.Key).Select(x => x.Value).First();
@@ -42,10 +44,15 @@ namespace Core.Shogi
 
         private static IEnumerable<KeyValuePair<MovementValue, string>> CalculatePossibleMovements(IEnumerable<Piece> playerPieces)
         {
-            return new List<KeyValuePair<MovementValue, string>>
+            var possibleMovements = new List<KeyValuePair<MovementValue, string>>();
+            foreach (var playerPiece in playerPieces)
             {
-                new KeyValuePair<MovementValue, string>(MovementValue.CheckMate, "3a")
-            };
+                var nonCalculatedMovements = playerPiece.GetPossibleMovements();
+                foreach(var nonCalculatedMovement in nonCalculatedMovements)
+                    possibleMovements.Add(new KeyValuePair<MovementValue, string>(MovementValue.Exposed, nonCalculatedMovement));
+            }
+
+            return possibleMovements;
         }
     }
 }

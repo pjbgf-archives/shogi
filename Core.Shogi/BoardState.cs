@@ -37,7 +37,7 @@ namespace Core.Shogi
             return _pieces.Values.Where(x => x.OwnerPlayer == player);
         }
 
-        public void Reset()
+        public void ResetToStartPosition()
         {
             Clear();
 

@@ -24,7 +24,7 @@ namespace Core.Shogi
         public void ResetBoard()
         {
             CurrentPlayer = Player.Black;
-            _boardState.Reset();
+            _boardState.ResetToStartPosition();
         }
 
         //TODO: Refactoring to keep right level of abstraction
