@@ -6,7 +6,7 @@
         {
             var board = new Board();
             var blackPlayer = BoardConsoleInput.CreateFor(Player.Black);
-            var whitePlayer = NoviceComputerInput.CreateFor(Player.White, board);
+            var whitePlayer = BoardConsoleInput.CreateFor(Player.White);
 
             var shogiGame = new ShogiGame(new BoardConsoleRender(), blackPlayer, whitePlayer, board);
             shogiGame.Start();

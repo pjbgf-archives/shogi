@@ -27,10 +27,14 @@
             if (currentPlayer != null && nextPlayer != null)
             {
                 var nextMove = currentPlayer.AskForNextMove();
-                var result = Move(nextMove);
+                var result = Move(currentPlayer.Player, nextMove);
                 Render();
-//                if (result == BoardResult.ValidOperation)
-//                    AskPlayerForNextMove(nextPlayer, currentPlayer);
+
+                if (result != BoardResult.ValidOperation)
+                    _boardRender.InvalidOperation(result);
+
+                    if (result == BoardResult.ValidOperation)
+                    AskPlayerForNextMove(nextPlayer, currentPlayer);
             }
         }
 
@@ -39,9 +43,9 @@
             _boardRender?.Refresh(_board.State);
         }
 
-        public BoardResult Move(string moveDescription)
+        private BoardResult Move(Player player, string moveDescription)
         {
-            return _board.Move(Player.Black, moveDescription.Substring(0, 2), moveDescription.Substring(2, 2));
+            return _board.Move(player, moveDescription.Substring(0, 2), moveDescription.Substring(2, 2));
         }
     }
 }

@@ -4,11 +4,9 @@ namespace Core.Shogi.Console
 {
     public class BoardConsoleInput : IBoardInput
     {
-        private readonly Player _player;
-
         private BoardConsoleInput(Player player)
         {
-            _player = player;
+            Player = player;
         }
 
         public static IBoardInput CreateFor(Player player)
@@ -18,8 +16,10 @@ namespace Core.Shogi.Console
 
         public string AskForNextMove()
         {
-            System.Console.WriteLine($"Next move for {Enum.GetName(typeof(Player), _player)} Player: ");
+            System.Console.WriteLine($"Next move for {Enum.GetName(typeof(Player), Player)} Player: ");
             return System.Console.ReadLine();
         }
+
+        public Player Player { get; private set; }
     }
 }

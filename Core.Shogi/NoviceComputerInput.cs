@@ -7,7 +7,6 @@ namespace Core.Shogi
     public class NoviceComputerInput : IBoardInput
     {
         private readonly Board _board;
-        private readonly Player _player;
 
         private NoviceComputerInput()
         {
@@ -15,7 +14,7 @@ namespace Core.Shogi
 
         private NoviceComputerInput(Player player, Board board)
         {
-            _player = player;
+            Player = player;
             _board = board;
         }
 
@@ -27,12 +26,14 @@ namespace Core.Shogi
         public string AskForNextMove()
         {
             //TODO: Breaking Demeter's Law
-            var playerPieces = _board.State.GetAllPiecesFromPlayer(_player);
+            var playerPieces = _board.State.GetAllPiecesFromPlayer(Player);
             var possibleMovements = CalculatePossibleMovements(playerPieces);
             var bestMovement = GetMovementSuggestion(possibleMovements);
 
             return bestMovement;
         }
+
+        public Player Player { get; private set; }
 
         private static string GetMovementSuggestion(IEnumerable<KeyValuePair<MovementValue, string>> possibleMovements)
         {

@@ -17,6 +17,11 @@ namespace Core.Shogi.Console
             PrintFooter();
         }
 
+        public void InvalidOperation(BoardResult boardResult)
+        {
+            System.Console.WriteLine($"Invalid movement: {System.Enum.GetName(typeof(BoardResult), boardResult)}");
+        }
+
         private void PrintFooter()
         {
             System.Console.WriteLine("-----------------------------------------");
