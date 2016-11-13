@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Core.Shogi.Pieces;
+using NUnit.Framework;
 
 namespace Core.Shogi.Tests
 {
@@ -66,9 +67,16 @@ namespace Core.Shogi.Tests
         }
 
         [Test]
-        [Ignore("Some design considerations needed to get this test done")]
         public void AllowPlayerToCaptureOpponentPiece()
         {
+            var boardState = new BoardState();
+            boardState.Add(new Pawn(Player.White, "1f"));
+            boardState.Add(new Pawn(Player.Black, "1g"));
+            var board = new Board(boardState, Player.Black);
+
+            var result = board.Move(Player.Black, "1g", "1f");
+
+            Assert.AreEqual(BoardResult.ValidOperation, result);
         }
 
         [Test]

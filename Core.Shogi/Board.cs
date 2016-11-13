@@ -27,7 +27,7 @@ namespace Core.Shogi
             _boardState.ResetToStartPosition();
         }
 
-        //TODO: Refactoring to keep right level of abstraction
+        //TODO: Refactor to keep right level of abstraction
         public virtual BoardResult Move(Player player, string fromPosition, string toPosition)
         {
             if (!Regex.IsMatch(toPosition, "^[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant))
@@ -46,6 +46,9 @@ namespace Core.Shogi
                 piece.Move(toPosition);
 
                 _boardState.Remove(fromPosition);
+                if (targetPiece != null)
+                    _boardState.Remove(toPosition);
+
                 _boardState.Add(piece);
                 CurrentPlayer = (player == Player.Black) ? Player.White : Player.Black;
 
