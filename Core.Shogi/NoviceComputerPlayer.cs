@@ -4,23 +4,23 @@ using Core.Shogi.Pieces;
 
 namespace Core.Shogi
 {
-    public class NoviceComputerInput : IBoardInput
+    public class NoviceComputerPlayer : IBoardPlayer
     {
         private readonly Board _board;
 
-        private NoviceComputerInput()
+        private NoviceComputerPlayer()
         {
         }
 
-        private NoviceComputerInput(Player player, Board board)
+        private NoviceComputerPlayer(Player player, Board board)
         {
             Player = player;
             _board = board;
         }
 
-        public static IBoardInput CreateFor(Player player, Board board)
+        public static IBoardPlayer CreateFor(Player player, Board board)
         {
-            return new NoviceComputerInput(player, board);
+            return new NoviceComputerPlayer(player, board);
         }
 
         public string AskForNextMove()

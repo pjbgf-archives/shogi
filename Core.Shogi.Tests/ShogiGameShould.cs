@@ -7,16 +7,16 @@ namespace Core.Shogi.Tests
     public class ShogiGameShould
     {
         private IBoardRender _boardRenderMock;
-        private IBoardInput _blackPlayerMock;
-        private IBoardInput _whitePlayerMock;
+        private IBoardPlayer _blackPlayerMock;
+        private IBoardPlayer _whitePlayerMock;
         private Board _boardMock;
 
         [SetUp]
         public void BeforeEachTest()
         {
             _boardRenderMock = Substitute.For<IBoardRender>();
-            _blackPlayerMock = Substitute.For<IBoardInput>();
-            _whitePlayerMock = Substitute.For<IBoardInput>();
+            _blackPlayerMock = Substitute.For<IBoardPlayer>();
+            _whitePlayerMock = Substitute.For<IBoardPlayer>();
             _boardMock = Substitute.For<Board>();
         }
 

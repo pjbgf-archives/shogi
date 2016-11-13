@@ -3,11 +3,11 @@
     public class ShogiGame
     {
         private readonly IBoardRender _boardRender;
-        private readonly IBoardInput _blackPlayer;
-        private readonly IBoardInput _whitePlayer;
+        private readonly IBoardPlayer _blackPlayer;
+        private readonly IBoardPlayer _whitePlayer;
         private readonly Board _board;
 
-        public ShogiGame(IBoardRender boardRender, IBoardInput blackPlayer, IBoardInput whitePlayer, Board board)
+        public ShogiGame(IBoardRender boardRender, IBoardPlayer blackPlayer, IBoardPlayer whitePlayer, Board board)
         {
             _boardRender = boardRender;
             _blackPlayer = blackPlayer;
@@ -22,7 +22,7 @@
             AskPlayerForNextMove(_blackPlayer, _whitePlayer);
         }
 
-        void AskPlayerForNextMove(IBoardInput currentPlayer, IBoardInput nextPlayer)
+        void AskPlayerForNextMove(IBoardPlayer currentPlayer, IBoardPlayer nextPlayer)
         {
             if (currentPlayer != null && nextPlayer != null)
             {

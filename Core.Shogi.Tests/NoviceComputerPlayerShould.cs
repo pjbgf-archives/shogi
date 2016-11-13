@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Core.Shogi.Tests
 {
     [TestFixture]
-    public class NoviceComputerInputShould
+    public class NoviceComputerPlayerShould
     {
         [Test]
         public void MoveToCheckMateIfPossible()
@@ -19,7 +19,7 @@ namespace Core.Shogi.Tests
 
             Board board = new Board(boardState, Player.Black);
 
-            var moveAdvisor = NoviceComputerInput.CreateFor(Player.Black, board);
+            var moveAdvisor = NoviceComputerPlayer.CreateFor(Player.Black, board);
             var bestMove = moveAdvisor.AskForNextMove();
 
             Assert.AreEqual("3a", bestMove);
