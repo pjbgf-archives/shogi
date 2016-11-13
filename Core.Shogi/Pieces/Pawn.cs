@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Core.Shogi.Pieces
 {
@@ -24,6 +25,23 @@ namespace Core.Shogi.Pieces
         {
             _isFirstMove = false;
             return base.Move(toPosition);
+        }
+
+        public override IEnumerable<string> GetPossibleMovements()
+        {
+            var possibleMovements = new List<string>();
+
+            if (_isFirstMove)
+            {
+                if (OwnerPlayer == Player.Black)
+                    possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(Position[1] - 2)));
+                else
+                    possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(Position[1] + 2)));
+            }
+
+            possibleMovements.AddRange(base.GetPossibleMovements());
+
+            return possibleMovements;
         }
     }
 }

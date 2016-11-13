@@ -27,6 +27,7 @@ namespace Core.Shogi.Tests
         }
 
         [Test]
+        [Ignore("Potentially wrong place for this test.")]
         public void BeAbleToProvidePawnMove()
         {
             var boardState = new BoardState();

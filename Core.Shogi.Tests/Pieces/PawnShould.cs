@@ -1,4 +1,5 @@
-﻿using Core.Shogi.Pieces;
+﻿using System.Collections.Generic;
+using Core.Shogi.Pieces;
 using NUnit.Framework;
 
 namespace Core.Shogi.Tests.Pieces
@@ -10,7 +11,7 @@ namespace Core.Shogi.Tests.Pieces
         public void Have_P_AsShortName()
         {
             var pawn = new Pawn(Player.Black, "1g");
-            
+
             Assert.AreEqual('P', pawn.ShortName);
         }
 
@@ -48,6 +49,18 @@ namespace Core.Shogi.Tests.Pieces
             var isMoveLegal = pawn.IsMoveLegal(positionTo);
 
             Assert.IsTrue(isMoveLegal);
+        }
+
+        [TestCase(Player.Black, "8g", new string[] {"8e", "8f"}, TestName = "AsBlackPlayer")]
+        [TestCase(Player.White, "1c", new string[] {"1e", "1d"}, TestName = "AsWhitePlayer")]
+        public void KnowAllItsPossibleMoves(Player player, string position,
+            IEnumerable<string> expectedPossibleMovements)
+        {
+            var pawn = new Pawn(player, position);
+
+            var possibleMovements = pawn.GetPossibleMovements();
+
+            Assert.AreEqual(expectedPossibleMovements, possibleMovements);
         }
     }
 }
