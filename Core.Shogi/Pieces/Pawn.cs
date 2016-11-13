@@ -5,12 +5,13 @@ namespace Core.Shogi.Pieces
 {
     public class Pawn : Piece
     {
-        private bool _isFirstMove = true;
+        private bool _isFirstMove;
 
-        public Pawn(Player ownerPlayer, string position) : base(ownerPlayer, position)
+        public Pawn(Player ownerPlayer, string position, bool isFirstMove = true) : base(ownerPlayer, position)
         {
             ShortName = 'P';
             CanMoveForwards = true;
+            _isFirstMove = isFirstMove;
         }
 
         public override bool IsMoveLegal(string toPosition)
@@ -34,9 +35,9 @@ namespace Core.Shogi.Pieces
             if (_isFirstMove)
             {
                 if (OwnerPlayer == Player.Black)
-                    possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(Position[1] - 2)));
+                    possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] - 2)));
                 else
-                    possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(Position[1] + 2)));
+                    possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] + 2)));
             }
 
             possibleMovements.AddRange(base.GetPossibleMovements());

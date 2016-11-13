@@ -51,8 +51,8 @@ namespace Core.Shogi.Tests.Pieces
             Assert.IsTrue(isMoveLegal);
         }
 
-        [TestCase(Player.Black, "8g", new string[] {"8e", "8f"}, TestName = "AsBlackPlayer")]
-        [TestCase(Player.White, "1c", new string[] {"1e", "1d"}, TestName = "AsWhitePlayer")]
+        [TestCase(Player.Black, "8g", new string[] {"8g8e", "8g8f"}, TestName = "AsBlackPlayer")]
+        [TestCase(Player.White, "1c", new string[] {"1c1e", "1c1d"}, TestName = "AsWhitePlayer")]
         public void KnowAllItsPossibleMoves(Player player, string position,
             IEnumerable<string> expectedPossibleMovements)
         {

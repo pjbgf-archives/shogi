@@ -1,4 +1,5 @@
-﻿using Core.Shogi.Pieces;
+﻿using System.Collections.Generic;
+using Core.Shogi.Pieces;
 using NUnit.Framework;
 
 namespace Core.Shogi.Tests.Pieces
@@ -7,7 +8,6 @@ namespace Core.Shogi.Tests.Pieces
     public class BishopShould
     {
         [Test]
-        //TODO: SRP? Should be better named
         public void DescribeSimpleMovements()
         {
             var bishop = new Bishop(Player.Black, "8h");
@@ -48,6 +48,18 @@ namespace Core.Shogi.Tests.Pieces
             var isMoveLegal = bishop.IsMoveLegal(positionTo);
 
             Assert.IsTrue(isMoveLegal);
+        }
+
+        [TestCase(Player.Black, "5e", new string[] {"5e4d", "5e4f", "5e3c", "5e3g", "5e2b", "5e2h", "5e1a", "5e1i", "5e6f", "5e6d", "5e7g", "5e7c", "5e8h", "5e8b", "5e9i", "5e9a"},
+             TestName = "AsBlackPlayer")]
+        public void KnowAllItsPossibleMoves(Player player, string position,
+            IEnumerable<string> expectedPossibleMovements)
+        {
+            var bishop = new Bishop(player, position);
+
+            var possibleMovements = bishop.GetPossibleMovements();
+
+            Assert.AreEqual(expectedPossibleMovements, possibleMovements);
         }
     }
 }

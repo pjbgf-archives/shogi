@@ -112,25 +112,59 @@ namespace Core.Shogi.Pieces
         {
             var possibleMovements = new List<string>();
 
-            if (CanMoveForwards)
-            {
-                if (OwnerPlayer == Player.Black)
-                    possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(Position[1] - 1)));
-                else
-                    possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(Position[1] + 1)));
-            }
+            AddForwardMovements(possibleMovements);
+            AddRangeForwardMovements(possibleMovements);
+            AddRangeDiagonalMovements(possibleMovements);
 
+            return possibleMovements;
+        }
+
+        private void AddRangeDiagonalMovements(ICollection<string> possibleMovements)
+        {
+            if (CanMoveDiagonallyInRange)
+            {
+                for (int i = Position[1]; i > 'a'; i--)
+                {
+                    var diff = (Position[1] - i) + 1;
+                    possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] - diff),
+                        Convert.ToChar(Position[1] - diff)));
+                    possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] - diff),
+                        Convert.ToChar(Position[1] + diff)));
+                }
+
+                for (int i = Position[1]; i < 'i'; i++)
+                {
+                    var diff = (i - Position[1]) + 1;
+                    possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] + diff),
+                        Convert.ToChar(Position[1] + diff)));
+                    possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] + diff),
+                        Convert.ToChar(Position[1] - diff)));
+                }
+            }
+        }
+
+        private void AddRangeForwardMovements(ICollection<string> possibleMovements)
+        {
             if (CanMoveForwardInRange)
             {
                 if (OwnerPlayer == Player.Black)
                     for (int i = Position[1] - 1; i >= 'a'; i--)
-                        possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(i)));
+                        possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(i)));
                 else
                     for (int i = Position[1] + 1; i <= 'i'; i++)
-                        possibleMovements.Add(string.Concat(Position[0], Convert.ToChar(i)));
+                        possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(i)));
             }
+        }
 
-            return possibleMovements;
+        private void AddForwardMovements(ICollection<string> possibleMovements)
+        {
+            if (CanMoveForwards)
+            {
+                if (OwnerPlayer == Player.Black)
+                    possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] - 1)));
+                else
+                    possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] + 1)));
+            }
         }
     }
 }

@@ -26,19 +26,19 @@ namespace Core.Shogi.Tests
         }
 
         [Test]
-        [Ignore("Lacking implementation to make test pass.")]
+        [Ignore("NoviceComputerPlayer needs to assess movement values in order for this to run.")]
         public void FavourLowerRiskMoves()
         {
             var boardState = new BoardState();
-            boardState.Add(new Pawn(Player.Black, "9g"));
-            boardState.Add(new Pawn(Player.Black, "8g"));
-            boardState.Add(new Lance(Player.White, "9a"));
+            boardState.Add(new Pawn(Player.Black, "3g"));
+            boardState.Add(new Pawn(Player.Black, "2g", false));
+            boardState.Add(new Bishop(Player.White, "5c"));
 
             var board = new Board(boardState, Player.Black);
             var moveAdvisor = NoviceComputerPlayer.CreateFor(Player.Black, board);
             var bestMove = moveAdvisor.AskForNextMove();
 
-            Assert.AreEqual("8g8f", bestMove);
+            Assert.AreEqual("3g3f", bestMove);
         }
     }
 }
