@@ -1,6 +1,6 @@
-namespace Core.Shogi.Console
+namespace Core.Shogi.Adapters.Console
 {
-    internal class BoardConsoleRender : IBoardRender
+    public class BoardConsoleRender : IBoardRender
     {
         public void Refresh(BoardState boardState)
         {

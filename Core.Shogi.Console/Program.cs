@@ -1,4 +1,6 @@
-﻿namespace Core.Shogi.Console
+﻿using Core.Shogi.Adapters.Console;
+
+namespace Core.Shogi.Console
 {
     internal class Program
     {

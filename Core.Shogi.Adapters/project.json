@@ -1,11 +1,10 @@
 ﻿{
     "version": "1.0.0-*",
     "buildOptions": {
-        "debugType": "portable",
-        "emitEntryPoint": true
+        "debugType": "portable"
     },
     "dependencies": {
-        "Core.Shogi.Adapters": "1.0.0.0"
+        "Core.Shogi": "1.0.0.0"
     },
     "frameworks": {
         "netcoreapp1.0": {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Shogi.Console
+namespace Core.Shogi.Adapters.Console
 {
     public class HumanPlayerConsoleAdapter : IBoardPlayer
     {
