@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Threading;
 using Core.Shogi.Pieces;
 
 namespace Core.Shogi
@@ -31,7 +29,9 @@ namespace Core.Shogi
         {
             //TODO: Breaking Demeter's Law
             var playerPieces = _board.State.GetAllPiecesFromPlayer(Player);
-            var possibleMovements = CalculatePossibleMovements(playerPieces);
+            var opponentPlayerPieces =
+                _board.State.GetAllPiecesFromPlayer(Player == Player.Black ? Player.White : Player.Black);
+            var possibleMovements = CalculatePossibleMovements(playerPieces, opponentPlayerPieces);
             var bestMovement = GetMovementSuggestion(possibleMovements);
 
             return bestMovement;
@@ -42,17 +42,44 @@ namespace Core.Shogi
             return possibleMovements.OrderByDescending(x => x.Key).Select(x => x.Value).First();
         }
 
-        private static IEnumerable<KeyValuePair<MovementValue, string>> CalculatePossibleMovements(IEnumerable<Piece> playerPieces)
+        private static IEnumerable<KeyValuePair<MovementValue, string>> CalculatePossibleMovements(
+            IEnumerable<Piece> playerPieces, IEnumerable<Piece> opponentPlayerPieces)
+        {
+            var opponentPossibleMovements = GetOpponentNextMoves(opponentPlayerPieces);
+            var valuePossibleMovements = ValuePossibleMovements(playerPieces, opponentPossibleMovements);
+
+            return valuePossibleMovements;
+        }
+
+        private static List<KeyValuePair<MovementValue, string>> ValuePossibleMovements(IEnumerable<Piece> playerPieces, List<string> opponentPossibleMovements)
         {
             var possibleMovements = new List<KeyValuePair<MovementValue, string>>();
             foreach (var playerPiece in playerPieces)
             {
                 var nonCalculatedMovements = playerPiece.GetPossibleMovements();
-                foreach(var nonCalculatedMovement in nonCalculatedMovements)
-                    possibleMovements.Add(new KeyValuePair<MovementValue, string>(MovementValue.Exposed, nonCalculatedMovement));
+                foreach (var nonCalculatedMovement in nonCalculatedMovements)
+                {
+                    var targetPosition = nonCalculatedMovement.Substring(2, 2);
+                    var riskOfCapture = opponentPossibleMovements.Contains(targetPosition);
+                    var movementValue = (riskOfCapture) ? MovementValue.AtRiskOfBeingCaptured : MovementValue.Exposed;
+
+                    possibleMovements.Add(new KeyValuePair<MovementValue, string>(movementValue, nonCalculatedMovement));
+                }
+            }
+            return possibleMovements;
+        }
+
+        private static List<string> GetOpponentNextMoves(IEnumerable<Piece> opponentPlayerPieces)
+        {
+            var opponentPossibleMovements = new List<string>();
+
+            foreach (var playerPiece in opponentPlayerPieces)
+            {
+                foreach (var movement in playerPiece.GetPossibleMovements())
+                    opponentPossibleMovements.Add(movement.Substring(2, 2));
             }
 
-            return possibleMovements;
+            return opponentPossibleMovements;
         }
     }
 }

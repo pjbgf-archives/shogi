@@ -26,8 +26,7 @@ namespace Core.Shogi.Tests
         }
 
         [Test]
-        [Ignore("NoviceComputerPlayer needs to assess movement values in order for this to run.")]
-        public void FavourLowerRiskMoves()
+        public void FavourExposedMoveToRiskOfCaptureMove()
         {
             var boardState = new BoardState();
             boardState.Add(new Pawn(Player.Black, "3g"));
