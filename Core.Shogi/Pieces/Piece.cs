@@ -115,8 +115,24 @@ namespace Core.Shogi.Pieces
             AddForwardMovements(possibleMovements);
             AddRangeForwardMovements(possibleMovements);
             AddRangeDiagonalMovements(possibleMovements);
+            AddRangeBackwardMovements(possibleMovements);
 
             return possibleMovements;
+        }
+
+        private void AddRangeBackwardMovements(List<string> possibleMovements)
+        {
+            if (CanMoveHorizontallyAndVerticallyInRange)
+            {
+                for (int i = Position[1] - 1; i >= 'a'; i--)
+                    possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(i)));
+                for (int i = Position[1] + 1; i <= 'i'; i++)
+                    possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(i)));
+                for (int i = Position[0] - 1; i >= '1'; i--)
+                    possibleMovements.Add(string.Concat(Position, Convert.ToChar(i), Position[1]));
+                for (int i = Position[0] + 1; i <= '9'; i++)
+                    possibleMovements.Add(string.Concat(Position, Convert.ToChar(i), Position[1]));
+            }
         }
 
         private void AddRangeDiagonalMovements(ICollection<string> possibleMovements)
