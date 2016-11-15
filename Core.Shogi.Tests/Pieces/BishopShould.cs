@@ -52,6 +52,8 @@ namespace Core.Shogi.Tests.Pieces
 
         [TestCase(Player.Black, "5e", new string[] {"5e4d", "5e4f", "5e3c", "5e3g", "5e2b", "5e2h", "5e1a", "5e1i", "5e6f", "5e6d", "5e7g", "5e7c", "5e8h", "5e8b", "5e9i", "5e9a"},
              TestName = "AsBlackPlayer")]
+        [TestCase(Player.White, "5e", new string[] {"5e4d", "5e4f", "5e3c", "5e3g", "5e2b", "5e2h", "5e1a", "5e1i", "5e6f", "5e6d", "5e7g", "5e7c", "5e8h", "5e8b", "5e9i", "5e9a"},
+             TestName = "AsWhitePlayer")]
         public void KnowAllItsPossibleMoves(Player player, string position,
             IEnumerable<string> expectedPossibleMovements)
         {
