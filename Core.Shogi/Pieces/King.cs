@@ -9,6 +9,7 @@
             CanMoveBackwardsDiagonally = true;
             CanMoveForwards = true;
             CanMoveForwardsDiagonally = true;
+            CanMoveSideways = true;
         }
     }
 }
