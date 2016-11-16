@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Core.Shogi.Pieces
 {
@@ -80,8 +81,8 @@ namespace Core.Shogi.Pieces
                     Convert.ToChar(Position[1] - 1)));
             }
 
-            if ((CanMoveForwardsDiagonally && OwnerPlayer == Player.White) ||
-                (CanMoveBackwardsDiagonally && OwnerPlayer == Player.Black))
+            if ((CanMoveBackwardsDiagonally && OwnerPlayer == Player.Black) ||
+                (CanMoveForwardsDiagonally && OwnerPlayer == Player.White))
             {
                 possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] + 1),
                     Convert.ToChar(Position[1] + 1)));
@@ -98,13 +99,13 @@ namespace Core.Shogi.Pieces
 
             if (CanMoveHorizontallyAndVerticallyInRange)
             {
-                for (int i = Position[1] - 1; i >= 'a'; i--)
+                for (var i = Position[1] - 1; i >= 'a'; i--)
                     possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(i)));
-                for (int i = Position[1] + 1; i <= 'i'; i++)
+                for (var i = Position[1] + 1; i <= 'i'; i++)
                     possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(i)));
-                for (int i = Position[0] - 1; i >= '1'; i--)
+                for (var i = Position[0] - 1; i >= '1'; i--)
                     possibleMovements.Add(string.Concat(Position, Convert.ToChar(i), Position[1]));
-                for (int i = Position[0] + 1; i <= '9'; i++)
+                for (var i = Position[0] + 1; i <= '9'; i++)
                     possibleMovements.Add(string.Concat(Position, Convert.ToChar(i), Position[1]));
             }
 
@@ -117,27 +118,24 @@ namespace Core.Shogi.Pieces
 
             if (CanMoveDiagonallyInRange)
             {
-                for (int i = Position[1]; i > 'a'; i--)
+                for (var i = 1; i <= 8; i++)
                 {
-                    var diff = (Position[1] - i) + 1;
-                    possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] - diff),
-                        Convert.ToChar(Position[1] - diff)));
-                    possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] - diff),
-                        Convert.ToChar(Position[1] + diff)));
-                }
-
-                for (int i = Position[1]; i < 'i'; i++)
-                {
-                    var diff = (i - Position[1]) + 1;
-                    possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] + diff),
-                        Convert.ToChar(Position[1] + diff)));
-                    possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] + diff),
-                        Convert.ToChar(Position[1] - diff)));
+                    AppendIfValidMovement(possibleMovements, string.Concat(Position, Convert.ToChar(Position[0] - i), Convert.ToChar(Position[1] - i)));
+                    AppendIfValidMovement(possibleMovements, string.Concat(Position, Convert.ToChar(Position[0] + i), Convert.ToChar(Position[1] + i)));
+                    AppendIfValidMovement(possibleMovements, string.Concat(Position, Convert.ToChar(Position[0] - i), Convert.ToChar(Position[1] + i)));
+                    AppendIfValidMovement(possibleMovements, string.Concat(Position, Convert.ToChar(Position[0] + i), Convert.ToChar(Position[1] - i)));
                 }
             }
 
             return possibleMovements;
         }
+
+        private void AppendIfValidMovement(ICollection<string> possibleMovements, string position)
+        {
+            if (Regex.IsMatch(position, "^[1-9][a-i][1-9][a-i]$") && !possibleMovements.Contains(position))
+                possibleMovements.Add(position);
+        }
+
 
         private IEnumerable<string> GetRangeForwardMovements()
         {
