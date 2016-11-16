@@ -59,16 +59,18 @@ namespace Core.Shogi.Pieces
         {
             PossibleMovements.Clear();
 
-            AddBackwardOrForwardMovements(PossibleMovements);
-            AddSidewayMovements(PossibleMovements);
-            AddBackwardAndForwardDiagonalMovements(PossibleMovements);
-            AddRangeForwardMovements(PossibleMovements);
-            AddRangeDiagonalMovements(PossibleMovements);
-            AddRangeHorizontallyAndVerticallyMovements(PossibleMovements);
+            PossibleMovements.AddRange(GetBackwardOrForwardMovements());
+            PossibleMovements.AddRange(GetSidewayMovements());
+            PossibleMovements.AddRange(GetBackwardAndForwardDiagonalMovements());
+            PossibleMovements.AddRange(GetRangeForwardMovements());
+            PossibleMovements.AddRange(GetRangeDiagonalMovements());
+            PossibleMovements.AddRange(GetRangeHorizontallyAndVerticallyMovements());
         }
 
-        private void AddBackwardAndForwardDiagonalMovements(ICollection<string> possibleMovements)
+        private IEnumerable<string> GetBackwardAndForwardDiagonalMovements()
         {
+            var possibleMovements = new List<string>();
+
             if ((CanMoveForwardsDiagonally && OwnerPlayer == Player.Black) ||
                 (CanMoveBackwardsDiagonally && OwnerPlayer == Player.White))
             {
@@ -86,10 +88,14 @@ namespace Core.Shogi.Pieces
                 possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] - 1),
                     Convert.ToChar(Position[1] + 1)));
             }
+
+            return possibleMovements;
         }
 
-        private void AddRangeHorizontallyAndVerticallyMovements(ICollection<string> possibleMovements)
+        private IEnumerable<string> GetRangeHorizontallyAndVerticallyMovements()
         {
+            var possibleMovements = new List<string>();
+
             if (CanMoveHorizontallyAndVerticallyInRange)
             {
                 for (int i = Position[1] - 1; i >= 'a'; i--)
@@ -101,10 +107,14 @@ namespace Core.Shogi.Pieces
                 for (int i = Position[0] + 1; i <= '9'; i++)
                     possibleMovements.Add(string.Concat(Position, Convert.ToChar(i), Position[1]));
             }
+
+            return possibleMovements;
         }
 
-        private void AddRangeDiagonalMovements(ICollection<string> possibleMovements)
+        private IEnumerable<string> GetRangeDiagonalMovements()
         {
+            var possibleMovements = new List<string>();
+
             if (CanMoveDiagonallyInRange)
             {
                 for (int i = Position[1]; i > 'a'; i--)
@@ -125,10 +135,14 @@ namespace Core.Shogi.Pieces
                         Convert.ToChar(Position[1] - diff)));
                 }
             }
+
+            return possibleMovements;
         }
 
-        private void AddRangeForwardMovements(ICollection<string> possibleMovements)
+        private IEnumerable<string> GetRangeForwardMovements()
         {
+            var possibleMovements = new List<string>();
+
             if (CanMoveForwardInRange)
             {
                 if (OwnerPlayer == Player.Black)
@@ -138,23 +152,33 @@ namespace Core.Shogi.Pieces
                     for (int i = Position[1] + 1; i <= 'i'; i++)
                         possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(i)));
             }
+
+            return possibleMovements;
         }
 
-        private void AddSidewayMovements(ICollection<string> possibleMovements)
+        private IEnumerable<string> GetSidewayMovements()
         {
+            var possibleMovements = new List<string>();
+
             if (CanMoveSideways)
             {
                 possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] - 1), Position[1]));
                 possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] + 1), Position[1]));
             }
+
+            return possibleMovements;
         }
 
-        private void AddBackwardOrForwardMovements(ICollection<string> possibleMovements)
+        private IEnumerable<string> GetBackwardOrForwardMovements()
         {
+            var possibleMovements = new List<string>();
+
             if ((OwnerPlayer == Player.Black && CanMoveForwards) || (OwnerPlayer == Player.White && CanMoveBack))
                 possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] - 1)));
             if ((OwnerPlayer == Player.White && CanMoveForwards) || (OwnerPlayer == Player.Black && CanMoveBack))
                 possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] + 1)));
+
+            return possibleMovements;
         }
     }
 }
