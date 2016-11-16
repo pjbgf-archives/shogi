@@ -1,21 +1,23 @@
-﻿{
-    "version": "1.0.0-*",
-    "buildOptions": {
-        "debugType": "portable",
-        "emitEntryPoint": true
-    },
-    "dependencies": {
-        "Core.Shogi.Adapters": "1.0.0-*"
-    },
-    "frameworks": {
-        "netcoreapp1.0": {
-            "dependencies": {
-                "Microsoft.NETCore.App": {
-                    "type": "platform",
-                    "version": "1.0.1"
-                }
-            },
-            "imports": "dnxcore50"
+{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "debugType": "portable",
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "Core.Shogi.Adapters": "1.0.0-*"
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": "portable-net45+win8",
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0-*",
+          "type": "platform"
         }
+      }
     }
+  }
 }
