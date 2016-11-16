@@ -1,26 +1,26 @@
 {
-    "version": "1.0.0-*",
-    "buildOptions": {
-        "debugType": "portable"
-    },
-    "dependencies": {
-        "NSubstitute": "2.0.0-rc",
-        "NUnit": "3.4.1",
-        "dotnet-test-nunit": "3.4.0-beta-2",
-        "Core.Shogi": "*"
-    },
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "debugType": "portable"
+  },
+  "dependencies": {
+    "NSubstitute": "2.0.0-rc",
+    "NUnit": "3.5.0",
+    "dotnet-test-nunit": "3.4.0-beta-3",
+    "Core.Shogi": "1.0.0-*"
+  },
 
-    "testRunner": "nunit",
+  "testRunner": "nunit",
 
-    "frameworks": {
-        "netcoreapp1.0": {
-            "imports": "portable-net45+win8",
-            "dependencies": {
-                "Microsoft.NETCore.App": {
-                    "version": "1.0.0-*",
-                    "type": "platform"
-                }
-            }
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": "portable-net45+win8",
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0-*",
+          "type": "platform"
         }
+      }
+    }
     }
 }
