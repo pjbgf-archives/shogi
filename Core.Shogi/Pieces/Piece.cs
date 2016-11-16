@@ -6,6 +6,7 @@ namespace Core.Shogi.Pieces
 {
     public abstract class Piece
     {
+        private List<string> _possibleMovements;
         public Player OwnerPlayer { get; }
         public string Position { get; private set; }
         public char ShortName { get; protected set; }
@@ -25,33 +26,46 @@ namespace Core.Shogi.Pieces
             Position = position;
         }
 
+        public List<string> PossibleMovements
+        {
+            get
+            {
+                if (_possibleMovements == null)
+                {
+                    _possibleMovements = new List<string>();
+                    UpdatePossibleMovements();
+                }
+                return _possibleMovements;
+            }
+            protected set { _possibleMovements = value; }
+        }
+
         public virtual bool IsMoveLegal(string toPosition)
         {
-            return GetPossibleMovements().Contains(string.Concat(Position, toPosition));
+            return PossibleMovements.Contains(string.Concat(Position, toPosition));
         }
 
         public virtual string Move(string toPosition)
         {
             var movementDescription = $"{ShortName}{Position}-{toPosition}";
+
             Position = toPosition;
+            UpdatePossibleMovements();
 
             return movementDescription;
         }
 
-        public virtual IEnumerable<string> GetPossibleMovements()
+        protected virtual void UpdatePossibleMovements()
         {
-            var possibleMovements = new List<string>();
+            PossibleMovements.Clear();
 
-            AddForwardMovements(possibleMovements);
-            AddBackwardMovements(possibleMovements);
-            AddSidewayMovements(possibleMovements);
-            AddForwardDiagonalMovements(possibleMovements);
-            AddBackwardDiagonalMovements(possibleMovements);
-            AddRangeForwardMovements(possibleMovements);
-            AddRangeDiagonalMovements(possibleMovements);
-            AddRangeHorizontallyAndVerticallyMovements(possibleMovements);
-
-            return possibleMovements;
+            AddBackwardOrForwardMovements(PossibleMovements);
+            AddSidewayMovements(PossibleMovements);
+            AddForwardDiagonalMovements(PossibleMovements);
+            AddBackwardDiagonalMovements(PossibleMovements);
+            AddRangeForwardMovements(PossibleMovements);
+            AddRangeDiagonalMovements(PossibleMovements);
+            AddRangeHorizontallyAndVerticallyMovements(PossibleMovements);
         }
 
         private void AddBackwardDiagonalMovements(ICollection<string> possibleMovements)
@@ -144,18 +158,7 @@ namespace Core.Shogi.Pieces
             }
         }
 
-        private void AddForwardMovements(ICollection<string> possibleMovements)
-        {
-            if (CanMoveForwards)
-            {
-                if (OwnerPlayer == Player.Black)
-                    possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] - 1)));
-                else
-                    possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] + 1)));
-            }
-        }
-
-        private void AddSidewayMovements(List<string> possibleMovements)
+        private void AddSidewayMovements(ICollection<string> possibleMovements)
         {
             if (CanMoveSideways)
             {
@@ -164,15 +167,12 @@ namespace Core.Shogi.Pieces
             }
         }
 
-        private void AddBackwardMovements(ICollection<string> possibleMovements)
+        private void AddBackwardOrForwardMovements(ICollection<string> possibleMovements)
         {
-            if (CanMoveBack)
-            {
-                if (OwnerPlayer == Player.White)
-                    possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] - 1)));
-                else
-                    possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] + 1)));
-            }
+            if ((OwnerPlayer == Player.Black && CanMoveForwards) || (OwnerPlayer == Player.White && CanMoveBack))
+                possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] - 1)));
+            if ((OwnerPlayer == Player.White && CanMoveForwards) || (OwnerPlayer == Player.Black && CanMoveBack))
+                possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] + 1)));
         }
     }
 }

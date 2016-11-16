@@ -59,7 +59,7 @@ namespace Core.Shogi.Tests.Pieces
         {
             var bishop = new Bishop(player, position);
 
-            var possibleMovements = bishop.GetPossibleMovements();
+            var possibleMovements = bishop.PossibleMovements;
 
             Assert.AreEqual(expectedPossibleMovements, possibleMovements);
         }

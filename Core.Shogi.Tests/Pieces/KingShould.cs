@@ -42,14 +42,14 @@ namespace Core.Shogi.Tests.Pieces
 
         [TestCase(Player.Black, "5e", new string[] {"5e5d", "5e5f", "5e4e", "5e6e", "5e6d", "5e4d", "5e6f", "5e4f"},
              TestName = "AsBlackPlayer")]
-        [TestCase(Player.White, "5e", new string[] {"5e5f", "5e5d", "5e4e", "5e6e", "5e6f", "5e4f", "5e6d", "5e4d"},
+        [TestCase(Player.White, "5e", new string[] {"5e5d", "5e5f", "5e4e", "5e6e", "5e6f", "5e4f", "5e6d", "5e4d"},
              TestName = "AsWhitePlayer")]
         public void KnowAllItsPossibleMoves(Player player, string position,
             IEnumerable<string> expectedPossibleMovements)
         {
             var king = new King(player, position);
 
-            var possibleMovements = king.GetPossibleMovements();
+            var possibleMovements = king.PossibleMovements;
 
             Assert.AreEqual(expectedPossibleMovements, possibleMovements);
         }

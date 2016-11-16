@@ -56,8 +56,7 @@ namespace Core.Shogi
             var possibleMovements = new List<KeyValuePair<MovementValue, string>>();
             foreach (var playerPiece in playerPieces)
             {
-                var nonCalculatedMovements = playerPiece.GetPossibleMovements();
-                foreach (var nonCalculatedMovement in nonCalculatedMovements)
+                foreach (var nonCalculatedMovement in playerPiece.PossibleMovements)
                 {
                     var targetPosition = nonCalculatedMovement.Substring(2, 2);
                     var riskOfCapture = opponentPossibleMovements.Contains(targetPosition);
@@ -75,7 +74,7 @@ namespace Core.Shogi
 
             foreach (var playerPiece in opponentPlayerPieces)
             {
-                foreach (var movement in playerPiece.GetPossibleMovements())
+                foreach (var movement in playerPiece.PossibleMovements)
                     opponentPossibleMovements.Add(movement.Substring(2, 2));
             }
 

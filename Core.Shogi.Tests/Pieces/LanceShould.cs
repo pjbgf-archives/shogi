@@ -68,7 +68,7 @@ namespace Core.Shogi.Tests.Pieces
         {
             var lance = new Lance(player, position);
 
-            var possibleMovements = lance.GetPossibleMovements();
+            var possibleMovements = lance.PossibleMovements;
 
             Assert.AreEqual(expectedPossibleMovements, possibleMovements);
         }

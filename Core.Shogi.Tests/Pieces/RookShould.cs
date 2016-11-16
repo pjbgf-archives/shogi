@@ -59,7 +59,7 @@ namespace Core.Shogi.Tests.Pieces
         {
             var rook = new Rook(player, position);
 
-            var possibleMovements = rook.GetPossibleMovements();
+            var possibleMovements = rook.PossibleMovements;
 
             Assert.AreEqual(expectedPossibleMovements, possibleMovements);
         }

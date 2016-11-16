@@ -28,21 +28,17 @@ namespace Core.Shogi.Pieces
             return base.Move(toPosition);
         }
 
-        public override IEnumerable<string> GetPossibleMovements()
+        protected override void UpdatePossibleMovements()
         {
-            var possibleMovements = new List<string>();
+            base.UpdatePossibleMovements();
 
             if (_isFirstMove)
             {
                 if (OwnerPlayer == Player.Black)
-                    possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] - 2)));
+                    PossibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] - 2)));
                 else
-                    possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] + 2)));
+                    PossibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] + 2)));
             }
-
-            possibleMovements.AddRange(base.GetPossibleMovements());
-
-            return possibleMovements;
         }
     }
 }
