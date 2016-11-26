@@ -26,25 +26,16 @@ namespace Core.Shogi.BitBoard
             return new BoardRow(newValue);
         }
 
-        public static implicit operator BoardRow(string boardRow)
+        public static BoardRow operator ^(BoardRow row1, BoardRow row2)
         {
-            var rowState = ConvertFromBinaryString(boardRow);
-            return new BoardRow(rowState);
+            var newValue = (ushort)(row1.Value ^ row2.Value);
+            return new BoardRow(newValue);
         }
 
-        static ushort ConvertFromBinaryString(string binary)
+        public static implicit operator BoardRow(string boardRow)
         {
-            ushort value = 0;
-
-            if (Regex.IsMatch(binary, "^(0|1)+$", RegexOptions.Compiled | RegexOptions.Singleline))
-            {
-                var pow = binary.Length - 1;
-                for (var i = 0; i < binary.Length; i++, pow--)
-                    if (binary[i] == '1')
-                        value += Convert.ToUInt16(Math.Pow(2, pow));
-            }
-
-            return value;
+            var rowState = Binary.ConvertToUInt16(boardRow);
+            return new BoardRow(rowState);
         }
     }
 }

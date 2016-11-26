@@ -18,15 +18,81 @@ namespace Core.Shogi.Tests.BitBoard
         }
 
         [Test]
-        public void BeAbleToXORtwoStates()
+        public void SupportBinaryXORBetweenTwoStates()
         {
-            var state1 = new BitboardState();// rowE: "000010000" );
-            var state2 = new BitboardState();
-            var expectedState = new BitboardState();
+            var state1 = new BitboardState(
+                                            "100000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000010000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000");
+            var state2 = new BitboardState(
+                                            "000000001",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000010000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000");
+            var expectedState = new BitboardState(
+                                            "100000001",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000");
+
+            var state3 = state1 ^ state2;
+
+            Assert.AreEqual(expectedState.RowE.Value, state3.RowE.Value);
+        }
+
+        [Test]
+        public void SupportBinaryANDBetweentwoStates()
+        {
+            var state1 = new BitboardState(
+                                            "100000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000010000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000");
+            var state2 = new BitboardState(
+                                            "000000001",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000010000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000");
+            var expectedState = new BitboardState(
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000010000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000",
+                                            "000000000");
 
             var state3 = state1 & state2;
 
-            Assert.AreEqual(expectedState, state3);
+            Assert.AreEqual(expectedState.RowE.Value, state3.RowE.Value);
         }
     }
 }

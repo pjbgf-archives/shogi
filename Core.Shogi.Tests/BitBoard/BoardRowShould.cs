@@ -28,24 +28,6 @@ namespace Core.Shogi.Tests.BitBoard
         }
 
         [Test]
-        public void CanCastImplicitlyFromString0001()
-        {
-            BoardRow row = "0001";
-            ushort expected = 1;
-
-            Assert.AreEqual(expected, row.Value);
-        }
-
-        [Test]
-        public void CanCastImplicitlyFromString0010()
-        {
-            BoardRow row = "0010";
-            ushort expected = 2;
-
-            Assert.AreEqual(expected, row.Value);
-        }
-
-        [Test]
         public void CastImplicitlyFromString10000()
         {
             BoardRow row = "000010000";
