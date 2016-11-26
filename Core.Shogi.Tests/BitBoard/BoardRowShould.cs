@@ -11,7 +11,7 @@ namespace Core.Shogi.Tests.BitBoard
     public class BoardRowShould
     {
         [Test]
-        public void UseOnlyTwoBytesOfMemory()
+        public void UseOnly2BytesOfMemory()
         {
             var expectedSizeInBytes = 2;
             var actualSizeInBytes = Marshal.SizeOf<BoardRow>();
