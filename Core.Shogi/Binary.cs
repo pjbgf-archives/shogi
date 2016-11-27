@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace Core.Shogi.BitBoard
+namespace Core.Shogi
 {
     public class Binary
     {

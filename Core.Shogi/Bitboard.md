@@ -1,0 +1,32 @@
+﻿Current position:
+000000000
+000000000
+000000000
+000100000  --> 1 White
+000111000  --> 3 Black
+000000000
+000000000
+000000000
+000000000
+
+Attack from that position:
+000000000
+000000000
+000000000
+000111000
+000101000
+000010000
+000000000
+000000000
+000000000
+
+Black Pieces
+
+
+
+
+10011 [Black Pieces]
+01100 [Negative of Black Pieces]
+00101 [Allowed Movement]
+00100 [Allowed Movements + Neg of Black Pieces]
+

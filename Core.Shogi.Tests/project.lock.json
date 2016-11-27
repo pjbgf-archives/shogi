@@ -2813,19 +2813,6 @@
         "runtime": {
           "netcoreapp1.0/Core.Shogi.dll": {}
         }
-      },
-      "Core.Shogi.BitBoard/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v1.0",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "netcoreapp1.0/Core.Shogi.BitBoard.dll": {}
-        },
-        "runtime": {
-          "netcoreapp1.0/Core.Shogi.BitBoard.dll": {}
-        }
       }
     }
   },
@@ -8242,17 +8229,11 @@
       "type": "project",
       "path": "../Core.Shogi/project.json",
       "msbuildProject": "../Core.Shogi/Core.Shogi.xproj"
-    },
-    "Core.Shogi.BitBoard/1.0.0": {
-      "type": "project",
-      "path": "../Core.Shogi.BitBoard/project.json",
-      "msbuildProject": "../Core.Shogi.BitBoard/Core.Shogi.BitBoard.xproj"
     }
   },
   "projectFileDependencyGroups": {
     "": [
       "Core.Shogi >= 1.0.0-*",
-      "Core.Shogi.BitBoard >= 1.0.0-*",
       "NSubstitute >= 2.0.0-rc",
       "NUnit >= 3.5.0",
       "dotnet-test-nunit >= 3.4.0-beta-3"
