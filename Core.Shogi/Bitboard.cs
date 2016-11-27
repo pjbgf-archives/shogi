@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace Core.Shogi
@@ -98,6 +99,9 @@ namespace Core.Shogi
         {
             get
             {
+                if (index < 0 || index > 80)
+                    throw new IndexOutOfRangeException();
+
                 var subIndex = index % 9;
 
                 if (index < 9)
@@ -116,10 +120,8 @@ namespace Core.Shogi
                     return RowG[subIndex];
                 if (index < 72)
                     return RowH[subIndex];
-                if (index < 81)
-                    return RowI[subIndex];
 
-                return false;
+                return RowI[subIndex];
             }
         }
 

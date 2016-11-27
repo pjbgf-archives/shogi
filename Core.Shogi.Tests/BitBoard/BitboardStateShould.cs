@@ -7,39 +7,12 @@ namespace Core.Shogi.Tests.BitBoard
     public class BitboardStateShould
     {
         [Test]
-        public void BeAbleToCalculateAvailableMoves()
+        public void BeAbleToCalculateMoveCapturingPiece()
         {
             var boardState = new BitboardState(
-                new Bitboard(
-                    "000000000",
-                    "000000000",
-                    "000000000",
-                    "000000000",
-                    "000010000",
-                    "000000000",
-                    "000000000",
-                    "000000000",
-                    "000000000"),
-                new Bitboard(
-                    "000000000",
-                    "000000000",
-                    "000000000",
-                    "000100000",
-                    "000000000",
-                    "000000000",
-                    "000000000",
-                    "000000000",
-                    "000000000"),
-                new Bitboard(
-                    "000000000",
-                    "000000000",
-                    "000000000",
-                    "000100000",
-                    "000000000",
-                    "000000000",
-                    "000000000",
-                    "000000000",
-                    "000000000"));
+                new Bitboard(0, 0, 0,           0, "000010000", 0, 0, 0, 0),
+                new Bitboard(0, 0, 0, "000100000",           0, 0, 0, 0, 0),
+                new Bitboard(0, 0, 0,           0, "000010000", 0, 0, 0, 0));
 
             var expected = boardState.WhitePieces;
             var actual = boardState.GetNextState();

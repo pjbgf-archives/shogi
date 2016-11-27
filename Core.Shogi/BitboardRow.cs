@@ -41,6 +41,11 @@ namespace Core.Shogi
             return new BitboardRow(rowState);
         }
 
+        public static implicit operator BitboardRow(ushort row)
+        {
+            return new BitboardRow(row);
+        }
+
         public bool this[int index]
         {
             get
