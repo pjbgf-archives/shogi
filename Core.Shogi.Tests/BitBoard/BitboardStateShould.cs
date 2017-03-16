@@ -1,12 +1,12 @@
 ﻿using System.Runtime.InteropServices;
-using NUnit.Framework;
+using Xunit;
 
 namespace Core.Shogi.Tests.BitBoard
 {
-    [TestFixture]
+    
     public class BitboardStateShould
     {
-        [Test]
+        [Fact]
         public void BeAbleToCalculateMoveCapturingPiece()
         {
             var boardState = new BitboardState(
@@ -17,7 +17,7 @@ namespace Core.Shogi.Tests.BitBoard
             var expected = boardState.WhitePieces;
             var actual = boardState.GetNextState();
 
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
     }
 }

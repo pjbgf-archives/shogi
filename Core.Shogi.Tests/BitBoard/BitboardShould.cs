@@ -1,22 +1,22 @@
-﻿using System.Runtime.InteropServices;
-using NUnit.Framework;
+using System.Runtime.InteropServices;
+using Xunit;
 // ReSharper disable InconsistentNaming
 
 namespace Core.Shogi.Tests.BitBoard
 {
-    [TestFixture]
+    
     public class BitboardShould
     {
-        [Test]
+        [Fact]
         public void UseOnly18BytesOfMemory()
         {
             var expectedSizeInBytes = 18;
             var actualSizeInBytes = Marshal.SizeOf<Bitboard>();
 
-            Assert.AreEqual(expectedSizeInBytes, actualSizeInBytes);
+            Assert.Equal(expectedSizeInBytes, actualSizeInBytes);
         }
 
-        [Test]
+        [Fact]
         public void SupportBinaryXORBetweenTwoStates()
         {
             var state1 = new Bitboard(
@@ -52,10 +52,10 @@ namespace Core.Shogi.Tests.BitBoard
 
             var state3 = state1 ^ state2;
 
-            Assert.AreEqual(expectedState.RowE.Value, state3.RowE.Value);
+            Assert.Equal(expectedState.RowE.Value, state3.RowE.Value);
         }
 
-        [Test]
+        [Fact]
         public void SupportBinaryANDBetweentwoStates()
         {
             var state1 = new Bitboard(
@@ -91,7 +91,7 @@ namespace Core.Shogi.Tests.BitBoard
 
             var state3 = state1 & state2;
 
-            Assert.AreEqual(expectedState.RowE.Value, state3.RowE.Value);
+            Assert.Equal(expectedState.RowE.Value, state3.RowE.Value);
         }
     }
 }

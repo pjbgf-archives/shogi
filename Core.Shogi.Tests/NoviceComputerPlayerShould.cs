@@ -1,13 +1,12 @@
-﻿using Core.Shogi.Pieces;
-using NUnit.Framework;
+using Core.Shogi.Pieces;
+using Xunit;
 
 namespace Core.Shogi.Tests
 {
-    [TestFixture]
     public class NoviceComputerPlayerShould
     {
-        [Test]
-        [Ignore("A lot more development needed to achieve this level of evaluation.")]
+        //[Fact]
+        //[Ignore("A lot more development needed to achieve this level of evaluation.")]
         public void MoveToCheckMateIfPossible()
         {
             var boardState = new BoardState();
@@ -22,10 +21,10 @@ namespace Core.Shogi.Tests
             var moveAdvisor = NoviceComputerPlayer.CreateFor(Player.Black, board);
             var bestMove = moveAdvisor.AskForNextMove();
 
-            Assert.AreEqual("5c3a", bestMove);
+            Assert.Equal("5c3a", bestMove);
         }
 
-        [Test]
+        [Fact]
         public void FavourExposedMoveToRiskOfCaptureMove()
         {
             var boardState = new BoardState();
@@ -37,7 +36,7 @@ namespace Core.Shogi.Tests
             var moveAdvisor = NoviceComputerPlayer.CreateFor(Player.Black, board);
             var bestMove = moveAdvisor.AskForNextMove();
 
-            Assert.AreEqual("3g3f", bestMove);
+            Assert.Equal("3g3f", bestMove);
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using NSubstitute;
-using NUnit.Framework;
+using Xunit;
 
 namespace Core.Shogi.Tests
-{
-    [TestFixture]
+{   
     public class ShogiGameShould
     {
         private IBoardRender _boardRenderMock;
@@ -11,7 +10,6 @@ namespace Core.Shogi.Tests
         private IBoardPlayer _whitePlayerMock;
         private Board _boardMock;
 
-        [SetUp]
         public void BeforeEachTest()
         {
             _boardRenderMock = Substitute.For<IBoardRender>();
@@ -20,7 +18,7 @@ namespace Core.Shogi.Tests
             _boardMock = Substitute.For<Board>();
         }
 
-        [Test]
+        [Fact]
         public void ResetBoardOnStart()
         {
             var shogiGame = new ShogiGame(_boardRenderMock, null, null, _boardMock);
@@ -30,7 +28,7 @@ namespace Core.Shogi.Tests
             _boardMock.Received(1).ResetBoard();
         }
 
-        [Test]
+        [Fact]
         public void RenderBoardOnStart()
         {
             var shogiGame = new ShogiGame(_boardRenderMock, null, null, _boardMock);
@@ -40,7 +38,7 @@ namespace Core.Shogi.Tests
             _boardRenderMock.ReceivedWithAnyArgs(1).Refresh(Arg.Any<BoardState>());
         }
 
-        [Test]
+        [Fact]
         public void MovePieceBasedOnBlackPlayerInput()
         {
             _blackPlayerMock.AskForNextMove().Returns("1g1f");
@@ -51,7 +49,7 @@ namespace Core.Shogi.Tests
             _boardMock.Received(1).Move(Arg.Is(Player.Black), Arg.Is("1g"), Arg.Is("1f"));
         }
 
-        [Test]
+        [Fact]
         public void MovePieceBasedOnWhitePlayerInput()
         {
             _blackPlayerMock.AskForNextMove().Returns("1g1f");
@@ -67,7 +65,7 @@ namespace Core.Shogi.Tests
             _boardMock.Received().Move(Arg.Is(Player.White), Arg.Is("1c"), Arg.Is("1e"));
         }
 
-        [Test]
+        [Fact]
         public void TellUserOfInvalidMoves()
         {
             _blackPlayerMock.AskForNextMove().Returns("1c1e");
@@ -78,8 +76,7 @@ namespace Core.Shogi.Tests
             _boardRenderMock.Received(1).InvalidOperation(Arg.Any<BoardResult>());
         }
 
-        [Test]
-        [Ignore("To comply with this test, the logic is breaking other tests.")]
+        [Fact(Skip="To comply with this test, the logic is breaking other tests.")]
         public void AskPlayerTwiceIfFirstInputWasInvalid()
         {
             _blackPlayerMock.AskForNextMove().Returns("1c1e");

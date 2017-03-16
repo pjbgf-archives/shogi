@@ -1,47 +1,47 @@
-﻿using Core.Shogi.Pieces;
-using NUnit.Framework;
+using Core.Shogi.Pieces;
+using Xunit;
 
 namespace Core.Shogi.Tests.Pieces
 {
-    [TestFixture]
+    
     public class SilverShould
     {
-        [Test]
+        [Fact]
         public void Have_P_AsShortName()
         {
             var silver = new Silver(Player.Black, "7i");
 
-            Assert.AreEqual('S', silver.ShortName);
+            Assert.Equal('S', silver.ShortName);
         }
 
-        [TestCase(Player.Black, "7h", "7i", TestName = "NotMoveBackAsBlackPlayer")]
-        [TestCase(Player.White, "7b", "7a", TestName = "NotMoveBackAsWhitePlayer")]
+        //[InlineDataWithName("NotMoveBackAsBlackPlayer", Player.Black, "7h", "7i")]
+        //[InlineDataWithName("NotMoveBackAsWhitePlayer", Player.White, "7b", "7a")]
         public void NotAllowIllegalMoves(Player player, string positionFrom, string positionTo)
         {
             var silver = new Silver(player, positionFrom);
 
             var isMoveLegal = silver.IsMoveLegal(positionTo);
 
-            Assert.IsFalse(isMoveLegal);
+            Assert.False(isMoveLegal);
         }
 
-        [TestCase(Player.Black, "7i", "7h", TestName = "BeAbleToMoveForwardAsBlackPlayer")]
-        [TestCase(Player.White, "7a", "7b", TestName = "BeAbleToMoveForwardAsWhitePlayer")]
-        [TestCase(Player.Black, "7i", "8h", TestName = "BeAbleToMoveForwardLeftAsBlackPlayer")]
-        [TestCase(Player.White, "7a", "6b", TestName = "BeAbleToMoveForwardLeftAsWhitePlayer")]
-        [TestCase(Player.Black, "7i", "6h", TestName = "BeAbleToMoveForwardRightAsBlackPlayer")]
-        [TestCase(Player.White, "7a", "8b", TestName = "BeAbleToMoveForwardRightAsWhitePlayer")]
-        [TestCase(Player.Black, "5e", "6f", TestName = "BeAbleToMoveBackLeftAsBlackPlayer")]
-        [TestCase(Player.White, "5e", "4d", TestName = "BeAbleToMoveBackLeftAsWhitePlayer")]
-        [TestCase(Player.Black, "5e", "4f", TestName = "BeAbleToMoveBackRightAsBlackPlayer")]
-        [TestCase(Player.White, "5e", "6d", TestName = "BeAbleToMoveBackRightAsWhitePlayer")]
+        //[InlineDataWithName("BeAbleToMoveForwardAsBlackPlayer", Player.Black, "7i", "7h")]
+        //[InlineDataWithName("BeAbleToMoveForwardAsWhitePlayer", Player.White, "7a", "7b")]
+        //[InlineDataWithName("BeAbleToMoveForwardLeftAsBlackPlayer", Player.Black, "7i", "8h")]
+        //[InlineDataWithName("BeAbleToMoveForwardLeftAsWhitePlayer", Player.White, "7a", "6b")]
+        //[InlineDataWithName("BeAbleToMoveForwardRightAsBlackPlayer",Player.Black, "7i", "6h")]
+        //[InlineDataWithName("BeAbleToMoveForwardRightAsWhitePlayer", Player.White, "7a", "8b")]
+        //[InlineDataWithName("BeAbleToMoveBackLeftAsBlackPlayer", Player.Black, "5e", "6f")]
+        //[InlineDataWithName("BeAbleToMoveBackLeftAsWhitePlayer", Player.White, "5e", "4d")]
+        //[InlineDataWithName("BeAbleToMoveBackRightAsBlackPlayer", Player.Black, "5e", "4f")]
+        //[InlineDataWithName("BeAbleToMoveBackRightAsWhitePlayer", Player.White, "5e", "6d")]
         public void AllowValidMoves(Player player, string positionFrom, string positionTo)
         {
             var silver = new Silver(player, positionFrom);
 
             var isMoveLegal = silver.IsMoveLegal(positionTo);
 
-            Assert.IsTrue(isMoveLegal);
+            Assert.True(isMoveLegal);
         }
     }
 }

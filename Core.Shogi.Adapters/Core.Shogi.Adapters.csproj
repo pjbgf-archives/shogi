@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.0</TargetFramework>
-    <AssemblyName>Core.Shogi</AssemblyName>
-    <PackageId>Core.Shogi</PackageId>
+    <AssemblyName>Core.Shogi.Adapters</AssemblyName>
+    <PackageId>Core.Shogi.Adapters</PackageId>
     <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
     <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
@@ -13,5 +13,9 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Core.Shogi/Core.Shogi.csproj" />
+  </ItemGroup>
 
 </Project>

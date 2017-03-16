@@ -1,58 +1,58 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Core.Shogi.Pieces;
-using NUnit.Framework;
+using Xunit;
 
 namespace Core.Shogi.Tests.Pieces
 {
-    [TestFixture]
+    
     public class PawnShould
     {
-        [Test]
+        [Fact]
         public void Have_P_AsShortName()
         {
             var pawn = new Pawn(Player.Black, "1g");
 
-            Assert.AreEqual('P', pawn.ShortName);
+            Assert.Equal('P', pawn.ShortName);
         }
 
-        [TestCase(Player.Black, "1g", "1h", TestName = "NotMoveBackwardAsBlackPlayer")]
-        [TestCase(Player.White, "1c", "1b", TestName = "NotMoveBackwardAsWhitePlayer")]
-        [TestCase(Player.Black, "5g", "6g", TestName = "NotMoveLeftAsBlackPlayer")]
-        [TestCase(Player.White, "5c", "4c", TestName = "NotMoveLeftAsWhitePlayer")]
-        [TestCase(Player.Black, "5g", "4g", TestName = "NotMoveRightAsBlackPlayer")]
-        [TestCase(Player.White, "5c", "6c", TestName = "NotMoveRightAsWhitePlayer")]
-        [TestCase(Player.Black, "5g", "6h", TestName = "NotMoveBackLeftAsBlackPlayer")]
-        [TestCase(Player.White, "5c", "4b", TestName = "NotMoveBackLeftAsWhitePlayer")]
-        [TestCase(Player.Black, "5g", "4h", TestName = "NotMoveBackRightAsBlackPlayer")]
-        [TestCase(Player.White, "5c", "6b", TestName = "NotMoveBackRightAsWhitePlayer")]
-        [TestCase(Player.Black, "5g", "6f", TestName = "NotMoveForwardLeftAsBlackPlayer")]
-        [TestCase(Player.White, "5c", "4d", TestName = "NotMoveForwardLeftAsWhitePlayer")]
-        [TestCase(Player.Black, "5g", "4f", TestName = "NotMoveForwardRightAsBlackPlayer")]
-        [TestCase(Player.White, "5c", "6d", TestName = "NotMoveForwardRightAsWhitePlayer")]
+        //[InlineDataWithName(Player.Black, "1g", "1h", TestName = "NotMoveBackwardAsBlackPlayer")]
+        //[InlineDataWithName(Player.White, "1c", "1b", TestName = "NotMoveBackwardAsWhitePlayer")]
+        //[InlineDataWithName(Player.Black, "5g", "6g", TestName = "NotMoveLeftAsBlackPlayer")]
+        //[InlineDataWithName(Player.White, "5c", "4c", TestName = "NotMoveLeftAsWhitePlayer")]
+        //[InlineDataWithName(Player.Black, "5g", "4g", TestName = "NotMoveRightAsBlackPlayer")]
+        //[InlineDataWithName(Player.White, "5c", "6c", TestName = "NotMoveRightAsWhitePlayer")]
+        //[InlineDataWithName(Player.Black, "5g", "6h", TestName = "NotMoveBackLeftAsBlackPlayer")]
+        //[InlineDataWithName(Player.White, "5c", "4b", TestName = "NotMoveBackLeftAsWhitePlayer")]
+        //[InlineDataWithName(Player.Black, "5g", "4h", TestName = "NotMoveBackRightAsBlackPlayer")]
+        //[InlineDataWithName(Player.White, "5c", "6b", TestName = "NotMoveBackRightAsWhitePlayer")]
+        //[InlineDataWithName(Player.Black, "5g", "6f", TestName = "NotMoveForwardLeftAsBlackPlayer")]
+        //[InlineDataWithName(Player.White, "5c", "4d", TestName = "NotMoveForwardLeftAsWhitePlayer")]
+        //[InlineDataWithName(Player.Black, "5g", "4f", TestName = "NotMoveForwardRightAsBlackPlayer")]
+        //[InlineDataWithName(Player.White, "5c", "6d", TestName = "NotMoveForwardRightAsWhitePlayer")]
         public void NotAllowIllegalMoves(Player player, string positionFrom, string positionTo)
         {
             var pawn = new Pawn(player, positionFrom);
 
             var isMoveLegal = pawn.IsMoveLegal(positionTo);
 
-            Assert.IsFalse(isMoveLegal);
+            Assert.False(isMoveLegal);
         }
 
-        [TestCase(Player.Black, "8g", "8f", TestName = "BeAbleToMove1RowUpAsBlackPlayer")]
-        [TestCase(Player.White, "8c", "8d", TestName = "BeAbleToMove1RowDownAsWhitePlayer")]
-        [TestCase(Player.Black, "8g", "8e", TestName = "BeAbleToMove2RowsUpAsBlackPlayerIfFirstMove")]
-        [TestCase(Player.White, "8c", "8e", TestName = "BeAbleToMove2RowsDownAsWhitePlayerIfFirstMove")]
+        //[InlineDataWithName(Player.Black, "8g", "8f", TestName = "BeAbleToMove1RowUpAsBlackPlayer")]
+        //[InlineDataWithName(Player.White, "8c", "8d", TestName = "BeAbleToMove1RowDownAsWhitePlayer")]
+        //[InlineDataWithName(Player.Black, "8g", "8e", TestName = "BeAbleToMove2RowsUpAsBlackPlayerIfFirstMove")]
+        //[InlineDataWithName(Player.White, "8c", "8e", TestName = "BeAbleToMove2RowsDownAsWhitePlayerIfFirstMove")]
         public void AllowValidMoves(Player player, string positionFrom, string positionTo)
         {
             var pawn = new Pawn(player, positionFrom);
 
             var isMoveLegal = pawn.IsMoveLegal(positionTo);
 
-            Assert.IsTrue(isMoveLegal);
+            Assert.True(isMoveLegal);
         }
 
-        [TestCase(Player.Black, "8g", new string[] {"8g8f", "8g8e"}, TestName = "AsBlackPlayer")]
-        [TestCase(Player.White, "1c", new string[] {"1c1d", "1c1e"}, TestName = "AsWhitePlayer")]
+        //[InlineDataWithName(Player.Black, "8g", new string[] {"8g8f", "8g8e"}, TestName = "AsBlackPlayer")]
+        //[InlineDataWithName(Player.White, "1c", new string[] {"1c1d", "1c1e"}, TestName = "AsWhitePlayer")]
         public void KnowAllItsPossibleMoves(Player player, string position,
             IEnumerable<string> expectedPossibleMovements)
         {
@@ -60,7 +60,7 @@ namespace Core.Shogi.Tests.Pieces
 
             var possibleMovements = pawn.PossibleMovements;
 
-            Assert.AreEqual(expectedPossibleMovements, possibleMovements);
+            Assert.Equal(expectedPossibleMovements, possibleMovements);
         }
     }
 }
