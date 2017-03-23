@@ -15,22 +15,22 @@ namespace Core.Shogi.Tests.Pieces
             Assert.Equal('K', king.ShortName);
         }
 
-        //[InlineDataWithName(Player.Black, "7i", "7h", TestName = "BeAbleToMoveForwardAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "7a", "7b", TestName = "BeAbleToMoveForwardAsWhitePlayer")]
-        //[InlineDataWithName(Player.Black, "7i", "8h", TestName = "BeAbleToMoveForwardLeftAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "7a", "6b", TestName = "BeAbleToMoveForwardLeftAsWhitePlayer")]
-        //[InlineDataWithName(Player.Black, "5e", "6f", TestName = "BeAbleToMoveBackLeftAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "5e", "4d", TestName = "BeAbleToMoveBackLeftAsWhitePlayer")]
-        //[InlineDataWithName(Player.Black, "6h", "6i", TestName = "BeAbleToMoveBackAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "6b", "6a", TestName = "BeAbleToMoveBackAsWhitePlayer")]
-        //[InlineDataWithName(Player.Black, "5e", "4f", TestName = "BeAbleToBackRightAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "5e", "6d", TestName = "BeAbleToBackRightAsWhitePlayer")]
-        //[InlineDataWithName(Player.Black, "7i", "6h", TestName = "BeAbleToMoveForwardRightAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "7a", "8b", TestName = "BeAbleToMoveForwardRightAsWhitePlayer")]
-        //[InlineDataWithName(Player.Black, "5e", "6e", TestName = "BeAbleToMoveLeftAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "5e", "4e", TestName = "BeAbleToMoveLeftAsWhitePlayer")]
-        //[InlineDataWithName(Player.Black, "5e", "4e", TestName = "BeAbleToMoveRightAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "5e", "6e", TestName = "BeAbleToMoveRightAsWhitePlayer")]
+        //[InlineData(Player.Black, "7i", "7h", TestName = "BeAbleToMoveForwardAsBlackPlayer")]
+        //[InlineData(Player.White, "7a", "7b", TestName = "BeAbleToMoveForwardAsWhitePlayer")]
+        //[InlineData(Player.Black, "7i", "8h", TestName = "BeAbleToMoveForwardLeftAsBlackPlayer")]
+        //[InlineData(Player.White, "7a", "6b", TestName = "BeAbleToMoveForwardLeftAsWhitePlayer")]
+        //[InlineData(Player.Black, "5e", "6f", TestName = "BeAbleToMoveBackLeftAsBlackPlayer")]
+        //[InlineData(Player.White, "5e", "4d", TestName = "BeAbleToMoveBackLeftAsWhitePlayer")]
+        //[InlineData(Player.Black, "6h", "6i", TestName = "BeAbleToMoveBackAsBlackPlayer")]
+        //[InlineData(Player.White, "6b", "6a", TestName = "BeAbleToMoveBackAsWhitePlayer")]
+        //[InlineData(Player.Black, "5e", "4f", TestName = "BeAbleToBackRightAsBlackPlayer")]
+        //[InlineData(Player.White, "5e", "6d", TestName = "BeAbleToBackRightAsWhitePlayer")]
+        //[InlineData(Player.Black, "7i", "6h", TestName = "BeAbleToMoveForwardRightAsBlackPlayer")]
+        //[InlineData(Player.White, "7a", "8b", TestName = "BeAbleToMoveForwardRightAsWhitePlayer")]
+        //[InlineData(Player.Black, "5e", "6e", TestName = "BeAbleToMoveLeftAsBlackPlayer")]
+        //[InlineData(Player.White, "5e", "4e", TestName = "BeAbleToMoveLeftAsWhitePlayer")]
+        //[InlineData(Player.Black, "5e", "4e", TestName = "BeAbleToMoveRightAsBlackPlayer")]
+        //[InlineData(Player.White, "5e", "6e", TestName = "BeAbleToMoveRightAsWhitePlayer")]
         public void AllowValidMoves(Player player, string positionFrom, string positionTo)
         {
             var king = new King(player, positionFrom);
@@ -40,9 +40,9 @@ namespace Core.Shogi.Tests.Pieces
             Assert.True(isMoveLegal);
         }
 
-        //[InlineDataWithName(Player.Black, "5e", new string[] {"5e5d", "5e5f", "5e4e", "5e6e", "5e6d", "5e4d", "5e6f", "5e4f"},
+        //[InlineData(Player.Black, "5e", new string[] {"5e5d", "5e5f", "5e4e", "5e6e", "5e6d", "5e4d", "5e6f", "5e4f"},
         //     TestName = "AsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "5e", new string[] {"5e5d", "5e5f", "5e4e", "5e6e", "5e6d", "5e4d", "5e6f", "5e4f"},
+        //[InlineData(Player.White, "5e", new string[] {"5e5d", "5e5f", "5e4e", "5e6e", "5e6d", "5e4d", "5e6f", "5e4f"},
         //     TestName = "AsWhitePlayer")]
         public void KnowAllItsPossibleMoves(Player player, string position,
             IEnumerable<string> expectedPossibleMovements)

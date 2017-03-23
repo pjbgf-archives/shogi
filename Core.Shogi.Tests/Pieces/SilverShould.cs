@@ -1,9 +1,9 @@
+using System.ComponentModel;
 using Core.Shogi.Pieces;
 using Xunit;
 
 namespace Core.Shogi.Tests.Pieces
 {
-    
     public class SilverShould
     {
         [Fact]
@@ -14,8 +14,9 @@ namespace Core.Shogi.Tests.Pieces
             Assert.Equal('S', silver.ShortName);
         }
 
-        //[InlineDataWithName("NotMoveBackAsBlackPlayer", Player.Black, "7h", "7i")]
-        //[InlineDataWithName("NotMoveBackAsWhitePlayer", Player.White, "7b", "7a")]
+        [Theory]
+        [InlineData(Player.Black, "7h", "7i")]//"NotMoveBackAsBlackPlayer"
+        [InlineData(Player.White, "7b", "7a")]//"NotMoveBackAsWhitePlayer"
         public void NotAllowIllegalMoves(Player player, string positionFrom, string positionTo)
         {
             var silver = new Silver(player, positionFrom);
@@ -25,16 +26,17 @@ namespace Core.Shogi.Tests.Pieces
             Assert.False(isMoveLegal);
         }
 
-        //[InlineDataWithName("BeAbleToMoveForwardAsBlackPlayer", Player.Black, "7i", "7h")]
-        //[InlineDataWithName("BeAbleToMoveForwardAsWhitePlayer", Player.White, "7a", "7b")]
-        //[InlineDataWithName("BeAbleToMoveForwardLeftAsBlackPlayer", Player.Black, "7i", "8h")]
-        //[InlineDataWithName("BeAbleToMoveForwardLeftAsWhitePlayer", Player.White, "7a", "6b")]
-        //[InlineDataWithName("BeAbleToMoveForwardRightAsBlackPlayer",Player.Black, "7i", "6h")]
-        //[InlineDataWithName("BeAbleToMoveForwardRightAsWhitePlayer", Player.White, "7a", "8b")]
-        //[InlineDataWithName("BeAbleToMoveBackLeftAsBlackPlayer", Player.Black, "5e", "6f")]
-        //[InlineDataWithName("BeAbleToMoveBackLeftAsWhitePlayer", Player.White, "5e", "4d")]
-        //[InlineDataWithName("BeAbleToMoveBackRightAsBlackPlayer", Player.Black, "5e", "4f")]
-        //[InlineDataWithName("BeAbleToMoveBackRightAsWhitePlayer", Player.White, "5e", "6d")]
+        [Theory]
+        [InlineData(Player.Black, "7i", "7h")]//"BeAbleToMoveForwardAsBlackPlayer"
+        [InlineData(Player.White, "7a", "7b")]//"BeAbleToMoveForwardAsWhitePlayer"
+        [InlineData(Player.Black, "7i", "8h")]//"BeAbleToMoveForwardLeftAsBlackPlayer"
+        [InlineData(Player.White, "7a", "6b")]//"BeAbleToMoveForwardLeftAsWhitePlayer"
+        [InlineData(Player.Black, "7i", "6h")]//"BeAbleToMoveForwardRightAsBlackPlayer"
+        [InlineData(Player.White, "7a", "8b")]//"BeAbleToMoveForwardRightAsWhitePlayer"
+        [InlineData(Player.Black, "5e", "6f")]//"BeAbleToMoveBackLeftAsBlackPlayer"
+        [InlineData(Player.White, "5e", "4d")]//"BeAbleToMoveBackLeftAsWhitePlayer"
+        [InlineData(Player.Black, "5e", "4f")]//"BeAbleToMoveBackRightAsBlackPlayer"
+        [InlineData(Player.White, "5e", "6d")]//"BeAbleToMoveBackRightAsWhitePlayer"
         public void AllowValidMoves(Player player, string positionFrom, string positionTo)
         {
             var silver = new Silver(player, positionFrom);

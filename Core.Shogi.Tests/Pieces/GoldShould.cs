@@ -14,10 +14,10 @@ namespace Core.Shogi.Tests.Pieces
             Assert.Equal('G', gold.ShortName);
         }
 
-        //[InlineDataWithName(Player.Black, "5e", "6f", TestName = "NotMoveBackLeftAsBlackPlayer")]
-        //[InlineDataWithName(Player.Black, "5e", "4f", TestName = "NotMoveBackRightAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "5e", "4d", TestName = "NotMoveBackLeftAsWhitePlayer")]
-        //[InlineDataWithName(Player.White, "5e", "6d", TestName = "NotMoveBackRightAsWhitePlayer")]
+        //[InlineData(Player.Black, "5e", "6f", TestName = "NotMoveBackLeftAsBlackPlayer")]
+        //[InlineData(Player.Black, "5e", "4f", TestName = "NotMoveBackRightAsBlackPlayer")]
+        //[InlineData(Player.White, "5e", "4d", TestName = "NotMoveBackLeftAsWhitePlayer")]
+        //[InlineData(Player.White, "5e", "6d", TestName = "NotMoveBackRightAsWhitePlayer")]
         public void NotAllowIllegalMoves(Player player, string positionFrom, string positionTo)
         {
             var gold = new Gold(player, positionFrom);
@@ -27,14 +27,14 @@ namespace Core.Shogi.Tests.Pieces
             Assert.False(isMoveLegal);
         }
 
-        //[InlineDataWithName(Player.Black, "7i", "7h", TestName = "BeAbleToMoveForwardAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "7a", "7b", TestName = "BeAbleToMoveForwardAsWhitePlayer")]
-        //[InlineDataWithName(Player.Black, "7i", "8h", TestName = "BeAbleToMoveForwardLeftAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "7a", "6b", TestName = "BeAbleToMoveForwardLeftAsWhitePlayer")]
-        //[InlineDataWithName(Player.Black, "7i", "6h", TestName = "BeAbleToMoveForwardRightAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "7a", "8b", TestName = "BeAbleToMoveForwardRightAsWhitePlayer")]
-        //[InlineDataWithName(Player.Black, "6h", "6i", TestName = "BeAbleToMoveBackAsBlackPlayer")]
-        //[InlineDataWithName(Player.White, "6b", "6a", TestName = "BeAbleToMoveBackAsWhitePlayer")]
+        //[InlineData(Player.Black, "7i", "7h", TestName = "BeAbleToMoveForwardAsBlackPlayer")]
+        //[InlineData(Player.White, "7a", "7b", TestName = "BeAbleToMoveForwardAsWhitePlayer")]
+        //[InlineData(Player.Black, "7i", "8h", TestName = "BeAbleToMoveForwardLeftAsBlackPlayer")]
+        //[InlineData(Player.White, "7a", "6b", TestName = "BeAbleToMoveForwardLeftAsWhitePlayer")]
+        //[InlineData(Player.Black, "7i", "6h", TestName = "BeAbleToMoveForwardRightAsBlackPlayer")]
+        //[InlineData(Player.White, "7a", "8b", TestName = "BeAbleToMoveForwardRightAsWhitePlayer")]
+        //[InlineData(Player.Black, "6h", "6i", TestName = "BeAbleToMoveBackAsBlackPlayer")]
+        //[InlineData(Player.White, "6b", "6a", TestName = "BeAbleToMoveBackAsWhitePlayer")]
         public void AllowValidMoves(Player player, string positionFrom, string positionTo)
         {
             var gold = new Gold(player, positionFrom);
