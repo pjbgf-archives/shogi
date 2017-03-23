@@ -1,6 +1,5 @@
 using System.Runtime.InteropServices;
 using Xunit;
-// ReSharper disable InconsistentNaming
 
 namespace Core.Shogi.Tests.BitBoard
 {

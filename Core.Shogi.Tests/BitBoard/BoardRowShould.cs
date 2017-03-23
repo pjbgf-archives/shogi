@@ -5,8 +5,6 @@ using Xunit;
 
 namespace Core.Shogi.Tests.BitBoard
 {
-    
-    [SuppressMessage("ReSharper", "ObjectCreationAsStatement")]
     public class BoardRowShould
     {
         [Fact]
