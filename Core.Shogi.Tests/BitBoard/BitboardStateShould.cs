@@ -1,9 +1,7 @@
-﻿using System.Runtime.InteropServices;
-using Xunit;
+﻿using Xunit;
 
 namespace Core.Shogi.Tests.BitBoard
 {
-    
     public class BitboardStateShould
     {
         [Fact]
