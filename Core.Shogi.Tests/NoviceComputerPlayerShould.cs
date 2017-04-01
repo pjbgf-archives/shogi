@@ -5,8 +5,7 @@ namespace Core.Shogi.Tests
 {
     public class NoviceComputerPlayerShould
     {
-        //[Fact]
-        //[Ignore("A lot more development needed to achieve this level of evaluation.")]
+        [Fact(Skip="A lot more development needed to achieve this level of evaluation.")]
         public void MoveToCheckMateIfPossible()
         {
             var boardState = new BoardState();

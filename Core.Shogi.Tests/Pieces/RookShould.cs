@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace Core.Shogi.Tests.Pieces
 {
-    
     public class RookShould
     {
         [Fact]

@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Core.Shogi.Tests.Pieces
 {
-    
+
     public class KnightShould
     {
         [Fact]
@@ -14,19 +14,20 @@ namespace Core.Shogi.Tests.Pieces
             Assert.Equal('N', knight.ShortName);
         }
 
-        //[InlineData(Player.Black, "7i", "7h", TestName = "NotMoveForwardAsBlackPlayer")]
-        //[InlineData(Player.White, "7a", "7b", TestName = "NotMoveForwardAsWhitePlayer")]
-        //[InlineData(Player.Black, "7i", "8h", TestName = "NotMoveForwardLeftAsBlackPlayer")]
-        //[InlineData(Player.White, "7a", "6b", TestName = "NotMoveForwardLeftAsWhitePlayer")]
-        //[InlineData(Player.Black, "5e", "6f", TestName = "NotBackLeftAsBlackPlayer")]
-        //[InlineData(Player.White, "5e", "4d", TestName = "NotBackLeftAsWhitePlayer")]
-        //[InlineData(Player.Black, "6h", "6i", TestName = "NotMoveBackAsBlackPlayer")]
-        //[InlineData(Player.White, "6b", "6a", TestName = "NotMoveBackAsWhitePlayer")]
-        //[InlineData(Player.Black, "5e", "4f", TestName = "NotBackRightAsBlackPlayer")]
-        //[InlineData(Player.White, "5e", "6d", TestName = "NotBackRightAsWhitePlayer")]
-        //[InlineData(Player.Black, "7i", "6h", TestName = "NotMoveForwardRightAsBlackPlayer")]
-        //[InlineData(Player.White, "7a", "8b", TestName = "NotMoveForwardRightAsWhitePlayer")]
-        public void NotAllowIllegalMoves(Player player, string positionFrom, string positionTo)
+        [Theory]
+        [InlineData("NotMoveForwardAsBlackPlayer", Player.Black, "7i", "7h")]
+        [InlineData("NotMoveForwardAsWhitePlayer", Player.White, "7a", "7b")]
+        [InlineData("NotMoveForwardLeftAsBlackPlayer", Player.Black, "7i", "8h")]
+        [InlineData("NotMoveForwardLeftAsWhitePlayer", Player.White, "7a", "6b")]
+        [InlineData("NotBackLeftAsBlackPlayer", Player.Black, "5e", "6f")]
+        [InlineData("NotBackLeftAsWhitePlayer", Player.White, "5e", "4d")]
+        [InlineData("NotMoveBackAsBlackPlayer", Player.Black, "6h", "6i")]
+        [InlineData("NotMoveBackAsWhitePlayer", Player.White, "6b", "6a")]
+        [InlineData("NotBackRightAsBlackPlayer", Player.Black, "5e", "4f")]
+        [InlineData("NotBackRightAsWhitePlayer", Player.White, "5e", "6d")]
+        [InlineData("NotMoveForwardRightAsBlackPlayer", Player.Black, "7i", "6h")]
+        [InlineData("NotMoveForwardRightAsWhitePlayer", Player.White, "7a", "8b")]
+        public void NotAllowIllegalMoves(string testName, Player player, string positionFrom, string positionTo)
         {
             var knight = new Knight(player, positionFrom);
 
@@ -35,9 +36,10 @@ namespace Core.Shogi.Tests.Pieces
             Assert.False(isMoveLegal);
         }
 
-        //[InlineData(Player.Black, "8i", "9g", TestName = "BeAbleToMoveInLShapeToTheLeftAsBlackPlayer")]
-        //[InlineData(Player.Black, "8i", "7g", TestName = "BeAbleToMoveInLShapeToTheRightAsBlackPlayer")]
-        public void AllowValidMoves(Player player, string positionFrom, string positionTo)
+        [Theory]
+        [InlineData("BeAbleToMoveInLShapeToTheLeftAsBlackPlayer", Player.Black, "8i", "9g")]
+        [InlineData("BeAbleToMoveInLShapeToTheRightAsBlackPlayer", Player.Black, "8i", "7g")]
+        public void AllowValidMoves(string testName, Player player, string positionFrom, string positionTo)
         {
             var knight = new Knight(player, positionFrom);
 
