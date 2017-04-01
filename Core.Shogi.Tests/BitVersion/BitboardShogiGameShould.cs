@@ -37,7 +37,19 @@ namespace Core.Shogi.Tests.BitVersion
 
             shogi.Start();
 
-            board.ReceivedWithAnyArgs(1).Reset();
+            board.Received(1).Reset();
+        }
+
+        [Fact]
+        public void RenderBoardAtStartOfGame()
+        {
+            var board = Substitute.For<IBoard>();
+            var render = Substitute.For<IBoardRender>();
+            var shogi = new BitboardShogiGame(board, render);
+
+            shogi.Start();
+
+            render.Received(1).Refresh(Arg.Any<BoardState>());
         }
     }
 
@@ -61,15 +73,19 @@ namespace Core.Shogi.Tests.BitVersion
     public class BitboardShogiGame
     {
         private readonly IBoard _board;
+        private readonly IBoardRender _render;
+        private BoardState _boardState;
 
         public BitboardShogiGame(IBoard board, IBoardRender render)
         {
             _board = board;
+            _render = render;
         }
 
         public void Start()
         {
             _board.Reset();
+            _render.Refresh(_boardState);
         }
     }
 }
