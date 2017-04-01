@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Core.Shogi.Tests.BitVersion
 {
-    public class BoardStateRowShould
+    public class BitboardStateRowShould
     {
         [Fact]
         public void UseOnly2BytesOfMemory()
