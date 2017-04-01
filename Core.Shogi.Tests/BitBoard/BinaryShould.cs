@@ -5,7 +5,7 @@ namespace Core.Shogi.Tests.BitBoard
     public class BinaryShould
     {
         [Fact]
-        public void CanCastImplicitlyFromString0001()
+        public void CastImplicitlyFromString0001()
         {
             BitboardRow row = "0001";
             ushort expected = 1;
@@ -14,7 +14,7 @@ namespace Core.Shogi.Tests.BitBoard
         }
 
         [Fact]
-        public void CanCastImplicitlyFromString0010()
+        public void CastImplicitlyFromString0010()
         {
             BitboardRow row = "0010";
             ushort expected = 2;
