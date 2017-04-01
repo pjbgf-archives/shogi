@@ -6,36 +6,36 @@ namespace Core.Shogi.BitVersion
     public struct BitboardState
     {
         public BitboardState(
-            BitboardRow rowA,
-            BitboardRow rowB,
-            BitboardRow rowC,
-            BitboardRow rowD,
-            BitboardRow rowE,
-            BitboardRow rowF,
-            BitboardRow rowG,
-            BitboardRow rowH,
-            BitboardRow rowI)
+            BitboardStateRow stateRowA,
+            BitboardStateRow stateRowB,
+            BitboardStateRow stateRowC,
+            BitboardStateRow stateRowD,
+            BitboardStateRow stateRowE,
+            BitboardStateRow stateRowF,
+            BitboardStateRow stateRowG,
+            BitboardStateRow stateRowH,
+            BitboardStateRow stateRowI)
         {
-            RowA = rowA;
-            RowB = rowB;
-            RowC = rowC;
-            RowD = rowD;
-            RowE = rowE;
-            RowF = rowF;
-            RowG = rowG;
-            RowH = rowH;
-            RowI = rowI;
+            StateRowA = stateRowA;
+            StateRowB = stateRowB;
+            StateRowC = stateRowC;
+            StateRowD = stateRowD;
+            StateRowE = stateRowE;
+            StateRowF = stateRowF;
+            StateRowG = stateRowG;
+            StateRowH = stateRowH;
+            StateRowI = stateRowI;
         }
 
-        public BitboardRow RowA { get; }
-        public BitboardRow RowB { get; }
-        public BitboardRow RowC { get; }
-        public BitboardRow RowD { get; }
-        public BitboardRow RowE { get; }
-        public BitboardRow RowF { get; }
-        public BitboardRow RowG { get; }
-        public BitboardRow RowH { get; }
-        public BitboardRow RowI { get; }
+        public BitboardStateRow StateRowA { get; }
+        public BitboardStateRow StateRowB { get; }
+        public BitboardStateRow StateRowC { get; }
+        public BitboardStateRow StateRowD { get; }
+        public BitboardStateRow StateRowE { get; }
+        public BitboardStateRow StateRowF { get; }
+        public BitboardStateRow StateRowG { get; }
+        public BitboardStateRow StateRowH { get; }
+        public BitboardStateRow StateRowI { get; }
 
         public static BitboardState Empty => new BitboardState(
             "000000000",
@@ -52,45 +52,45 @@ namespace Core.Shogi.BitVersion
         public static BitboardState operator &(BitboardState bitboard1, BitboardState bitboard2)
         {
             return new BitboardState(
-                bitboard1.RowA & bitboard2.RowA,
-                bitboard1.RowB & bitboard2.RowB,
-                bitboard1.RowC & bitboard2.RowC,
-                bitboard1.RowD & bitboard2.RowD,
-                bitboard1.RowE & bitboard2.RowE,
-                bitboard1.RowF & bitboard2.RowF,
-                bitboard1.RowG & bitboard2.RowG,
-                bitboard1.RowH & bitboard2.RowH,
-                bitboard1.RowI & bitboard2.RowI
+                bitboard1.StateRowA & bitboard2.StateRowA,
+                bitboard1.StateRowB & bitboard2.StateRowB,
+                bitboard1.StateRowC & bitboard2.StateRowC,
+                bitboard1.StateRowD & bitboard2.StateRowD,
+                bitboard1.StateRowE & bitboard2.StateRowE,
+                bitboard1.StateRowF & bitboard2.StateRowF,
+                bitboard1.StateRowG & bitboard2.StateRowG,
+                bitboard1.StateRowH & bitboard2.StateRowH,
+                bitboard1.StateRowI & bitboard2.StateRowI
             );
         }
 
         public static BitboardState operator ^(BitboardState bitboard1, BitboardState bitboard2)
         {
             return new BitboardState(
-                bitboard1.RowA ^ bitboard2.RowA,
-                bitboard1.RowB ^ bitboard2.RowB,
-                bitboard1.RowC ^ bitboard2.RowC,
-                bitboard1.RowD ^ bitboard2.RowD,
-                bitboard1.RowE ^ bitboard2.RowE,
-                bitboard1.RowF ^ bitboard2.RowF,
-                bitboard1.RowG ^ bitboard2.RowG,
-                bitboard1.RowH ^ bitboard2.RowH,
-                bitboard1.RowI ^ bitboard2.RowI
+                bitboard1.StateRowA ^ bitboard2.StateRowA,
+                bitboard1.StateRowB ^ bitboard2.StateRowB,
+                bitboard1.StateRowC ^ bitboard2.StateRowC,
+                bitboard1.StateRowD ^ bitboard2.StateRowD,
+                bitboard1.StateRowE ^ bitboard2.StateRowE,
+                bitboard1.StateRowF ^ bitboard2.StateRowF,
+                bitboard1.StateRowG ^ bitboard2.StateRowG,
+                bitboard1.StateRowH ^ bitboard2.StateRowH,
+                bitboard1.StateRowI ^ bitboard2.StateRowI
             );
         }
 
         public static BitboardState operator ~(BitboardState bitboard)
         {
             return new BitboardState(
-                ~bitboard.RowA,
-                ~bitboard.RowB,
-                ~bitboard.RowC,
-                ~bitboard.RowD,
-                ~bitboard.RowE,
-                ~bitboard.RowF,
-                ~bitboard.RowG,
-                ~bitboard.RowH,
-                ~bitboard.RowI
+                ~bitboard.StateRowA,
+                ~bitboard.StateRowB,
+                ~bitboard.StateRowC,
+                ~bitboard.StateRowD,
+                ~bitboard.StateRowE,
+                ~bitboard.StateRowF,
+                ~bitboard.StateRowG,
+                ~bitboard.StateRowH,
+                ~bitboard.StateRowI
             );
         }
 
@@ -104,23 +104,23 @@ namespace Core.Shogi.BitVersion
                 var subIndex = index % 9;
 
                 if (index < 9)
-                    return RowA[subIndex];
+                    return StateRowA[subIndex];
                 if (index < 18)
-                    return RowB[subIndex];
+                    return StateRowB[subIndex];
                 if (index < 27)
-                    return RowC[subIndex];
+                    return StateRowC[subIndex];
                 if (index < 36)
-                    return RowD[subIndex];
+                    return StateRowD[subIndex];
                 if (index < 45)
-                    return RowE[subIndex];
+                    return StateRowE[subIndex];
                 if (index < 54)
-                    return RowF[subIndex];
+                    return StateRowF[subIndex];
                 if (index < 63)
-                    return RowG[subIndex];
+                    return StateRowG[subIndex];
                 if (index < 72)
-                    return RowH[subIndex];
+                    return StateRowH[subIndex];
 
-                return RowI[subIndex];
+                return StateRowI[subIndex];
             }
         }
 

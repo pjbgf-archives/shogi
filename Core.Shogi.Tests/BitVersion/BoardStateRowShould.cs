@@ -4,13 +4,13 @@ using Xunit;
 
 namespace Core.Shogi.Tests.BitVersion
 {
-    public class BoardRowShould
+    public class BoardStateRowShould
     {
         [Fact]
         public void UseOnly2BytesOfMemory()
         {
             var expectedSizeInBytes = 2;
-            var actualSizeInBytes = Marshal.SizeOf<BitboardRow>();
+            var actualSizeInBytes = Marshal.SizeOf<BitboardStateRow>();
 
             Assert.Equal(expectedSizeInBytes, actualSizeInBytes);
         }
@@ -18,19 +18,19 @@ namespace Core.Shogi.Tests.BitVersion
         [Fact]
         public void NotAllowValuesGreaterThan511()
         {
-            BitboardRow row = new BitboardRow(0x200);
-            ushort expected = BitboardRow.MaxValue;
+            BitboardStateRow stateRow = new BitboardStateRow(0x200);
+            ushort expected = BitboardStateRow.MaxValue;
 
-            Assert.Equal(expected, row.Value);
+            Assert.Equal(expected, stateRow.Value);
         }
 
         [Fact]
         public void CastImplicitlyFromString10000()
         {
-            BitboardRow row = "000010000";
+            BitboardStateRow stateRow = "000010000";
             ushort expected = 1 << 4;
 
-            Assert.Equal(expected, row.Value);
+            Assert.Equal(expected, stateRow.Value);
         }
     }
 }

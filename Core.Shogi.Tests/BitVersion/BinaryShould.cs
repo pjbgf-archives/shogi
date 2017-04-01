@@ -8,19 +8,19 @@ namespace Core.Shogi.Tests.BitVersion
         [Fact]
         public void CastImplicitlyFromString0001()
         {
-            BitboardRow row = "0001";
+            BitboardStateRow stateRow = "0001";
             ushort expected = 1;
 
-            Assert.Equal(expected, row.Value);
+            Assert.Equal(expected, stateRow.Value);
         }
 
         [Fact]
         public void CastImplicitlyFromString0010()
         {
-            BitboardRow row = "0010";
+            BitboardStateRow stateRow = "0010";
             ushort expected = 2;
 
-            Assert.Equal(expected, row.Value);
+            Assert.Equal(expected, stateRow.Value);
         }
     }
 }
