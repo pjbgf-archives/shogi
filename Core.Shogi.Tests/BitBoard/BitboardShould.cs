@@ -7,7 +7,7 @@ namespace Core.Shogi.Tests.BitBoard
     public class BitboardShould
     {
         [Fact]
-        public void UseOnly18BytesOfMemory()
+        public void UseOnly18BytesOfMemoryToHoldBoardState()
         {
             var expectedSizeInBytes = 18;
             var actualSizeInBytes = Marshal.SizeOf<Bitboard>();
@@ -16,7 +16,7 @@ namespace Core.Shogi.Tests.BitBoard
         }
 
         [Fact]
-        public void SupportBinaryXORBetweenTwoStates()
+        public void SupportBinaryXORBetweenTwoBitboardStates()
         {
             var state1 = new Bitboard(
                                             "100000000",
@@ -55,7 +55,7 @@ namespace Core.Shogi.Tests.BitBoard
         }
 
         [Fact]
-        public void SupportBinaryANDBetweentwoStates()
+        public void SupportBinaryANDBetweentwoBitboardStates()
         {
             var state1 = new Bitboard(
                                             "100000000",
