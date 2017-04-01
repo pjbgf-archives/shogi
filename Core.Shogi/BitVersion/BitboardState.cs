@@ -1,34 +1,137 @@
-﻿namespace Core.Shogi.BitVersion
+﻿using System;
+using System.Collections.Generic;
+
+namespace Core.Shogi.BitVersion
 {
     public struct BitboardState
     {
-        public BitboardState(Bitboard blackPieces, Bitboard whitePieces, Bitboard blackGolds)
+        public BitboardState(
+            BitboardRow rowA,
+            BitboardRow rowB,
+            BitboardRow rowC,
+            BitboardRow rowD,
+            BitboardRow rowE,
+            BitboardRow rowF,
+            BitboardRow rowG,
+            BitboardRow rowH,
+            BitboardRow rowI)
         {
-            BlackPieces = blackPieces;
-            WhitePieces = whitePieces;
-            BlackGolds = blackGolds;
-            Occupied = blackPieces ^ whitePieces;
+            RowA = rowA;
+            RowB = rowB;
+            RowC = rowC;
+            RowD = rowD;
+            RowE = rowE;
+            RowF = rowF;
+            RowG = rowG;
+            RowH = rowH;
+            RowI = rowI;
         }
 
-        public Bitboard BlackPieces { get; private set; }
-        public Bitboard WhitePieces { get; private set; }
-        public Bitboard Occupied { get; private set; }
-        public Bitboard BlackGolds { get; private set; }
+        public BitboardRow RowA { get; }
+        public BitboardRow RowB { get; }
+        public BitboardRow RowC { get; }
+        public BitboardRow RowD { get; }
+        public BitboardRow RowE { get; }
+        public BitboardRow RowF { get; }
+        public BitboardRow RowG { get; }
+        public BitboardRow RowH { get; }
+        public BitboardRow RowI { get; }
 
-        public Bitboard GetNextState()
-        { 
-            var pieceIndexes = BlackPieces.GetOccuppiedIndexes();
-            var nextState = Bitboard.Empty;
+        public static BitboardState Empty => new BitboardState(
+            "000000000",
+            "000000000",
+            "000000000",
+            "000000000",
+            "000000000",
+            "000000000",
+            "000000000",
+            "000000000",
+            "000000000"
+        );
 
-            foreach (var pieceIndex in pieceIndexes)
+        public static BitboardState operator &(BitboardState bitboard1, BitboardState bitboard2)
+        {
+            return new BitboardState(
+                bitboard1.RowA & bitboard2.RowA,
+                bitboard1.RowB & bitboard2.RowB,
+                bitboard1.RowC & bitboard2.RowC,
+                bitboard1.RowD & bitboard2.RowD,
+                bitboard1.RowE & bitboard2.RowE,
+                bitboard1.RowF & bitboard2.RowF,
+                bitboard1.RowG & bitboard2.RowG,
+                bitboard1.RowH & bitboard2.RowH,
+                bitboard1.RowI & bitboard2.RowI
+            );
+        }
+
+        public static BitboardState operator ^(BitboardState bitboard1, BitboardState bitboard2)
+        {
+            return new BitboardState(
+                bitboard1.RowA ^ bitboard2.RowA,
+                bitboard1.RowB ^ bitboard2.RowB,
+                bitboard1.RowC ^ bitboard2.RowC,
+                bitboard1.RowD ^ bitboard2.RowD,
+                bitboard1.RowE ^ bitboard2.RowE,
+                bitboard1.RowF ^ bitboard2.RowF,
+                bitboard1.RowG ^ bitboard2.RowG,
+                bitboard1.RowH ^ bitboard2.RowH,
+                bitboard1.RowI ^ bitboard2.RowI
+            );
+        }
+
+        public static BitboardState operator ~(BitboardState bitboard)
+        {
+            return new BitboardState(
+                ~bitboard.RowA,
+                ~bitboard.RowB,
+                ~bitboard.RowC,
+                ~bitboard.RowD,
+                ~bitboard.RowE,
+                ~bitboard.RowF,
+                ~bitboard.RowG,
+                ~bitboard.RowH,
+                ~bitboard.RowI
+            );
+        }
+
+        public bool this[int index]
+        {
+            get
             {
-                var potentialAttack = Precalculated.Attacks[0, pieceIndex];
-                var attackOverlayWithBlacks = potentialAttack & ~BlackPieces;
+                if (index < 0 || index > 80)
+                    throw new IndexOutOfRangeException();
 
-                nextState = (WhitePieces & attackOverlayWithBlacks);
+                var subIndex = index % 9;
+
+                if (index < 9)
+                    return RowA[subIndex];
+                if (index < 18)
+                    return RowB[subIndex];
+                if (index < 27)
+                    return RowC[subIndex];
+                if (index < 36)
+                    return RowD[subIndex];
+                if (index < 45)
+                    return RowE[subIndex];
+                if (index < 54)
+                    return RowF[subIndex];
+                if (index < 63)
+                    return RowG[subIndex];
+                if (index < 72)
+                    return RowH[subIndex];
+
+                return RowI[subIndex];
             }
+        }
 
-            return nextState;
+        public IEnumerable<byte> GetOccuppiedIndexes()
+        {
+            byte index = 0;
+            do
+            {
+                if (this[index])
+                    yield return index++;
+            } while (++index < 81);
         }
     }
 }

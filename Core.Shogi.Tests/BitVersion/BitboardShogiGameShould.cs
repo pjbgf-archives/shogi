@@ -1,4 +1,5 @@
-﻿using NSubstitute;
+﻿using Core.Shogi.BitVersion;
+using NSubstitute;
 using Xunit;
 
 namespace Core.Shogi.Tests.BitVersion
@@ -10,7 +11,7 @@ namespace Core.Shogi.Tests.BitVersion
         {
             var blackPlayer = new Player(PlayerType.Black);
             var whitePlayer = new Player(PlayerType.White);
-            var board = new NewBitboard(blackPlayer, whitePlayer);
+            var board = new Bitboard(blackPlayer, whitePlayer);
             var render = Substitute.For<IBoardRender>();
             var shogi = new BitboardShogiGame(board, render);
 
@@ -50,42 +51,6 @@ namespace Core.Shogi.Tests.BitVersion
             shogi.Start();
 
             render.Received(1).Refresh(Arg.Any<BoardState>());
-        }
-    }
-
-    public interface IBoard
-    {
-        void Reset();
-    }
-
-    public class NewBitboard : IBoard
-    {
-        public NewBitboard(Player blackPlayer, Player whitePlayer)
-        {
-        }
-
-        public void Reset()
-        {
-
-        }
-    }
-
-    public class BitboardShogiGame
-    {
-        private readonly IBoard _board;
-        private readonly IBoardRender _render;
-        private BoardState _boardState;
-
-        public BitboardShogiGame(IBoard board, IBoardRender render)
-        {
-            _board = board;
-            _render = render;
-        }
-
-        public void Start()
-        {
-            _board.Reset();
-            _render.Refresh(_boardState);
         }
     }
 }
