@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Shogi
+namespace Core.Shogi.BitVersion
 {
     public struct BitboardRow
     {

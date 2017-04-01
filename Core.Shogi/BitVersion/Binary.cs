@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace Core.Shogi
+namespace Core.Shogi.BitVersion
 {
     public class Binary
     {

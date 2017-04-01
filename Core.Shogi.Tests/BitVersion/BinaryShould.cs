@@ -1,6 +1,7 @@
-﻿using Xunit;
+﻿using Core.Shogi.BitVersion;
+using Xunit;
 
-namespace Core.Shogi.Tests.BitBoard
+namespace Core.Shogi.Tests.BitVersion
 {
     public class BinaryShould
     {

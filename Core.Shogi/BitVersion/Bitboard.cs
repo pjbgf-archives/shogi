@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
-namespace Core.Shogi
+namespace Core.Shogi.BitVersion
 {
     public struct Bitboard
     {
