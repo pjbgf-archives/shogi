@@ -1,8 +1,14 @@
 ﻿namespace Core.Shogi
 {
-    public enum Player
+    public class Player
     {
-        Black,
-        White
+        public Player(PlayerType playerType)
+        {
+        }
+
+        public BoardResult Move(string moveDescription)
+        {
+            return BoardResult.InvalidOperation;
+        }
     }
 }

@@ -5,8 +5,8 @@ namespace Core.Shogi
     public class Board
     {
         private readonly BoardState _boardState = new BoardState();
-        private readonly Player _initialPlayer = Player.Black;
-        public Player CurrentPlayer { get; private set; }
+        private readonly PlayerType _initialPlayer = PlayerType.Black;
+        public PlayerType CurrentPlayer { get; private set; }
 
         public Board()
         {
@@ -22,7 +22,7 @@ namespace Core.Shogi
             }
         }
 
-        public Board(BoardState boardState, Player currentPlayer) : this()
+        public Board(BoardState boardState, PlayerType currentPlayer) : this()
         {
             _boardState = boardState;
             CurrentPlayer = currentPlayer;
@@ -35,7 +35,7 @@ namespace Core.Shogi
         }
 
         //TODO: Refactor to keep right level of abstraction
-        public virtual BoardResult Move(Player player, string fromPosition, string toPosition)
+        public virtual BoardResult Move(PlayerType player, string fromPosition, string toPosition)
         {
             if (!Regex.IsMatch(toPosition, "^[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant))
                 return BoardResult.InvalidOperation;
@@ -57,7 +57,7 @@ namespace Core.Shogi
                     _boardState.Remove(toPosition);
 
                 _boardState.Add(piece);
-                CurrentPlayer = (player == Player.Black) ? Player.White : Player.Black;
+                CurrentPlayer = (player == PlayerType.Black) ? PlayerType.White : PlayerType.Black;
 
                 return BoardResult.ValidOperation;
             }

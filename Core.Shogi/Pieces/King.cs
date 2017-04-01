@@ -2,7 +2,7 @@
 {
     public class King : Piece
     {
-        public King(Player ownerPlayer, string position) : base(ownerPlayer, position)
+        public King(PlayerType ownerPlayer, string position) : base(ownerPlayer, position)
         {
             ShortName = 'K';
             CanMoveBack = true;

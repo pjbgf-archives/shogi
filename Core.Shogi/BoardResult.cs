@@ -5,6 +5,7 @@
         InvalidOperation,
         ValidOperation,
         NotPlayersTurn,
-        NotPlayersPiece
+        NotPlayersPiece,
+        CheckMate
     }
 }
