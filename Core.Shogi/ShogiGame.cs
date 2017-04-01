@@ -1,4 +1,6 @@
-﻿namespace Core.Shogi
+﻿using System.Text.RegularExpressions;
+
+namespace Core.Shogi
 {
     public class ShogiGame
     {
@@ -33,10 +35,9 @@
                 if (result != BoardResult.ValidOperation)
                 {
                     _boardRender.InvalidOperation(result);
-                    //AskPlayerForNextMove(currentPlayer, nextPlayer);
+                    AskPlayerForNextMove(currentPlayer, nextPlayer);
                 }
-
-                if (result == BoardResult.ValidOperation)
+                else
                     AskPlayerForNextMove(nextPlayer, currentPlayer);
             }
         }
@@ -48,6 +49,9 @@
 
         private BoardResult Move(Player player, string moveDescription)
         {
+            if (!Regex.IsMatch(moveDescription, "^[1-9]{1}[a-i]{1}[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant))
+                return BoardResult.InvalidOperation;
+
             return _board.Move(player, moveDescription.Substring(0, 2), moveDescription.Substring(2, 2));
         }
     }

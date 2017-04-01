@@ -4,8 +4,9 @@ namespace Core.Shogi
 {
     public class Board
     {
-        readonly BoardState _boardState = new BoardState();
-        public Player CurrentPlayer = Player.Black;
+        private readonly BoardState _boardState = new BoardState();
+        private readonly Player _initialPlayer = Player.Black;
+        public Player CurrentPlayer { get; private set; }
 
         public Board()
         {
@@ -13,7 +14,13 @@ namespace Core.Shogi
         }
 
         //TODO: Tell Don't Ask!
-        public BoardState State => _boardState;
+        public BoardState State
+        {
+            get
+            {
+                return _boardState;
+            }
+        }
 
         public Board(BoardState boardState, Player currentPlayer) : this()
         {
@@ -23,7 +30,7 @@ namespace Core.Shogi
 
         public void ResetBoard()
         {
-            CurrentPlayer = Player.Black;
+            CurrentPlayer = _initialPlayer;
             _boardState.ResetToStartPosition();
         }
 
