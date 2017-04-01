@@ -14,6 +14,8 @@ namespace Core.Shogi.Tests.BitVersion
             var render = Substitute.For<IBoardRender>();
             var shogi = new BitboardShogiGame(board, render);
 
+            shogi.Start();
+
             blackPlayer.Move("7g7f");
             whitePlayer.Move("6a7b");
             blackPlayer.Move("8h3c");
@@ -25,20 +27,49 @@ namespace Core.Shogi.Tests.BitVersion
 
             Assert.Equal(BoardResult.CheckMate, result);
         }
+
+        [Fact]
+        public void EnsureBoardIsResetAtStartOfGame()
+        {
+            var board = Substitute.For<IBoard>();
+            var render = Substitute.For<IBoardRender>();
+            var shogi = new BitboardShogiGame(board, render);
+
+            shogi.Start();
+
+            board.ReceivedWithAnyArgs(1).Reset();
+        }
     }
 
-    public class NewBitboard : Board
+    public interface IBoard
+    {
+        void Reset();
+    }
+
+    public class NewBitboard : IBoard
     {
         public NewBitboard(Player blackPlayer, Player whitePlayer)
         {
+        }
+
+        public void Reset()
+        {
+
         }
     }
 
     public class BitboardShogiGame
     {
-        public BitboardShogiGame(Board board, IBoardRender render)
-        {
+        private readonly IBoard _board;
 
+        public BitboardShogiGame(IBoard board, IBoardRender render)
+        {
+            _board = board;
+        }
+
+        public void Start()
+        {
+            _board.Reset();
         }
     }
 }
