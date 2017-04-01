@@ -17,38 +17,11 @@ namespace Core.Shogi.Tests.BitBoard
         }
 
         [Fact]
-        public void SupportBinaryXORBetweenTwoBitboardStates()
+        public void SupportXorBinaryBetweenTwoBitboardStates()
         {
-            var state1 = new Bitboard(
-                                            "100000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000010000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000");
-            var state2 = new Bitboard(
-                                            "000000001",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000010000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000");
-            var expectedState = new Bitboard(
-                                            "100000001",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000");
+            var state1 = new Bitboard(        0x100, 0x0, 0x0, 0x0,    0x0, 0x0, 0x0, 0x0, 0x0);
+            var state2 = new Bitboard(        0x001, 0x0, 0x0, 0x0, 1 << 4, 0x0, 0x0, 0x0, 0x0);
+            var expectedState = new Bitboard( 0x101, 0x0, 0x0, 0x0, 1 << 4, 0x0, 0x0, 0x0, 0x0);
 
             var state3 = state1 ^ state2;
 
@@ -56,38 +29,11 @@ namespace Core.Shogi.Tests.BitBoard
         }
 
         [Fact]
-        public void SupportBinaryANDBetweentwoBitboardStates()
+        public void SupportAndBinaryBetweentwoBitboardStates()
         {
-            var state1 = new Bitboard(
-                                            "100000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000010000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000");
-            var state2 = new Bitboard(
-                                            "000000001",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000010000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000");
-            var expectedState = new Bitboard(
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000010000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000",
-                                            "000000000");
+            var state1 = new Bitboard(    1 << 8, 0x0, 0x0, 0x0, 1 << 4, 0x0, 0x0, 0x0, 0x0);
+            var state2 = new Bitboard(         1, 0x0, 0x0, 0x0, 1 << 4, 0x0, 0x0, 0x0, 0x0);
+            var expectedState = new Bitboard(0x0, 0x0, 0x0, 0x0, 1 << 4, 0x0, 0x0, 0x0, 0x0);
 
             var state3 = state1 & state2;
 
