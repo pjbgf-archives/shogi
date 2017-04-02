@@ -8,7 +8,7 @@ namespace Core.Shogi.BitVersion
         public static readonly ushort MaxValue = 0x1FF;
         public static readonly BitboardStateRow Empty = new BitboardStateRow(MinValue);
 
-        public ushort Value { get; }
+        public ushort Value { get; private set; }
 
         public BitboardStateRow(ushort value)
         {
@@ -53,6 +53,11 @@ namespace Core.Shogi.BitVersion
                 var value = (ushort)Math.Pow(2, 8 - index);
                 return (value == Value);
             }
+        }
+
+        public override string ToString()
+        {
+            return "0x" + Value.ToString("X");
         }
     }
 }

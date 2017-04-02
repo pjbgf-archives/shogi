@@ -37,17 +37,7 @@ namespace Core.Shogi.BitVersion
         public BitboardStateRow StateRowH { get; }
         public BitboardStateRow StateRowI { get; }
 
-        public static BitboardState Empty => new BitboardState(
-            "000000000",
-            "000000000",
-            "000000000",
-            "000000000",
-            "000000000",
-            "000000000",
-            "000000000",
-            "000000000",
-            "000000000"
-        );
+        public static BitboardState Empty => new BitboardState(0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0);
 
         public static BitboardState operator &(BitboardState bitboard1, BitboardState bitboard2)
         {
@@ -132,6 +122,12 @@ namespace Core.Shogi.BitVersion
                 if (this[index])
                     yield return index++;
             } while (++index < 81);
+        }
+
+        public override string ToString()
+        {
+            return string.Concat(StateRowA, StateRowB, StateRowC,
+                StateRowD, StateRowE, StateRowF, StateRowG, StateRowH, StateRowI);
         }
     }
 }

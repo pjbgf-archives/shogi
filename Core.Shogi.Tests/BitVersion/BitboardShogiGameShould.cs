@@ -9,22 +9,20 @@ namespace Core.Shogi.Tests.BitVersion
         [Fact]
         public void IdentifyACheckMateState()
         {
-            var blackPlayer = new Player(PlayerType.Black);
-            var whitePlayer = new Player(PlayerType.White);
-            var board = new Bitboard(blackPlayer, whitePlayer);
+            var board = new Bitboard(new FullBitboardState(BitboardPredefinedStates.InitialWhitePositions, BitboardPredefinedStates.InitialBlackPositions));
             var render = Substitute.For<IBoardRender>();
             var shogi = new BitboardShogiGame(board, render);
 
             shogi.Start();
 
-            blackPlayer.Move("7g7f");
-            whitePlayer.Move("6a7b");
-            blackPlayer.Move("8h3c");
-            whitePlayer.Move("4a4b");
-            blackPlayer.Move("3c4b");
-            whitePlayer.Move("5a6a");
+            board.Move(PlayerType.Black, "7g7f");
+            board.Move(PlayerType.White, "6a7b");
+            board.Move(PlayerType.Black, "8h3c");
+            board.Move(PlayerType.White, "4a4b");
+            board.Move(PlayerType.Black, "3c4b");
+            board.Move(PlayerType.White, "5a6a");
 
-            var result = blackPlayer.Move("G*5b");
+            var result = board.Move(PlayerType.Black, "G*5b");
 
             Assert.Equal(BoardResult.CheckMate, result);
         }
