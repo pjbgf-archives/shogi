@@ -5,17 +5,15 @@ namespace Core.Shogi.BitVersion
     public struct BitboardStateRow
     {
         public static readonly ushort MinValue = 0;
-        public static readonly ushort MaxValue = 0x1FF;
+        public static readonly ushort MaxValue = HexValues.FullRow;
         public static readonly BitboardStateRow Empty = new BitboardStateRow(MinValue);
 
         public ushort Value { get; private set; }
 
         public BitboardStateRow(ushort value)
         {
-            if (value > MaxValue)
-                value = MaxValue;
-
-            Value = value;
+            var maxValue = value & MaxValue;
+            Value = (ushort)maxValue;
         }
 
         public static BitboardStateRow operator &(BitboardStateRow row1, BitboardStateRow row2)
@@ -57,7 +55,7 @@ namespace Core.Shogi.BitVersion
 
         public override string ToString()
         {
-            return "0x" + Value.ToString("X");
+            return $"0x{Value:X}";
         }
     }
 }

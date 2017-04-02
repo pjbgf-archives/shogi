@@ -37,7 +37,7 @@ namespace Core.Shogi.BitVersion
         public BitboardStateRow StateRowH { get; }
         public BitboardStateRow StateRowI { get; }
 
-        public static BitboardState Empty => new BitboardState(0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0);
+        public static BitboardState Empty => new BitboardState(HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow);
 
         public static BitboardState operator &(BitboardState bitboard1, BitboardState bitboard2)
         {

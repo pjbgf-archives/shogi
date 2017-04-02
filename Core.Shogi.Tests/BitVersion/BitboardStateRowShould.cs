@@ -19,7 +19,7 @@ namespace Core.Shogi.Tests.BitVersion
         public void NotAllowValuesGreaterThan511()
         {
             BitboardStateRow stateRow = new BitboardStateRow(0x200);
-            ushort expected = BitboardStateRow.MaxValue;
+            ushort expected = 0;
 
             Assert.Equal(expected, stateRow.Value);
         }
@@ -31,6 +31,17 @@ namespace Core.Shogi.Tests.BitVersion
             ushort expected = 1 << 4;
 
             Assert.Equal(expected, stateRow.Value);
+        }
+
+        [Fact]
+        public void BeAbleToFlipBits()
+        {
+            BitboardStateRow expectedStateRow = "011111111";
+            BitboardStateRow stateRow = "100000000";
+
+            var actualStateRow = ~stateRow;
+
+            Assert.Equal(expectedStateRow, actualStateRow);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Core.Shogi.Tests.BitVersion
             var complexState = new FullBitboardState(
                 BitboardPredefinedStates.InitialWhitePositions, BitboardPredefinedStates.InitialBlackPositions);
 
-            var expectedState = new BitboardState(0x0, 0x0, 0x0, 0x0, 0x0, 0x100, 0xFF, 0x82, 0x1FF);
+            var expectedState = new BitboardState(HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, 0x100, 0xFF, HexValues.TwoPieceRow, HexValues.FullRow);
             var board = new Bitboard(complexState);
 
             board.Move(PlayerType.Black, "9g9f");

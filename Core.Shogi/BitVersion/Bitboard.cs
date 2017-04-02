@@ -27,9 +27,12 @@ namespace Core.Shogi.BitVersion
             var from = moveDescription.Substring(0, 2);
             var to = moveDescription.Substring(2, 2);
 
-            FullBitboardState.BlackPieces ^= BitboardPredefinedStates.PositionToState[to];
-            FullBitboardState.BlackPieces &= ~BitboardPredefinedStates.PositionToState[from];
+            var currentPiecePosition = BitboardPredefinedStates.PositionToState[from];
+            var flippedBitsOfCurrentPosition = ~currentPiecePosition;
 
+            FullBitboardState.BlackPieces &= flippedBitsOfCurrentPosition;
+            FullBitboardState.BlackPieces ^= BitboardPredefinedStates.PositionToState[to];
+            
             return BoardResult.ValidOperation;
         }
     }
