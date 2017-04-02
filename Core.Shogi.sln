@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Shogi.Tests", "Core.Sh
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0D0B111A-F1FF-4F29-AFD3-B5042A79E79F}"
 	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
 		Bitboard.md = Bitboard.md
+		build.sh = build.sh
 		README.md = README.md
 	EndProjectSection
 EndProject
