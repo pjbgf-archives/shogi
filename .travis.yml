@@ -1,7 +1,7 @@
 language: csharp
 dist: trusty
 sudo: required
-mono: none
+mono: latest
 dotnet: 1.0.1
 solution: Core.Shogi.csproj
 
@@ -10,4 +10,4 @@ install:
 
 script:
   - dotnet build 
-  - packages\xunit.runner.console\2.2.0\tools\xunit.console.exe Core.Shogi.Tests/bin/Debug/netcoreapp1.1/Core.Shogi.Tests.dll
+  - mono ./packages/xunit.runner.console/2.2.0/tools/xunit.console.exe Core.Shogi.Tests/bin/Debug/netcoreapp1.1/Core.Shogi.Tests.dll
