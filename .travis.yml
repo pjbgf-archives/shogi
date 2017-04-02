@@ -6,8 +6,7 @@ dotnet: 1.0.1
 solution: Core.Shogi.csproj
 
 install:
-  - nuget install xunit.runners.console -Version 2.2.0 -OutputDirectory testrunner
-  - dotnet restore
+  - dotnet restore -v d
 
 script:
   - dotnet build 
