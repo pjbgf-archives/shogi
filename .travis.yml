@@ -6,8 +6,8 @@ dotnet: 1.0.1
 solution: Core.Shogi.csproj
 
 install:
-  - dotnet restore -v d
+  - dotnet restore -v d --packages ./packages
 
 script:
   - dotnet build 
-  - xunit.runner.console\2.2.0\tools\xunit.console.exe Core.Shogi.Tests/bin/Debug/netcoreapp1.1/Core.Shogi.Tests.dll
+  - packages\xunit.runner.console\2.2.0\tools\xunit.console.exe Core.Shogi.Tests/bin/Debug/netcoreapp1.1/Core.Shogi.Tests.dll
