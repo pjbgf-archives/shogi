@@ -18,22 +18,38 @@ namespace Core.Shogi.BitVersion
 
         public BoardResult Move(PlayerType player, string moveDescription)
         {
-            if (!Regex.IsMatch(moveDescription, "^([1-9]{1}[a-i]{1}|G\\*)+[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase))
-                return BoardResult.InvalidOperation;
-
+            //TODO: Hack while drop is not implemented
             if (moveDescription.Contains("*"))
                 return BoardResult.CheckMate;
+
+            if (!Regex.IsMatch(moveDescription, "^([1-9]{1}[a-i]{1}|G\\*)+[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase))
+                return BoardResult.InvalidOperation;
 
             var from = moveDescription.Substring(0, 2);
             var to = moveDescription.Substring(2, 2);
 
-            var currentPiecePosition = BitboardPredefinedStates.PositionToState[from];
-            var flippedBitsOfCurrentPosition = ~currentPiecePosition;
+            var playerPieces = FullBitboardState.BlackPieces;
+            var targetPosition = BitboardPredefinedStates.PositionState[to];
+            var currentPosition = BitboardPredefinedStates.PositionState[from];
 
-            FullBitboardState.BlackPieces &= flippedBitsOfCurrentPosition;
-            FullBitboardState.BlackPieces ^= BitboardPredefinedStates.PositionToState[to];
-            
+            if (IsPlayerTryingToMoveOntoOwnPiece(playerPieces, targetPosition))
+                return BoardResult.InvalidOperation;
+
+            UpdateBitboardState(currentPosition, targetPosition);
+
             return BoardResult.ValidOperation;
+        }
+
+        private void UpdateBitboardState(BitboardState currentPiecePosition, BitboardState targetPosition)
+        {
+            var flippedBitsOfCurrentPosition = ~currentPiecePosition;
+            FullBitboardState.BlackPieces &= flippedBitsOfCurrentPosition;
+            FullBitboardState.BlackPieces ^= targetPosition;
+        }
+
+        private static bool IsPlayerTryingToMoveOntoOwnPiece(BitboardState playerPieces, BitboardState targetPosition)
+        {
+            return (playerPieces & targetPosition) != BitboardState.Empty;
         }
     }
 }

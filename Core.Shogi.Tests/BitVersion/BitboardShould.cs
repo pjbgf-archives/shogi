@@ -31,5 +31,20 @@ namespace Core.Shogi.Tests.BitVersion
             Assert.Equal(BitboardPredefinedStates.InitialWhitePositions, board.FullBitboardState.WhitePieces);
             Assert.Equal(expectedState, board.FullBitboardState.BlackPieces);
         }
+
+        [Fact]
+        public void NotAllowPlayerToCaptureOwnPiece()
+        {
+            var complexState = new FullBitboardState(
+                BitboardPredefinedStates.InitialWhitePositions, BitboardPredefinedStates.InitialBlackPositions);
+
+            var board = new Bitboard(complexState);
+
+            var result = board.Move(PlayerType.Black, "9i9g");
+
+            Assert.Equal(BoardResult.InvalidOperation, result);
+            Assert.Equal(BitboardPredefinedStates.InitialWhitePositions, board.FullBitboardState.WhitePieces);
+            Assert.Equal(BitboardPredefinedStates.InitialBlackPositions, board.FullBitboardState.BlackPieces);
+        }
     }
 }

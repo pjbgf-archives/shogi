@@ -13,7 +13,7 @@ namespace Core.Shogi.BitVersion
         public static BitboardState InitialPositions => InitialBlackPositions & InitialWhitePositions;
 
 
-        public static Dictionary<string, BitboardState> PositionToState = new Dictionary<string, BitboardState>
+        public static Dictionary<string, BitboardState> PositionState = new Dictionary<string, BitboardState>
         {
             {"9a", new BitboardState(1 << 8, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow)},
             {"8a", new BitboardState(1 << 7, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow)},

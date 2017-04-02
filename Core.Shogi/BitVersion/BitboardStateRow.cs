@@ -28,6 +28,16 @@ namespace Core.Shogi.BitVersion
             return new BitboardStateRow(newValue);
         }
 
+        public static bool operator ==(BitboardStateRow row1, BitboardStateRow row2)
+        {
+            return (row1.Value == row2.Value);
+        }
+
+        public static bool operator !=(BitboardStateRow row1, BitboardStateRow row2)
+        {
+            return (row1.Value != row2.Value);
+        }
+
         public static BitboardStateRow operator ~(BitboardStateRow stateRow)
         {
             return new BitboardStateRow((ushort)~stateRow.Value);
