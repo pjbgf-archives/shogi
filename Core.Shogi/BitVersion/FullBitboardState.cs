@@ -6,6 +6,10 @@ namespace Core.Shogi.BitVersion
         public BitboardState WhitePieces { get; }
         public BitboardState BlackPieces { get; set; }
 
+        public static FullBitboardState DefaultState => new FullBitboardState(
+            BitboardPredefinedStates.InitialWhitePositions,
+            BitboardPredefinedStates.InitialBlackPositions);
+
         public FullBitboardState(BitboardState whitePieces, BitboardState blackPieces)
         {
             WhitePieces = whitePieces;

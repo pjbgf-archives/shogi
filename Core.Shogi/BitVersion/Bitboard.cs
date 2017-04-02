@@ -6,15 +6,15 @@ namespace Core.Shogi.BitVersion
     {
         public Bitboard(FullBitboardState fullBitboardState)
         {
-            FullBitboardState = fullBitboardState;
+            BitboardState = fullBitboardState;
         }
 
         public void Reset()
         {
-
+            BitboardState = FullBitboardState.DefaultState;
         }
 
-        public FullBitboardState FullBitboardState { get; }
+        public FullBitboardState BitboardState { get; private set; }
 
         public BoardResult Move(PlayerType player, string moveDescription)
         {
@@ -28,7 +28,7 @@ namespace Core.Shogi.BitVersion
             var from = moveDescription.Substring(0, 2);
             var to = moveDescription.Substring(2, 2);
 
-            var playerPieces = FullBitboardState.BlackPieces;
+            var playerPieces = BitboardState.BlackPieces;
             var targetPosition = BitboardPredefinedStates.PositionState[to];
             var currentPosition = BitboardPredefinedStates.PositionState[from];
 
@@ -43,13 +43,13 @@ namespace Core.Shogi.BitVersion
         private void UpdateBitboardState(BitboardState currentPiecePosition, BitboardState targetPosition)
         {
             var flippedBitsOfCurrentPosition = ~currentPiecePosition;
-            FullBitboardState.BlackPieces &= flippedBitsOfCurrentPosition;
-            FullBitboardState.BlackPieces ^= targetPosition;
+            BitboardState.BlackPieces &= flippedBitsOfCurrentPosition;
+            BitboardState.BlackPieces ^= targetPosition;
         }
 
         private static bool IsPlayerTryingToMoveOntoOwnPiece(BitboardState playerPieces, BitboardState targetPosition)
         {
-            return (playerPieces & targetPosition) != BitboardState.Empty;
+            return (playerPieces & targetPosition) != BitVersion.BitboardState.Empty;
         }
     }
 }

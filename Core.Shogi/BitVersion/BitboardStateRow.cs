@@ -7,13 +7,14 @@ namespace Core.Shogi.BitVersion
         public static readonly ushort MinValue = 0;
         public static readonly ushort MaxValue = HexValues.FullRow;
         public static readonly BitboardStateRow Empty = new BitboardStateRow(MinValue);
+        private readonly ushort _value;
 
-        public ushort Value { get; private set; }
+        public ushort Value => _value;
 
         public BitboardStateRow(ushort value)
         {
             var maxValue = value & MaxValue;
-            Value = (ushort)maxValue;
+            _value = (ushort)maxValue;
         }
 
         public static BitboardStateRow operator &(BitboardStateRow row1, BitboardStateRow row2)
@@ -67,5 +68,8 @@ namespace Core.Shogi.BitVersion
         {
             return $"0x{Value:X}";
         }
+
+        //TODO: Override Equals
+        //TODO: Override GetHash
     }
 }

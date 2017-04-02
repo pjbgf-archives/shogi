@@ -28,8 +28,8 @@ namespace Core.Shogi.Tests.BitVersion
 
             board.Move(PlayerType.Black, "9g9f");
 
-            Assert.Equal(BitboardPredefinedStates.InitialWhitePositions, board.FullBitboardState.WhitePieces);
-            Assert.Equal(expectedState, board.FullBitboardState.BlackPieces);
+            Assert.Equal(BitboardPredefinedStates.InitialWhitePositions, board.BitboardState.WhitePieces);
+            Assert.Equal(expectedState, board.BitboardState.BlackPieces);
         }
 
         [Fact]
@@ -43,8 +43,21 @@ namespace Core.Shogi.Tests.BitVersion
             var result = board.Move(PlayerType.Black, "9i9g");
 
             Assert.Equal(BoardResult.InvalidOperation, result);
-            Assert.Equal(BitboardPredefinedStates.InitialWhitePositions, board.FullBitboardState.WhitePieces);
-            Assert.Equal(BitboardPredefinedStates.InitialBlackPositions, board.FullBitboardState.BlackPieces);
+            Assert.Equal(BitboardPredefinedStates.InitialWhitePositions, board.BitboardState.WhitePieces);
+            Assert.Equal(BitboardPredefinedStates.InitialBlackPositions, board.BitboardState.BlackPieces);
+        }
+
+        [Fact]
+        public void BeAbleToBeResetted()
+        {
+            var complexState = new FullBitboardState(new BitboardState(), new BitboardState());
+
+            var board = new Bitboard(complexState);
+
+            board.Reset();
+
+            Assert.Equal(BitboardPredefinedStates.InitialWhitePositions, board.BitboardState.WhitePieces);
+            Assert.Equal(BitboardPredefinedStates.InitialBlackPositions, board.BitboardState.BlackPieces);
         }
     }
 }

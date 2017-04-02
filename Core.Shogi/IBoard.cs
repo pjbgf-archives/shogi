@@ -5,6 +5,6 @@ namespace Core.Shogi
     public interface IBoard
     {
         void Reset();
-        FullBitboardState FullBitboardState { get; }
+        FullBitboardState BitboardState { get; }
     }
 }

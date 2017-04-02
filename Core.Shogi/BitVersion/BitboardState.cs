@@ -156,5 +156,8 @@ namespace Core.Shogi.BitVersion
         {
             return $"{StateRowA} {StateRowB} {StateRowC} {StateRowD} {StateRowE} {StateRowF} {StateRowG} {StateRowH} {StateRowI}";
         }
+
+        //TODO: Override Equals
+        //TODO: Override GetHash
     }
 }

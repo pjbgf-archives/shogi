@@ -1,3 +1,5 @@
+using Core.Shogi.BitVersion;
+
 namespace Core.Shogi.Adapters.Console
 {
     public class BoardConsoleRender : IBoardRender
@@ -15,6 +17,11 @@ namespace Core.Shogi.Adapters.Console
             PrintRow("h", "9h", "8h", "7h", "6h", "5h", "4h", "3h", "2h", "1h", boardState);
             PrintRow("i", "9i", "8i", "7i", "6i", "5i", "4i", "3i", "2i", "1i", boardState);
             PrintFooter();
+        }
+
+        public void Refresh(BitboardState boardState)
+        {
+            throw new System.NotImplementedException();
         }
 
         public void InvalidOperation(BoardResult boardResult)

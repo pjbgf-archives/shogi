@@ -4,12 +4,13 @@ namespace Core.Shogi.BitVersion
     {
         private readonly IBoard _board;
         private readonly IBoardRender _render;
-        private BoardState _boardState;
+        private BitboardState _boardState;
 
         public BitboardShogiGame(IBoard board, IBoardRender render)
         {
             _board = board;
             _render = render;
+            _boardState = new BitboardState();
         }
 
         public void Start()
