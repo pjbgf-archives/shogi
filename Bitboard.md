@@ -76,7 +76,7 @@ A| 000000000
 B| 000000000  
 C| 000000000  
 D| 000100000  --> 1 White Player's piece   
-E| 000111000  --> 3 Black Player's pieces
+E| 000111000  --> 3 Black Player's pieces  
 F| 000000000  
 G| 000000000  
 H| 000000000  
@@ -115,7 +115,7 @@ A| 000000000
 B| 000000000  
 C| 000000000  
 D| 000100000  --> 1 White Player's piece   
-E| 000101000  --> 2 Black Player's pieces
+E| 000101000  --> 2 Black Player's pieces  
 F| 000000000  
 G| 000000000  
 H| 000000000  
@@ -140,7 +140,7 @@ A| 000000000
 B| 000000000  
 C| 000000000  
 D| 000100000  --> 1 Black Player's piece   
-E| 000101000  --> 2 Black Player's pieces
+E| 000101000  --> 2 Black Player's pieces  
 F| 000000000  
 G| 000000000  
 H| 000000000  
