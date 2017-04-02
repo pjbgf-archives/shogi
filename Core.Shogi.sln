@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Shogi", "Core.Shogi\Core.Shogi.csproj", "{25AAF2EA-2EC6-4816-AD31-90DC4BC987C0}"
 EndProject
@@ -10,6 +10,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Shogi.Console", "Core.Shogi.Console\Core.Shogi.Console.csproj", "{8D8A82FE-6FA5-4F07-B46A-064398B2CA8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Shogi.Tests", "Core.Shogi.Tests\Core.Shogi.Tests.csproj", "{88ED3DA5-4237-4220-8148-079DFB4C9736}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0D0B111A-F1FF-4F29-AFD3-B5042A79E79F}"
+	ProjectSection(SolutionItems) = preProject
+		Bitboard.md = Bitboard.md
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
