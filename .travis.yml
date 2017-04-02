@@ -1,7 +1,13 @@
 language: csharp
+dist: trusty
 sudo: required
 mono: none
 dotnet: 1.0.1
 solution: Core.Shogi.csproj
 
-
+script:
+  - pwd
+  - cd pjbgf/Core.Shogi
+  - dotnet restore
+  - dotnet build
+  - dotnet test Core.Shogi.Tests\Core.Shogi.Tests.csproj 
