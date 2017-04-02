@@ -5,7 +5,10 @@ mono: none
 dotnet: 1.0.1
 solution: Core.Shogi.csproj
 
-script:
+install:
+  - nuget install xunit.runners.console -Version 2.2.0 -OutputDirectory testrunner
   - dotnet restore
-  - dotnet build
-  - dotnet test Core.Shogi.Tests\Core.Shogi.Tests.csproj -v d 
+
+script:
+  - dotnet build 
+  - xunit.runner.console\2.2.0\tools\xunit.console.exe Core.Shogi.Tests/bin/Debug/netcoreapp1.1/Core.Shogi.Tests.dll
