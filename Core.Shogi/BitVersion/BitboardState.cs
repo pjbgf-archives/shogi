@@ -126,8 +126,7 @@ namespace Core.Shogi.BitVersion
 
         public override string ToString()
         {
-            return string.Concat(StateRowA, StateRowB, StateRowC,
-                StateRowD, StateRowE, StateRowF, StateRowG, StateRowH, StateRowI);
+            return $"{StateRowA} {StateRowB} {StateRowC} {StateRowD} {StateRowE} {StateRowF} {StateRowG} {StateRowH} {StateRowI}";
         }
     }
 }
