@@ -48,7 +48,7 @@ namespace Core.Shogi.Tests.BitVersion
 
             shogi.Start();
 
-            render.Received(1).Refresh(Arg.Any<BoardState>());
+            render.Received(1).Refresh(Arg.Any<BitboardState>());
         }
     }
 }
