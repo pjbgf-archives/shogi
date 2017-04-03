@@ -10,14 +10,13 @@ before_install:
   - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
   - REPO_COMMIT_MESSAGE=$(git show -s --pretty=format:"%s")
   - chmod +x build.sh
+  - chmod +x build-test.sh
 
 install:
   - dotnet restore -v d --packages ./packages
 
 script:
-  - whereis dotnet
   - ./build.sh
- # - dotnet build 
-  - dotnet test Core.Shogi.Tests/Core.Shogi.Tests.csproj
-  - mono ./packages/opencover/4.6.519/tools/OpenCover.Console.exe -target:"/usr/bin/dotnet" -targetargs:"test Core.Shogi.Tests/Core.Shogi.Tests.csproj" -output:coverage.xml -register:user -filter:"+[*]* -[xunit*]* -[*.Program]*" -oldStyle -log:Off
+  - mono ./packages/opencover/4.6.519/tools/OpenCover.Console.exe -target:"/usr/bin/dotnet" -targetargs:"test Core.Shogi.Tests/Core.Shogi.Tests.csproj" -output:coverage.xml -register:user -filter:"+[*]*" -excludebyfile:*Program.cs -oldStyle -log:Off
+  - ls
   - mono ./packages/coveralls.net/0.8.0-unstable0013/tools/csmacnz.Coveralls.exe --opencover -i ./coverage.xml --repoToken $COVERALLS_TOKEN --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID --serviceName "travis-ci" --useRelativePaths
