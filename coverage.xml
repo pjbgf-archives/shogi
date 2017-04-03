@@ -266,6 +266,18 @@
       <ModuleName>System.Text.Encoding.Extensions</ModuleName>
       <Classes />
     </Module>
+    <Module skippedDueTo="Filter" hash="E5-A9-BA-F0-25-C3-6C-B0-B4-C1-08-0F-FE-66-5A-AF-B7-54-07-92">
+      <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Net.Http.dll</ModulePath>
+      <ModuleTime>2017-02-10T01:37:16Z</ModuleTime>
+      <ModuleName>System.Net.Http</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="B2-CD-1D-D6-15-7F-5B-87-A0-24-38-34-E3-72-E8-92-1D-49-C2-B4">
+      <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Net.Primitives.dll</ModulePath>
+      <ModuleTime>2017-02-10T01:37:16Z</ModuleTime>
+      <ModuleName>System.Net.Primitives</ModuleName>
+      <Classes />
+    </Module>
     <Module skippedDueTo="MissingPdb" hash="E9-EF-C3-1C-50-69-A0-1A-0E-43-96-D9-BE-AB-86-10-E0-77-65-29">
       <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\MSBuild.dll</ModulePath>
       <ModuleTime>2017-02-27T16:32:28Z</ModuleTime>
@@ -284,22 +296,10 @@
       <ModuleName>mscorlib</ModuleName>
       <Classes />
     </Module>
-    <Module skippedDueTo="Filter" hash="E5-A9-BA-F0-25-C3-6C-B0-B4-C1-08-0F-FE-66-5A-AF-B7-54-07-92">
-      <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Net.Http.dll</ModulePath>
-      <ModuleTime>2017-02-10T01:37:16Z</ModuleTime>
-      <ModuleName>System.Net.Http</ModuleName>
-      <Classes />
-    </Module>
     <Module skippedDueTo="Filter" hash="F9-14-54-02-CA-B5-AF-BC-4F-38-1D-43-F9-AF-3F-0B-B1-16-49-5F">
       <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Threading.dll</ModulePath>
       <ModuleTime>2017-02-10T01:37:26Z</ModuleTime>
       <ModuleName>System.Threading</ModuleName>
-      <Classes />
-    </Module>
-    <Module skippedDueTo="Filter" hash="B2-CD-1D-D6-15-7F-5B-87-A0-24-38-34-E3-72-E8-92-1D-49-C2-B4">
-      <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Net.Primitives.dll</ModulePath>
-      <ModuleTime>2017-02-10T01:37:16Z</ModuleTime>
-      <ModuleName>System.Net.Primitives</ModuleName>
       <Classes />
     </Module>
     <Module skippedDueTo="Filter" hash="87-C2-BC-EE-DD-8B-0E-07-0C-4A-CC-8E-5B-C2-11-BC-49-8A-3F-18">
@@ -1316,6 +1316,12 @@
       <ModuleName>System.Reflection.Metadata</ModuleName>
       <Classes />
     </Module>
+    <Module skippedDueTo="MissingPdb" hash="12-EB-15-10-29-46-6B-14-32-09-3D-71-C7-20-1D-61-3E-F3-AE-2F">
+      <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\NuGet.Packaging.Core.Types.dll</ModulePath>
+      <ModuleTime>2017-02-27T16:32:28Z</ModuleTime>
+      <ModuleName>NuGet.Packaging.Core.Types</ModuleName>
+      <Classes />
+    </Module>
     <Module skippedDueTo="Filter" hash="EE-D5-63-DA-70-03-D0-A1-09-AE-AF-E8-D1-30-0B-2C-DE-31-B0-7C">
       <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.IO.MemoryMappedFiles.dll</ModulePath>
       <ModuleTime>2017-02-10T01:37:12Z</ModuleTime>
@@ -1326,12 +1332,6 @@
       <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.IO.UnmanagedMemoryStream.dll</ModulePath>
       <ModuleTime>2017-02-10T01:37:20Z</ModuleTime>
       <ModuleName>System.IO.UnmanagedMemoryStream</ModuleName>
-      <Classes />
-    </Module>
-    <Module skippedDueTo="MissingPdb" hash="12-EB-15-10-29-46-6B-14-32-09-3D-71-C7-20-1D-61-3E-F3-AE-2F">
-      <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\NuGet.Packaging.Core.Types.dll</ModulePath>
-      <ModuleTime>2017-02-27T16:32:28Z</ModuleTime>
-      <ModuleName>NuGet.Packaging.Core.Types</ModuleName>
       <Classes />
     </Module>
     <Module skippedDueTo="MissingPdb" hash="C4-BB-66-04-32-62-48-90-DB-C7-68-2C-D0-FD-53-DB-15-FC-E0-93">
@@ -1476,12 +1476,6 @@
       <ModulePath>RefEmit_InMemoryManifestModule</ModulePath>
       <ModuleTime>0001-01-01T00:00:00</ModuleTime>
       <ModuleName>Anonymously Hosted DynamicMethods Assembly</ModuleName>
-      <Classes />
-    </Module>
-    <Module skippedDueTo="MissingPdb" hash="AF-04-BF-A6-6B-5E-7E-88-DA-33-72-B2-05-AA-D2-13-1B-4F-DD-8E">
-      <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\Microsoft.Extensions.DependencyModel.dll</ModulePath>
-      <ModuleTime>2017-02-27T16:32:26Z</ModuleTime>
-      <ModuleName>Microsoft.Extensions.DependencyModel</ModuleName>
       <Classes />
     </Module>
     <Module skippedDueTo="Filter" hash="05-94-FD-84-2B-65-84-E5-33-CE-2C-EF-72-15-B9-3B-3C-06-BE-23">
@@ -2237,7 +2231,7 @@
     <Module hash="B2-62-32-33-4B-97-6A-1C-82-59-4F-14-76-10-25-A9-17-0A-29-19">
       <Summary numSequencePoints="336" visitedSequencePoints="322" numBranchPoints="63" visitedBranchPoints="61" sequenceCoverage="95.83" branchCoverage="96.83" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="18" numClasses="19" visitedMethods="61" numMethods="63" />
       <ModulePath>C:\git\Core.Shogi\Core.Shogi.Tests\bin\Debug\netcoreapp1.1\Core.Shogi.Tests.dll</ModulePath>
-      <ModuleTime>2017-04-03T20:13:26.3920325Z</ModuleTime>
+      <ModuleTime>2017-04-03T21:04:58.0458621Z</ModuleTime>
       <ModuleName>Core.Shogi.Tests</ModuleName>
       <Files>
         <File uid="1" fullPath="C:\git\Core.Shogi\Core.Shogi.Tests\obj\Debug\netcoreapp1.1\Core.Shogi.Tests.Program.cs" />
@@ -3916,6 +3910,12 @@
       <ModuleName>xunit.runner.reporters.netstandard15</ModuleName>
       <Classes />
     </Module>
+    <Module skippedDueTo="MissingPdb" hash="">
+      <ModulePath>RefEmit_InMemoryManifestModule</ModulePath>
+      <ModuleTime>0001-01-01T00:00:00</ModuleTime>
+      <ModuleName>DynamicProxyGenAssembly2</ModuleName>
+      <Classes />
+    </Module>
     <Module skippedDueTo="Filter" hash="CB-13-CE-59-98-16-C4-3D-E2-E6-76-4D-78-CC-4B-4A-7E-3D-DA-C1">
       <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\System.ComponentModel.TypeConverter.dll</ModulePath>
       <ModuleTime>2017-02-27T16:32:28Z</ModuleTime>
@@ -3944,12 +3944,6 @@
       <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\System.ComponentModel.Primitives.dll</ModulePath>
       <ModuleTime>2017-02-27T16:32:28Z</ModuleTime>
       <ModuleName>System.ComponentModel.Primitives</ModuleName>
-      <Classes />
-    </Module>
-    <Module skippedDueTo="MissingPdb" hash="">
-      <ModulePath>RefEmit_InMemoryManifestModule</ModulePath>
-      <ModuleTime>0001-01-01T00:00:00</ModuleTime>
-      <ModuleName>DynamicProxyGenAssembly2</ModuleName>
       <Classes />
     </Module>
   </Modules>
