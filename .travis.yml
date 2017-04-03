@@ -7,10 +7,10 @@ solution: Core.Shogi.csproj
 
 install:
   - dotnet restore -v d --packages ./packages
-  - cp packages\xunit.extensibility.execution\2.2.0\lib\net452\xunit.execution.desktop.dll Core.Shogi.Tests/bin/Debug/netcoreapp1.1/
-  - cp packages\xunit.extensibility.core\2.2.0\lib\netstandard1.1 Core.Shogi.Tests/bin/Debug/netcoreapp1.1/
-  - cp packages\System.Runtime\4.3.0\lib\net462\System.Runtime.dll Core.Shogi.Tests/bin/Debug/netcoreapp1.1/
-  - cp packages\xunit.abstractions\2.0.1\lib\netstandard1.0\xunit.abstractions.dll Core.Shogi.Tests/bin/Debug/netcoreapp1.1/
+#  - cp packages\xunit.extensibility.execution\2.2.0\lib\net452\xunit.execution.desktop.dll Core.Shogi.Tests/bin/Debug/netcoreapp1.1/
+#  - cp packages\xunit.extensibility.core\2.2.0\lib\netstandard1.1 Core.Shogi.Tests/bin/Debug/netcoreapp1.1/
+#  - cp packages\System.Runtime\4.3.0\lib\net462\System.Runtime.dll Core.Shogi.Tests/bin/Debug/netcoreapp1.1/
+#  - cp packages\xunit.abstractions\2.0.1\lib\netstandard1.0\xunit.abstractions.dll Core.Shogi.Tests/bin/Debug/netcoreapp1.1/
 
 script:
   - dotnet build 
