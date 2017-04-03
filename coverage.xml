@@ -302,6 +302,12 @@
       <ModuleName>System.Threading</ModuleName>
       <Classes />
     </Module>
+    <Module skippedDueTo="Filter" hash="9C-45-8A-84-D0-B9-4F-2D-60-70-54-AE-EA-CD-3E-8C-66-40-F9-66">
+      <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Diagnostics.DiagnosticSource.dll</ModulePath>
+      <ModuleTime>2017-02-10T01:37:22Z</ModuleTime>
+      <ModuleName>System.Diagnostics.DiagnosticSource</ModuleName>
+      <Classes />
+    </Module>
     <Module skippedDueTo="Filter" hash="87-C2-BC-EE-DD-8B-0E-07-0C-4A-CC-8E-5B-C2-11-BC-49-8A-3F-18">
       <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Reflection.dll</ModulePath>
       <ModuleTime>2017-02-10T01:37:28Z</ModuleTime>
@@ -312,12 +318,6 @@
       <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Reflection.TypeExtensions.dll</ModulePath>
       <ModuleTime>2017-02-10T01:37:34Z</ModuleTime>
       <ModuleName>System.Reflection.TypeExtensions</ModuleName>
-      <Classes />
-    </Module>
-    <Module skippedDueTo="Filter" hash="9C-45-8A-84-D0-B9-4F-2D-60-70-54-AE-EA-CD-3E-8C-66-40-F9-66">
-      <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Diagnostics.DiagnosticSource.dll</ModulePath>
-      <ModuleTime>2017-02-10T01:37:22Z</ModuleTime>
-      <ModuleName>System.Diagnostics.DiagnosticSource</ModuleName>
       <Classes />
     </Module>
     <Module skippedDueTo="Filter" hash="BB-93-24-9D-C8-02-FF-25-B5-F7-3B-AF-F3-13-A2-EE-33-27-7A-11">
@@ -1088,16 +1088,16 @@
       <ModuleName>System.Diagnostics.Tracing</ModuleName>
       <Classes />
     </Module>
-    <Module skippedDueTo="MissingPdb" hash="E9-03-0F-5E-0C-0E-BC-40-BA-9F-94-1E-C8-1D-B9-E6-B0-C0-A4-D6">
-      <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\Microsoft.Build.Utilities.Core.dll</ModulePath>
-      <ModuleTime>2017-02-27T16:32:26Z</ModuleTime>
-      <ModuleName>Microsoft.Build.Utilities.Core</ModuleName>
-      <Classes />
-    </Module>
     <Module skippedDueTo="Filter" hash="36-8E-C6-B7-20-CB-EC-EC-39-0B-DA-12-20-31-C7-6A-CB-C5-5B-56">
       <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Collections.Concurrent.dll</ModulePath>
       <ModuleTime>2017-02-10T01:37:02Z</ModuleTime>
       <ModuleName>System.Collections.Concurrent</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="E9-03-0F-5E-0C-0E-BC-40-BA-9F-94-1E-C8-1D-B9-E6-B0-C0-A4-D6">
+      <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\Microsoft.Build.Utilities.Core.dll</ModulePath>
+      <ModuleTime>2017-02-27T16:32:26Z</ModuleTime>
+      <ModuleName>Microsoft.Build.Utilities.Core</ModuleName>
       <Classes />
     </Module>
     <Module skippedDueTo="Filter" hash="95-67-9C-94-81-13-6D-22-92-3A-65-A6-19-55-82-2C-B0-F5-9D-62">
