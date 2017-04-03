@@ -14,8 +14,8 @@ before_install:
 
 install:
   - dotnet restore -v d --packages ./packages
-  - rm packages\opencover\4.6.519\tools\log4net.config
-  - tail packages\opencover\4.6.519\tools\log4net.config
+  - rm packages/opencover/4.6.519/tools/log4net.config
+  - tail packages/opencover/4.6.519/tools/log4net.config
 
 script:
   - ./build.sh
