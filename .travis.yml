@@ -14,8 +14,8 @@ install:
 
 script:
   - dotnet build 
-  - mono ./packages\opencover\4.6.519\tools\OpenCover.Console.exe -target:"dotnet.exe" -targetargs:"test Core.Shogi.Tests/Core.Shogi.Tests.csproj" -output:coverage.xml -register:user -filter:"+[*]* -[xunit*]*" -oldStyle
-# - mono ./packages\reportgenerator\2.5.6\tools\ReportGenerator.exe "-reports:./coverage.xml" "-targetdir:./report"
+  - mono ./packages/opencover/4.6.519/tools/OpenCover.Console.exe -target:"dotnet.exe" -targetargs:"test Core.Shogi.Tests/Core.Shogi.Tests.csproj" -output:coverage.xml -register:user -filter:"+[*]* -[xunit*]*" -oldStyle
+# - mono ./packages/reportgenerator/2.5.6/tools/ReportGenerator.exe "-reports:./coverage.xml" "-targetdir:./report"
   - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
   - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
   - REPO_COMMIT_MESSAGE=$(git show -s --pretty=format:"%s")
@@ -25,4 +25,4 @@ script:
   - echo $REPO_COMMIT_AUTHOR_EMAIL
   - echo $REPO_COMMIT_MESSAGE
   - echo $TRAVIS_JOB_ID
-  - mono ./packages\coveralls.net\0.8.0-unstable0013\tools\csmacnz.Coveralls.exe --opencover -i ./coverage.xml --repoToken $COVERALLS_REPO_TOKEN --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID --serviceName "travis-ci" --useRelativePaths
+  - mono ./packages/coveralls.net/0.8.0-unstable0013/tools/csmacnz.Coveralls.exe --opencover -i ./coverage.xml --repoToken $COVERALLS_REPO_TOKEN --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID --serviceName "travis-ci" --useRelativePaths
