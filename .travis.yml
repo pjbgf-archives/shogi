@@ -20,7 +20,6 @@ script:
   - echo $REPO_COMMIT_AUTHOR_EMAIL
   - echo $REPO_COMMIT_MESSAGE
   - echo $TRAVIS_JOB_ID
-  - echo $PATH
-  - mono ./packages/coveralls.net/0.8.0-unstable0013/tools/csmacnz.Coveralls.exe --opencover -i ./coverage.xml --repoToken QjiktDXPp7OGGp0n1iJhJh047n865KqCt --jobId 218219305 --serviceName "travis-ci" --useRelativePaths
+  - mono ./packages/coveralls.net/0.8.0-unstable0013/tools/csmacnz.Coveralls.exe --opencover -i ./coverage.xml --repoToken QjiktDXPp7OGGp0n1iJhJh047n865KqCt --jobId $TRAVIS_JOB_ID --serviceName "travis-ci" --useRelativePaths
 #  - mono ./packages/coveralls.net/0.8.0-unstable0013/tools/csmacnz.Coveralls.exe --opencover -i $APP_ROOT/coverage.xml --repoToken $COVERALLS_REPO_TOKEN --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID --serviceName "travis-ci" --useRelativePaths
   - dotnet test $APP_ROOT/Core.Shogi.Tests/Core.Shogi.Tests.csproj
