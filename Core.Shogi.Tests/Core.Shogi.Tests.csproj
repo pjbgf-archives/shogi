@@ -1,7 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputType>Library</OutputType>
-  </PropertyGroup>
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <ApplicationIcon />
@@ -27,9 +24,6 @@
     <ProjectReference Include="..\Core.Shogi.Adapters\Core.Shogi.Adapters.csproj" />
     <ProjectReference Include="..\Core.Shogi\Core.Shogi.csproj" />
     <ProjectReference Include="..\Core.Shogi.Console\Core.Shogi.Console.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />
