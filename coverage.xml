@@ -182,16 +182,16 @@
       <ModuleName>NuGet.Frameworks</ModuleName>
       <Classes />
     </Module>
-    <Module skippedDueTo="MissingPdb" hash="42-DD-3F-C1-AA-81-C0-0E-96-B4-4C-38-92-F3-F9-2B-8F-D9-14-AB">
-      <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\Microsoft.ApplicationInsights.dll</ModulePath>
-      <ModuleTime>2017-02-27T16:32:26Z</ModuleTime>
-      <ModuleName>Microsoft.ApplicationInsights</ModuleName>
-      <Classes />
-    </Module>
     <Module skippedDueTo="Filter" hash="A8-28-75-19-63-D9-35-C7-F4-FE-95-71-A6-72-7C-00-2B-E3-5D-13">
       <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Text.RegularExpressions.dll</ModulePath>
       <ModuleTime>2017-02-10T01:37:22Z</ModuleTime>
       <ModuleName>System.Text.RegularExpressions</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="42-DD-3F-C1-AA-81-C0-0E-96-B4-4C-38-92-F3-F9-2B-8F-D9-14-AB">
+      <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\Microsoft.ApplicationInsights.dll</ModulePath>
+      <ModuleTime>2017-02-27T16:32:26Z</ModuleTime>
+      <ModuleName>Microsoft.ApplicationInsights</ModuleName>
       <Classes />
     </Module>
     <Module skippedDueTo="Filter" hash="AB-8D-3C-56-B3-67-8F-A0-6C-7A-A1-FA-C2-8D-50-1C-CD-59-ED-E7">
@@ -878,16 +878,16 @@
       <ModuleName>System.Reflection.Extensions</ModuleName>
       <Classes />
     </Module>
-    <Module skippedDueTo="Filter" hash="DC-18-EE-40-A1-87-4C-20-70-ED-06-47-6B-D2-9D-61-33-AE-BC-70">
-      <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Resources.ResourceManager.dll</ModulePath>
-      <ModuleTime>2017-02-10T01:37:24Z</ModuleTime>
-      <ModuleName>System.Resources.ResourceManager</ModuleName>
-      <Classes />
-    </Module>
     <Module skippedDueTo="MissingPdb" hash="E9-EF-C3-1C-50-69-A0-1A-0E-43-96-D9-BE-AB-86-10-E0-77-65-29">
       <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\MSBuild.dll</ModulePath>
       <ModuleTime>2017-02-27T16:32:28Z</ModuleTime>
       <ModuleName>MSBuild</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="DC-18-EE-40-A1-87-4C-20-70-ED-06-47-6B-D2-9D-61-33-AE-BC-70">
+      <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Resources.ResourceManager.dll</ModulePath>
+      <ModuleTime>2017-02-10T01:37:24Z</ModuleTime>
+      <ModuleName>System.Resources.ResourceManager</ModuleName>
       <Classes />
     </Module>
     <Module skippedDueTo="Filter" hash="F1-50-99-8F-96-03-53-60-56-BB-33-F9-8F-0A-F4-12-C2-6B-2B-2B">
@@ -1142,12 +1142,6 @@
       <ModuleName>System.Reflection.Primitives</ModuleName>
       <Classes />
     </Module>
-    <Module skippedDueTo="MissingPdb" hash="E9-03-0F-5E-0C-0E-BC-40-BA-9F-94-1E-C8-1D-B9-E6-B0-C0-A4-D6">
-      <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\Microsoft.Build.Utilities.Core.dll</ModulePath>
-      <ModuleTime>2017-02-27T16:32:26Z</ModuleTime>
-      <ModuleName>Microsoft.Build.Utilities.Core</ModuleName>
-      <Classes />
-    </Module>
     <Module skippedDueTo="Filter" hash="E8-E1-75-35-31-53-6E-42-52-EC-88-ED-F0-CA-28-DC-12-CB-1E-A8">
       <ModulePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.1.1\System.Runtime.Loader.dll</ModulePath>
       <ModuleTime>2017-02-10T01:37:28Z</ModuleTime>
@@ -1158,6 +1152,12 @@
       <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\Sdks\Microsoft.NET.Sdk\build\..\tools\netcoreapp1.0/Microsoft.NET.Build.Tasks.dll</ModulePath>
       <ModuleTime>2017-02-27T16:32:26Z</ModuleTime>
       <ModuleName>Microsoft.NET.Build.Tasks</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="E9-03-0F-5E-0C-0E-BC-40-BA-9F-94-1E-C8-1D-B9-E6-B0-C0-A4-D6">
+      <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\Microsoft.Build.Utilities.Core.dll</ModulePath>
+      <ModuleTime>2017-02-27T16:32:26Z</ModuleTime>
+      <ModuleName>Microsoft.Build.Utilities.Core</ModuleName>
       <Classes />
     </Module>
     <Module skippedDueTo="MissingPdb" hash="D0-88-A9-0D-85-EF-5E-2B-64-E7-8F-A4-2C-67-2E-E3-B7-34-9C-D0">
@@ -1304,16 +1304,16 @@
       <ModuleName>NuGet.Frameworks</ModuleName>
       <Classes />
     </Module>
-    <Module skippedDueTo="MissingPdb" hash="FC-14-70-29-BB-E1-4B-7F-96-A8-1E-D1-CC-47-4C-74-19-B4-BC-2E">
-      <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\NuGet.Versioning.dll</ModulePath>
-      <ModuleTime>2017-02-27T16:32:28Z</ModuleTime>
-      <ModuleName>NuGet.Versioning</ModuleName>
-      <Classes />
-    </Module>
     <Module skippedDueTo="Filter" hash="5D-23-75-3D-6D-34-B1-9F-30-D1-BF-F7-AD-54-91-2D-AF-6B-4A-09">
       <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\System.Reflection.Metadata.dll</ModulePath>
       <ModuleTime>2017-02-27T16:32:28Z</ModuleTime>
       <ModuleName>System.Reflection.Metadata</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="FC-14-70-29-BB-E1-4B-7F-96-A8-1E-D1-CC-47-4C-74-19-B4-BC-2E">
+      <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\NuGet.Versioning.dll</ModulePath>
+      <ModuleTime>2017-02-27T16:32:28Z</ModuleTime>
+      <ModuleName>NuGet.Versioning</ModuleName>
       <Classes />
     </Module>
     <Module skippedDueTo="Filter" hash="EE-D5-63-DA-70-03-D0-A1-09-AE-AF-E8-D1-30-0B-2C-DE-31-B0-7C">
@@ -2231,7 +2231,7 @@
     <Module hash="B2-62-32-33-4B-97-6A-1C-82-59-4F-14-76-10-25-A9-17-0A-29-19">
       <Summary numSequencePoints="334" visitedSequencePoints="322" numBranchPoints="62" visitedBranchPoints="61" sequenceCoverage="96.41" branchCoverage="98.39" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="18" numClasses="18" visitedMethods="61" numMethods="62" />
       <ModulePath>C:\git\Core.Shogi\Core.Shogi.Tests\bin\Debug\netcoreapp1.1\Core.Shogi.Tests.dll</ModulePath>
-      <ModuleTime>2017-04-03T21:04:58.0458621Z</ModuleTime>
+      <ModuleTime>2017-04-05T18:55:26.5415589Z</ModuleTime>
       <ModuleName>Core.Shogi.Tests</ModuleName>
       <Files>
         <File uid="1" fullPath="C:\git\Core.Shogi\Core.Shogi.Tests\obj\Debug\netcoreapp1.1\Core.Shogi.Tests.Program.cs" />
@@ -3481,7 +3481,7 @@
     </Module>
     <Module skippedDueTo="MissingPdb" hash="BD-33-8E-38-B9-E4-B9-45-B4-51-10-C4-71-CC-23-7F-CD-2E-38-CD">
       <ModulePath>C:\git\Core.Shogi\Core.Shogi.Tests\bin\Debug\netcoreapp1.1\Core.Shogi.dll</ModulePath>
-      <ModuleTime>2017-04-03T20:13:24.7821226Z</ModuleTime>
+      <ModuleTime>2017-04-05T18:55:21.1511757Z</ModuleTime>
       <ModuleName>Core.Shogi</ModuleName>
       <Classes />
     </Module>
@@ -3589,13 +3589,13 @@
     </Module>
     <Module skippedDueTo="MissingPdb" hash="51-FF-EE-47-79-C4-2A-BE-73-FA-A0-26-20-15-21-B4-8B-EB-9D-C6">
       <ModulePath>C:\git\Core.Shogi\Core.Shogi.Tests\bin\Debug\netcoreapp1.1\Core.Shogi.Adapters.dll</ModulePath>
-      <ModuleTime>2017-04-03T20:13:25.2818132Z</ModuleTime>
+      <ModuleTime>2017-04-05T18:55:22.856722Z</ModuleTime>
       <ModuleName>Core.Shogi.Adapters</ModuleName>
       <Classes />
     </Module>
     <Module skippedDueTo="MissingPdb" hash="15-2A-1E-7A-F0-C1-63-03-2E-D0-FF-0F-43-A4-E2-AC-97-15-C1-B8">
       <ModulePath>C:\git\Core.Shogi\Core.Shogi.Tests\bin\Debug\netcoreapp1.1\Core.Shogi.Console.dll</ModulePath>
-      <ModuleTime>2017-04-03T20:13:25.6979082Z</ModuleTime>
+      <ModuleTime>2017-04-05T18:55:24.5281705Z</ModuleTime>
       <ModuleName>Core.Shogi.Console</ModuleName>
       <Classes />
     </Module>
@@ -3911,6 +3911,12 @@
       <ModuleName>DynamicProxyGenAssembly2</ModuleName>
       <Classes />
     </Module>
+    <Module skippedDueTo="MissingPdb" hash="">
+      <ModulePath>RefEmit_InMemoryManifestModule</ModulePath>
+      <ModuleTime>0001-01-01T00:00:00</ModuleTime>
+      <ModuleName>DynamicProxyGenAssembly2</ModuleName>
+      <Classes />
+    </Module>
     <Module skippedDueTo="Filter" hash="CB-13-CE-59-98-16-C4-3D-E2-E6-76-4D-78-CC-4B-4A-7E-3D-DA-C1">
       <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\System.ComponentModel.TypeConverter.dll</ModulePath>
       <ModuleTime>2017-02-27T16:32:28Z</ModuleTime>
@@ -3927,12 +3933,6 @@
       <ModulePath>C:\Program Files\dotnet\sdk\1.0.1\System.Collections.Specialized.dll</ModulePath>
       <ModuleTime>2017-02-27T16:32:28Z</ModuleTime>
       <ModuleName>System.Collections.Specialized</ModuleName>
-      <Classes />
-    </Module>
-    <Module skippedDueTo="MissingPdb" hash="">
-      <ModulePath>RefEmit_InMemoryManifestModule</ModulePath>
-      <ModuleTime>0001-01-01T00:00:00</ModuleTime>
-      <ModuleName>DynamicProxyGenAssembly2</ModuleName>
       <Classes />
     </Module>
     <Module skippedDueTo="Filter" hash="24-79-BE-2B-AF-AF-89-97-B2-29-AD-18-86-7A-7B-2D-A1-E2-D4-9E">
