@@ -1,1 +1,1 @@
-@call %USERPROFILE%\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe -target:"dotnet.exe" -targetargs:"test Core.Shogi.Tests/Core.Shogi.Tests.csproj" -output:coverage.xml -register:user -filter:"+[*]*" -excludebyfile:"*Program.cs" -oldStyle
+@call %USERPROFILE%\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe -target:"dotnet.exe" -targetargs:"test Core.Shogi.Console/Core.Shogi.Console.csproj" -output:coverage.xml -register:user -filter:"+[*]*" -excludebyfile:"*Program.cs" -oldStyle

@@ -6,12 +6,6 @@ namespace Core.Shogi.Tests
     public class BoardShould
     {
         [Fact]
-        public void Fail()
-        {
-            Assert.True(false);
-        }
-
-        [Fact]
         public void NotAllowWhiteToPlayFirst()
         {
             var board = new Board();
