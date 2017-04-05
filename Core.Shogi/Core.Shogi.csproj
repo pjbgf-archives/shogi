@@ -12,4 +12,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.1.1" />
+  </ItemGroup>
 </Project>
