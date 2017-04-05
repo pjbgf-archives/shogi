@@ -296,3 +296,6 @@ __pycache__/
 
 # Cake - Uncomment if you are using it
 # tools/
+
+# Do not version control coverage report by mistake.
+coverage.xml
