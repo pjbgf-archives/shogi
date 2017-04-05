@@ -3,8 +3,6 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <AssemblyName>Core.Shogi</AssemblyName>
     <PackageId>Core.Shogi</PackageId>
-    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
-    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
@@ -12,7 +10,4 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="System.Text.RegularExpressions" Version="4.1.1" />
-  </ItemGroup>
 </Project>

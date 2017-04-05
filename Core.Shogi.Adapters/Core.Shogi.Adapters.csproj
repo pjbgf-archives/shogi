@@ -3,8 +3,6 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <AssemblyName>Core.Shogi.Adapters</AssemblyName>
     <PackageId>Core.Shogi.Adapters</PackageId>
-    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
-    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
