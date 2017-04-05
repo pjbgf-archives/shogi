@@ -1,1 +1,1 @@
-dotnet restore && dotnet build
+dotnet restore -v d --packages ./packages && dotnet build
