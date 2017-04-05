@@ -6,17 +6,17 @@ dotnet: 1.0.1
 solution: Core.Shogi.csproj
 
 before_install:
-  - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
-  - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
-  - REPO_COMMIT_MESSAGE=$(git show -s --pretty=format:"%s")
-  - chmod +x build.sh
-  - chmod +x build-test.sh
+- REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
+- REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
+- REPO_COMMIT_MESSAGE=$(git show -s --pretty=format:"%s")
+- chmod +x build.sh
+- chmod +x build-test.sh
 
 install:
-  - dotnet restore -v d --packages ./packages
-  - rm packages/opencover/4.6.519/tools/log4net.config
+- dotnet restore -v d --packages ./packages
+- rm packages/opencover/4.6.519/tools/log4net.config #hack to get opencover to work on mono due to ColoredConsoleAppender issue.
 
 script:
-  - ./build.sh
-  - ./build-test.sh
-  - mono ./packages/coveralls.net/0.8.0-unstable0013/tools/csmacnz.Coveralls.exe --opencover -i ./coverage.xml --repoToken $COVERALLS_TOKEN --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID --serviceName "travis-ci" --useRelativePaths
+- ./build.sh
+- ./build-test.sh
+- mono ./packages/coveralls.net/0.8.0-unstable0013/tools/csmacnz.Coveralls.exe --opencover -i ./coverage.xml --repoToken $COVERALLS_TOKEN --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID --serviceName "travis-ci" --useRelativePaths
