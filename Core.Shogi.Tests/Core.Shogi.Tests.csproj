@@ -26,6 +26,9 @@
     <ProjectReference Include="..\Core.Shogi.Console\Core.Shogi.Console.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <DotNetCliToolReference Include="CoreCover" Version="*" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Adapters\" />
   </ItemGroup>
 </Project>
