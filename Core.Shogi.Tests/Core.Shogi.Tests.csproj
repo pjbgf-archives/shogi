@@ -1,9 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
-    <ApplicationIcon />
     <OutputTypeEx>library</OutputTypeEx>
-    <StartupObject />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>pdbonly</DebugType>
@@ -26,7 +24,7 @@
     <ProjectReference Include="..\Core.Shogi.Console\Core.Shogi.Console.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <DotNetCliToolReference Include="CoreCover" Version="*" />
+    <DotNetCliToolReference Include="CoreCover" Version="0.1.8-prerelease" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />
