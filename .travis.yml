@@ -16,4 +16,4 @@ script:
 after_success:
 - cd Core.Shogi.Tests
 - dotnet cover bin/Debug/netcoreapp1.1
-- mono $HOME/.nuget/packages/coveralls.net/0.8.0-unstable0013/tools/csmacnz.Coveralls.exe --opencover -i ./coverage.xml --repoToken $COVERALLS_TOKEN --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID --serviceName "travis-ci" --useRelativePaths
+- mono '$HOME/.nuget/packages/coveralls.io/1.3.4/tools/coveralls.net.exe --opencover coverage.xml --r $COVERALLS_TOKEN -f'
