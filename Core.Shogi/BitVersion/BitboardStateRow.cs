@@ -5,7 +5,7 @@ namespace Core.Shogi.BitVersion
     public struct BitboardStateRow
     {
         public static readonly ushort MinValue = 0;
-        public static readonly ushort MaxValue = HexValues.FullRow;
+        public static readonly ushort MaxValue = BinaryValues.FullRow;
         public static readonly BitboardStateRow Empty = new BitboardStateRow(MinValue);
         private readonly ushort _value;
 

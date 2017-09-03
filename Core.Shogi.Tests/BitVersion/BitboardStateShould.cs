@@ -20,9 +20,9 @@ namespace Core.Shogi.Tests.BitVersion
         [Fact]
         public void SupportXorBinaryBetweenTwoBitboardStates()
         {
-            var state1 = new BitboardState(        0x100, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow,    HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow);
-            var state2 = new BitboardState(        0x1, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, 1 << 4, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow);
-            var expectedState = new BitboardState( 0x101, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, 1 << 4, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow);
+            var state1 = new BitboardState(        0x100, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow,    BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow);
+            var state2 = new BitboardState(        0x1, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, 1 << 4, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow);
+            var expectedState = new BitboardState( 0x101, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, 1 << 4, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow);
 
             var actualState = state1 ^ state2;
 
@@ -32,9 +32,9 @@ namespace Core.Shogi.Tests.BitVersion
         [Fact]
         public void SupportAndBinaryBetweentwoBitboardStates()
         {
-            var state1 = new BitboardState(    1 << 8, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, 1 << 4, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow);
-            var state2 = new BitboardState(         1, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, 1 << 4, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow);
-            var expectedState = new BitboardState(HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, 1 << 4, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow);
+            var state1 = new BitboardState(    1 << 8, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, 1 << 4, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow);
+            var state2 = new BitboardState(         1, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, 1 << 4, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow);
+            var expectedState = new BitboardState(BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, 1 << 4, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow);
 
             var actualState = state1 & state2;
 
@@ -44,7 +44,7 @@ namespace Core.Shogi.Tests.BitVersion
         [Fact]
         public void ThrowIndexOutOfRangeExceptionForIndexesBelow0()
         {
-            var state = new BitboardState(HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow);
+            var state = new BitboardState(BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow);
 
             Assert.Throws<IndexOutOfRangeException>(() => state[-1]);
         }
@@ -52,7 +52,7 @@ namespace Core.Shogi.Tests.BitVersion
         [Fact]
         public void ThrowIndexOutOfRangeExceptionForIndexesGreaterThan80()
         {
-            var state = new BitboardState(HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow);
+            var state = new BitboardState(BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow);
 
             Assert.Throws<IndexOutOfRangeException>(() => state[81]);
         }
@@ -60,7 +60,7 @@ namespace Core.Shogi.Tests.BitVersion
         [Fact]
         public void GetBitBasedOnIndexedProperty()
         {
-            var state = new BitboardState(1 << 8, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow, HexValues.EmptyRow);
+            var state = new BitboardState(1 << 8, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow);
 
             Assert.True(state[0]);
         }
