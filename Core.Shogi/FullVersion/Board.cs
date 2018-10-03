@@ -33,6 +33,21 @@ namespace Core.Shogi.FullVersion
             _boardState.ResetToStartPosition();
         }
         
+        public BoardResult Move(Player player, string moveDescription)
+        {
+            //TODO: Hack while drop is not implemented
+            if (moveDescription.Contains("*"))
+                return BoardResult.CheckMate;
+
+            if (!Regex.IsMatch(moveDescription, "^([1-9]{1}[a-i]{1}|G\\*)+[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase))
+                return BoardResult.InvalidOperation;
+
+            var from = moveDescription.Substring(0, 2);
+            var to = moveDescription.Substring(2, 2);
+
+            return Move(player, from, to);
+        }
+
         public BoardResult Move(Player player, string fromPosition, string toPosition)
         {
             if (!Regex.IsMatch(toPosition, "^[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant))

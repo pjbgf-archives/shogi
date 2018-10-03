@@ -8,6 +8,8 @@ namespace Core.Shogi
 
         IBoardState State { get; }
 
+        BoardResult Move(Player player, string movementDescription);
+
         BoardResult Move(Player player, string fromPosition, string toPosition);
     }
 }
