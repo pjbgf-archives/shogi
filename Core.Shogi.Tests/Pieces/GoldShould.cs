@@ -15,10 +15,10 @@ namespace Core.Shogi.Tests.Pieces
         }
 
         [Theory]
-        [InlineData(Player.Black, "5e", "6f")] //"NotMoveBackLeftAsBlackPlayer")]
-        [InlineData(Player.Black, "5e", "4f")] //"NotMoveBackRightAsBlackPlayer")]
-        [InlineData(Player.White, "5e", "4d")] //"NotMoveBackLeftAsWhitePlayer")]
-        [InlineData(Player.White, "5e", "6d")] //"NotMoveBackRightAsWhitePlayer")]
+        [InlineData(Player.Black, "5e", "6f")] 
+        [InlineData(Player.Black, "5e", "4f")] 
+        [InlineData(Player.White, "5e", "4d")] 
+        [InlineData(Player.White, "5e", "6d")] 
         public void NotAllowIllegalMoves(Player player, string positionFrom, string positionTo)
         {
             var gold = new Gold(player, positionFrom);
@@ -29,14 +29,14 @@ namespace Core.Shogi.Tests.Pieces
         }
 
         [Theory]
-        [InlineData(Player.Black, "7i", "7h")] //"BeAbleToMoveForwardAsBlackPlayer")]
-        [InlineData(Player.White, "7a", "7b")] //"BeAbleToMoveForwardAsWhitePlayer")]
-        [InlineData(Player.Black, "7i", "8h")] //"BeAbleToMoveForwardLeftAsBlackPlayer")]
-        [InlineData(Player.White, "7a", "6b")] //"BeAbleToMoveForwardLeftAsWhitePlayer")]
-        [InlineData(Player.Black, "7i", "6h")] //"BeAbleToMoveForwardRightAsBlackPlayer")]
-        [InlineData(Player.White, "7a", "8b")] //"BeAbleToMoveForwardRightAsWhitePlayer")]
-        [InlineData(Player.Black, "6h", "6i")] //"BeAbleToMoveBackAsBlackPlayer")]
-        [InlineData(Player.White, "6b", "6a")] //"BeAbleToMoveBackAsWhitePlayer")]
+        [InlineData(Player.Black, "7i", "7h")] 
+        [InlineData(Player.White, "7a", "7b")] 
+        [InlineData(Player.Black, "7i", "8h")] 
+        [InlineData(Player.White, "7a", "6b")] 
+        [InlineData(Player.Black, "7i", "6h")] 
+        [InlineData(Player.White, "7a", "8b")] 
+        [InlineData(Player.Black, "6h", "6i")] 
+        [InlineData(Player.White, "6b", "6a")] 
         public void AllowValidMoves(Player player, string positionFrom, string positionTo)
         {
             var gold = new Gold(player, positionFrom);

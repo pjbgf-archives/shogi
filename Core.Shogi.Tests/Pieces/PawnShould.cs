@@ -16,20 +16,20 @@ namespace Core.Shogi.Tests.Pieces
         }
 
         [Theory]
-        [InlineData(Player.Black, "1g", "1h")] //"NotMoveBackwardAsBlackPlayer")]
-        [InlineData(Player.White, "1c", "1b")] //"NotMoveBackwardAsWhitePlayer")]
-        [InlineData(Player.Black, "5g", "6g")] //"NotMoveLeftAsBlackPlayer")]
-        [InlineData(Player.White, "5c", "4c")] //"NotMoveLeftAsWhitePlayer")]
-        [InlineData(Player.Black, "5g", "4g")] //"NotMoveRightAsBlackPlayer")]
-        [InlineData(Player.White, "5c", "6c")] //"NotMoveRightAsWhitePlayer")]
-        [InlineData(Player.Black, "5g", "6h")] //"NotMoveBackLeftAsBlackPlayer")]
-        [InlineData(Player.White, "5c", "4b")] //"NotMoveBackLeftAsWhitePlayer")]
-        [InlineData(Player.Black, "5g", "4h")] //"NotMoveBackRightAsBlackPlayer")]
-        [InlineData(Player.White, "5c", "6b")] //"NotMoveBackRightAsWhitePlayer")]
-        [InlineData(Player.Black, "5g", "6f")] //"NotMoveForwardLeftAsBlackPlayer")]
-        [InlineData(Player.White, "5c", "4d")] //"NotMoveForwardLeftAsWhitePlayer")]
-        [InlineData(Player.Black, "5g", "4f")] //"NotMoveForwardRightAsBlackPlayer")]
-        [InlineData(Player.White, "5c", "6d")] //"NotMoveForwardRightAsWhitePlayer")]
+        [InlineData(Player.Black, "1g", "1h")] 
+        [InlineData(Player.White, "1c", "1b")] 
+        [InlineData(Player.Black, "5g", "6g")] 
+        [InlineData(Player.White, "5c", "4c")] 
+        [InlineData(Player.Black, "5g", "4g")] 
+        [InlineData(Player.White, "5c", "6c")] 
+        [InlineData(Player.Black, "5g", "6h")] 
+        [InlineData(Player.White, "5c", "4b")] 
+        [InlineData(Player.Black, "5g", "4h")] 
+        [InlineData(Player.White, "5c", "6b")] 
+        [InlineData(Player.Black, "5g", "6f")] 
+        [InlineData(Player.White, "5c", "4d")] 
+        [InlineData(Player.Black, "5g", "4f")] 
+        [InlineData(Player.White, "5c", "6d")] 
         public void NotAllowIllegalMoves(Player player, string positionFrom, string positionTo)
         {
             var pawn = new Pawn(player, positionFrom);
@@ -40,10 +40,10 @@ namespace Core.Shogi.Tests.Pieces
         }
 
         [Theory]
-        [InlineData(Player.Black, "8g", "8f")] //"BeAbleToMove1RowUpAsBlackPlayer")]
-        [InlineData(Player.White, "8c", "8d")] //"BeAbleToMove1RowDownAsWhitePlayer")]
-        [InlineData(Player.Black, "8g", "8e")] //"BeAbleToMove2RowsUpAsBlackPlayerIfFirstMove")]
-        [InlineData(Player.White, "8c", "8e")] //"BeAbleToMove2RowsDownAsWhitePlayerIfFirstMove")]
+        [InlineData(Player.Black, "8g", "8f")] 
+        [InlineData(Player.White, "8c", "8d")] 
+        [InlineData(Player.Black, "8g", "8e")] 
+        [InlineData(Player.White, "8c", "8e")] 
         public void AllowValidMoves(Player player, string positionFrom, string positionTo)
         {
             var pawn = new Pawn(player, positionFrom);
@@ -54,8 +54,8 @@ namespace Core.Shogi.Tests.Pieces
         }
 
         [Theory]
-        [InlineData(Player.Black, "8g", new string[] { "8g8f", "8g8e" })] //"AsBlackPlayer")]
-        [InlineData(Player.White, "1c", new string[] { "1c1d", "1c1e" })] //"AsWhitePlayer")]
+        [InlineData(Player.Black, "8g", new string[] { "8g8f", "8g8e" })] 
+        [InlineData(Player.White, "1c", new string[] { "1c1d", "1c1e" })] 
         public void KnowAllItsPossibleMoves(Player player, string position,
             IEnumerable<string> expectedPossibleMovements)
         {
