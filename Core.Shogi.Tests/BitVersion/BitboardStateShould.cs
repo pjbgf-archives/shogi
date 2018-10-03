@@ -5,7 +5,6 @@ using Xunit;
 
 namespace Core.Shogi.Tests.BitVersion
 {
-    
     public class BitboardStateShould
     {
         [Fact]
