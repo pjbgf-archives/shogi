@@ -11,7 +11,7 @@ namespace Core.Shogi.Tests.BitVersion
         {
             var board = new Bitboard(new FullBitboardState(BitboardPredefinedStates.InitialWhitePositions, BitboardPredefinedStates.InitialBlackPositions));
             var render = Substitute.For<IBoardRender>();
-            var shogi = new BitboardShogiGame(board, render);
+            var shogi = new ShogiGame(render, null, null, board);
 
             shogi.Start();
 
@@ -32,7 +32,7 @@ namespace Core.Shogi.Tests.BitVersion
         {
             var board = Substitute.For<IBoard>();
             var render = Substitute.For<IBoardRender>();
-            var shogi = new BitboardShogiGame(board, render);
+            var shogi = new ShogiGame(render, null, null, board);
 
             shogi.Start();
 
@@ -44,11 +44,11 @@ namespace Core.Shogi.Tests.BitVersion
         {
             var board = Substitute.For<IBoard>();
             var render = Substitute.For<IBoardRender>();
-            var shogi = new BitboardShogiGame(board, render);
+            var shogi = new ShogiGame(render, null, null, board);
 
             shogi.Start();
 
-            render.Received(1).Refresh(Arg.Any<BitboardState>());
+            render.Received(1).Refresh(Arg.Any<IBoardState>());
         }
     }
 }
