@@ -1,7 +1,8 @@
+using Core.Shogi.Pieces;
+
 namespace Core.Shogi.BitVersion
 {
-    //TODO: Better naming required
-    public class FullBitboardState
+    public class FullBitboardState : IBoardState
     {
         public BitboardState WhitePieces { get; }
         public BitboardState BlackPieces { get; set; }
@@ -14,6 +15,11 @@ namespace Core.Shogi.BitVersion
         {
             WhitePieces = whitePieces;
             BlackPieces = blackPieces;
+        }
+
+        public Piece GetPiece(string pieceLocation)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,8 +1,8 @@
 using System.Text.RegularExpressions;
 
-namespace Core.Shogi
+namespace Core.Shogi.FullVersion
 {
-    public class Board
+    public class Board : IBoard
     {
         private readonly BoardState _boardState = new BoardState();
         private readonly Player _initialPlayer = Player.Black;
@@ -10,11 +10,10 @@ namespace Core.Shogi
 
         public Board()
         {
-            ResetBoard();
+            Reset();
         }
-
-        //TODO: Tell Don't Ask!
-        public BoardState State
+        
+        public IBoardState State
         {
             get
             {
@@ -28,14 +27,13 @@ namespace Core.Shogi
             CurrentPlayer = currentPlayer;
         }
 
-        public void ResetBoard()
+        public void Reset()
         {
             CurrentPlayer = _initialPlayer;
             _boardState.ResetToStartPosition();
         }
-
-        //TODO: Refactor to keep right level of abstraction
-        public virtual BoardResult Move(Player player, string fromPosition, string toPosition)
+        
+        public BoardResult Move(Player player, string fromPosition, string toPosition)
         {
             if (!Regex.IsMatch(toPosition, "^[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant))
                 return BoardResult.InvalidOperation;

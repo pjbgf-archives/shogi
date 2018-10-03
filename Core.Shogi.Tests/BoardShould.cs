@@ -1,3 +1,4 @@
+using Core.Shogi.FullVersion;
 using Core.Shogi.Pieces;
 using Xunit;
 

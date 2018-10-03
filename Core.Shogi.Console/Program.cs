@@ -1,4 +1,5 @@
 ﻿using Core.Shogi.Adapters.Console;
+using Core.Shogi.FullVersion;
 
 namespace Core.Shogi.Console
 {
@@ -9,7 +10,12 @@ namespace Core.Shogi.Console
             var blackPlayer = ConsoleHumanPlayer.CreateFor(Player.Black);
             var whitePlayer = ConsoleHumanPlayer.CreateFor(Player.White);
 
-            var shogiGame = new ShogiGame(new BoardConsoleRender(), blackPlayer, whitePlayer);
+            var shogiGame = new ShogiGame(
+                new BoardConsoleRender(), 
+                blackPlayer, 
+                whitePlayer, 
+                new Board());
+
             shogiGame.Start();
         }
     }

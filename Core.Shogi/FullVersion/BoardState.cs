@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Shogi.Pieces;
 
-namespace Core.Shogi
+namespace Core.Shogi.FullVersion
 {
     public class BoardState : IBoardState
     {

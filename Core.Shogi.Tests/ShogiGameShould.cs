@@ -6,12 +6,12 @@ namespace Core.Shogi.Tests
     public class ShogiGameShould
     {
         private readonly IBoardRender _boardRenderMock;
-        private readonly Board _boardMock;
+        private readonly IBoard _boardMock;
 
         public ShogiGameShould()
         {
             _boardRenderMock = Substitute.For<IBoardRender>();
-            _boardMock = Substitute.For<Board>();
+            _boardMock = Substitute.For<IBoard>();
         }
 
         [Fact]
@@ -21,7 +21,7 @@ namespace Core.Shogi.Tests
 
             shogiGame.Start();
 
-            _boardMock.Received(1).ResetBoard();
+            _boardMock.Received(1).Reset();
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace Core.Shogi.Tests
 
             shogiGame.Start();
 
-            _boardRenderMock.ReceivedWithAnyArgs(1).Refresh(Arg.Any<BoardState>());
+            _boardRenderMock.ReceivedWithAnyArgs(1).Refresh(Arg.Any<IBoardState>());
         }
     }
 }
