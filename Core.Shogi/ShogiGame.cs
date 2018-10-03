@@ -9,6 +9,10 @@ namespace Core.Shogi
         private readonly IBoardPlayer _whitePlayer;
         private readonly Board _board;
 
+        public ShogiGame(IBoardRender boardRender, IBoardPlayer blackPlayer, IBoardPlayer whitePlayer) : this(boardRender, blackPlayer, whitePlayer, new Board())
+        {
+        }
+
         public ShogiGame(IBoardRender boardRender, IBoardPlayer blackPlayer, IBoardPlayer whitePlayer, Board board)
         {
             _boardRender = boardRender;
@@ -20,7 +24,9 @@ namespace Core.Shogi
         public void Start()
         {
             _board.ResetBoard();
+
             Render();
+
             AskPlayerForNextMove(_blackPlayer, _whitePlayer);
         }
 

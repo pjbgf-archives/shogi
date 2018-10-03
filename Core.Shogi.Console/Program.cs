@@ -6,11 +6,10 @@ namespace Core.Shogi.Console
     {
         public static void Main(string[] args)
         {
-            var board = new Board();
-            var blackPlayer = HumanPlayerConsoleAdapter.CreateFor(Player.Black);
-            var whitePlayer = HumanPlayerConsoleAdapter.CreateFor(Player.White);
+            var blackPlayer = ConsoleHumanPlayer.CreateFor(Player.Black);
+            var whitePlayer = ConsoleHumanPlayer.CreateFor(Player.White);
 
-            var shogiGame = new ShogiGame(new BoardConsoleRender(), blackPlayer, whitePlayer, board);
+            var shogiGame = new ShogiGame(new BoardConsoleRender(), blackPlayer, whitePlayer);
             shogiGame.Start();
         }
     }

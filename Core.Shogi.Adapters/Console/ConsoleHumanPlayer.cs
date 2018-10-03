@@ -2,16 +2,16 @@
 
 namespace Core.Shogi.Adapters.Console
 {
-    public class HumanPlayerConsoleAdapter : IBoardPlayer
+    public class ConsoleHumanPlayer : IBoardPlayer
     {
-        private HumanPlayerConsoleAdapter(Player player)
+        private ConsoleHumanPlayer(Player player)
         {
             Player = player;
         }
 
         public static IBoardPlayer CreateFor(Player player)
         {
-            return new HumanPlayerConsoleAdapter(player);
+            return new ConsoleHumanPlayer(player);
         }
 
         public string AskForNextMove()
