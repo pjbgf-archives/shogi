@@ -4,7 +4,7 @@ using Core.Shogi.Pieces;
 
 namespace Core.Shogi
 {
-    public class BoardState
+    public class BoardState : IBoardState
     {
         readonly Dictionary<string, Piece> _pieces = new Dictionary<string, Piece>(81);
 

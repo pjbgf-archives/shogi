@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.Shogi.Pieces;
 
 namespace Core.Shogi.BitVersion
 {
-    public struct BitboardState
+    public struct BitboardState : IBoardState
     {
         public BitboardState(
             BitboardStateRow stateRowA,
@@ -178,6 +179,11 @@ namespace Core.Shogi.BitVersion
                     this.StateRowG.GetHashCode() + 
                     this.StateRowH.GetHashCode() + 
                     this.StateRowI.GetHashCode());
+        }
+
+        public Piece GetPiece(string pieceLocation)
+        {
+            throw new NotImplementedException();
         }
     }
 }
