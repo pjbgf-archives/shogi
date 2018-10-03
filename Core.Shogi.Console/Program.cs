@@ -7,8 +7,8 @@ namespace Core.Shogi.Console
         public static void Main(string[] args)
         {
             var board = new Board();
-            var blackPlayer = HumanPlayerConsoleAdapter.CreateFor(PlayerType.Black);
-            var whitePlayer = NoviceComputerPlayer.CreateFor(PlayerType.White, board);
+            var blackPlayer = HumanPlayerConsoleAdapter.CreateFor(Player.Black);
+            var whitePlayer = NoviceComputerPlayer.CreateFor(Player.White, board);
 
             var shogiGame = new ShogiGame(new BoardConsoleRender(), blackPlayer, whitePlayer, board);
             shogiGame.Start();

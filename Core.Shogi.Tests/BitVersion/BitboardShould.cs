@@ -13,7 +13,7 @@ namespace Core.Shogi.Tests.BitVersion
 
             var board = new Bitboard(complexState);
 
-            var actualResult = board.Move(PlayerType.Black, "352176");
+            var actualResult = board.Move(Player.Black, "352176");
             Assert.Equal(BoardResult.InvalidOperation, actualResult);
         }
 
@@ -26,7 +26,7 @@ namespace Core.Shogi.Tests.BitVersion
             var expectedState = new BitboardState(BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, BinaryValues.EmptyRow, 0x100, 0xFF, BinaryValues.TwoPieceRow, BinaryValues.FullRow);
             var board = new Bitboard(complexState);
 
-            board.Move(PlayerType.Black, "9g9f");
+            board.Move(Player.Black, "9g9f");
 
             Assert.Equal(BitboardPredefinedStates.InitialWhitePositions, board.BitboardState.WhitePieces);
             Assert.Equal(expectedState, board.BitboardState.BlackPieces);
@@ -40,7 +40,7 @@ namespace Core.Shogi.Tests.BitVersion
 
             var board = new Bitboard(complexState);
 
-            var result = board.Move(PlayerType.Black, "9i9g");
+            var result = board.Move(Player.Black, "9i9g");
 
             Assert.Equal(BoardResult.InvalidOperation, result);
             Assert.Equal(BitboardPredefinedStates.InitialWhitePositions, board.BitboardState.WhitePieces);

@@ -12,25 +12,25 @@ namespace Core.Shogi
         {
         }
 
-        private NoviceComputerPlayer(PlayerType player, Board board)
+        private NoviceComputerPlayer(Player player, Board board)
         {
             Player = player;
             _board = board;
         }
 
-        public static IBoardPlayer CreateFor(PlayerType player, Board board)
+        public static IBoardPlayer CreateFor(Player player, Board board)
         {
             return new NoviceComputerPlayer(player, board);
         }
 
-        public PlayerType Player { get; private set; }
+        public Player Player { get; private set; }
 
         public string AskForNextMove()
         {
             //TODO: Breaking Demeter's Law
             var playerPieces = _board.State.GetAllPiecesFromPlayer(Player);
             var opponentPlayerPieces =
-                _board.State.GetAllPiecesFromPlayer(Player == PlayerType.Black ? PlayerType.White : PlayerType.Black);
+                _board.State.GetAllPiecesFromPlayer(Player == Player.Black ? Player.White : Player.Black);
             var possibleMovements = CalculatePossibleMovements(playerPieces, opponentPlayerPieces);
             var bestMovement = GetMovementSuggestion(possibleMovements);
 

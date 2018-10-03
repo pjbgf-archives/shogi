@@ -2,7 +2,7 @@
 {
     public class Silver : Piece
     {
-        public Silver(PlayerType ownerPlayer, string position) : base(ownerPlayer, position)
+        public Silver(Player ownerPlayer, string position) : base(ownerPlayer, position)
         {
             ShortName = 'S';
             CanMoveForwards = true;

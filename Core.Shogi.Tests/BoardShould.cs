@@ -10,7 +10,7 @@ namespace Core.Shogi.Tests
         {
             var board = new Board();
 
-            var result = board.Move(PlayerType.White, "1c", "1d");
+            var result = board.Move(Player.White, "1c", "1d");
 
             Assert.Equal(BoardResult.NotPlayersTurn, result);
         }
@@ -20,7 +20,7 @@ namespace Core.Shogi.Tests
         {
             var board = new Board();
 
-            var result = board.Move(PlayerType.Black, "1c", "1d");
+            var result = board.Move(Player.Black, "1c", "1d");
 
             Assert.Equal(BoardResult.NotPlayersPiece, result);
         }
@@ -30,7 +30,7 @@ namespace Core.Shogi.Tests
         {
             var board = new Board();
 
-            var result = board.Move(PlayerType.Black, "2h", "2g");
+            var result = board.Move(Player.Black, "2h", "2g");
 
             Assert.Equal(BoardResult.InvalidOperation, result);
         }
@@ -40,7 +40,7 @@ namespace Core.Shogi.Tests
         {
             var board = new Board();
 
-            var result = board.Move(PlayerType.Black, "9i", "10i");
+            var result = board.Move(Player.Black, "9i", "10i");
 
             Assert.Equal(BoardResult.InvalidOperation, result);
         }
@@ -50,7 +50,7 @@ namespace Core.Shogi.Tests
         {
             var board = new Board();
 
-            var result = board.Move(PlayerType.Black, "5i", "5j");
+            var result = board.Move(Player.Black, "5i", "5j");
 
             Assert.Equal(BoardResult.InvalidOperation, result);
         }
@@ -60,7 +60,7 @@ namespace Core.Shogi.Tests
         {
             var board = new Board();
 
-            var result = board.Move(PlayerType.Black, "1g", "1f");
+            var result = board.Move(Player.Black, "1g", "1f");
 
             Assert.Equal(BoardResult.ValidOperation, result);
         }
@@ -69,11 +69,11 @@ namespace Core.Shogi.Tests
         public void AllowPlayerToCaptureOpponentPiece()
         {
             var boardState = new BoardState();
-            boardState.Add(new Pawn(PlayerType.White, "1f"));
-            boardState.Add(new Pawn(PlayerType.Black, "1g"));
-            var board = new Board(boardState, PlayerType.Black);
+            boardState.Add(new Pawn(Player.White, "1f"));
+            boardState.Add(new Pawn(Player.Black, "1g"));
+            var board = new Board(boardState, Player.Black);
 
-            var result = board.Move(PlayerType.Black, "1g", "1f");
+            var result = board.Move(Player.Black, "1g", "1f");
 
             Assert.Equal(BoardResult.ValidOperation, result);
         }
@@ -83,9 +83,9 @@ namespace Core.Shogi.Tests
         {
             var board = new Board();
 
-            board.Move(PlayerType.Black, "1g", "1f");
+            board.Move(Player.Black, "1g", "1f");
 
-            Assert.Equal(PlayerType.White, board.CurrentPlayer);
+            Assert.Equal(Player.White, board.CurrentPlayer);
         }
     }
 }

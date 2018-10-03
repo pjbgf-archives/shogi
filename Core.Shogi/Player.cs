@@ -1,6 +1,6 @@
 ﻿namespace Core.Shogi
 {
-    public enum PlayerType
+    public enum Player
     {
         Black,
         White

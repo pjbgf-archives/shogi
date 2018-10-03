@@ -15,14 +15,14 @@ namespace Core.Shogi.Tests.BitVersion
 
             shogi.Start();
 
-            board.Move(PlayerType.Black, "7g7f");
-            board.Move(PlayerType.White, "6a7b");
-            board.Move(PlayerType.Black, "8h3c");
-            board.Move(PlayerType.White, "4a4b");
-            board.Move(PlayerType.Black, "3c4b");
-            board.Move(PlayerType.White, "5a6a");
+            board.Move(Player.Black, "7g7f");
+            board.Move(Player.White, "6a7b");
+            board.Move(Player.Black, "8h3c");
+            board.Move(Player.White, "4a4b");
+            board.Move(Player.Black, "3c4b");
+            board.Move(Player.White, "5a6a");
 
-            var result = board.Move(PlayerType.Black, "G*5b");
+            var result = board.Move(Player.Black, "G*5b");
 
             Assert.Equal(BoardResult.CheckMate, result);
         }

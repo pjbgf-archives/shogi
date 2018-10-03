@@ -47,7 +47,7 @@ namespace Core.Shogi
             _boardRender?.Refresh(_board.State);
         }
 
-        private BoardResult Move(PlayerType player, string moveDescription)
+        private BoardResult Move(Player player, string moveDescription)
         {
             if (!Regex.IsMatch(moveDescription, "^[1-9]{1}[a-i]{1}[1-9]{1}[a-i]{1}$", RegexOptions.Compiled | RegexOptions.CultureInvariant))
                 return BoardResult.InvalidOperation;

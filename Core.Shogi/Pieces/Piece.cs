@@ -8,7 +8,7 @@ namespace Core.Shogi.Pieces
     public abstract class Piece
     {
         private List<string> _possibleMovements;
-        public PlayerType OwnerPlayer { get; }
+        public Player OwnerPlayer { get; }
         public string Position { get; private set; }
         public char ShortName { get; protected set; }
 
@@ -21,7 +21,7 @@ namespace Core.Shogi.Pieces
         public bool CanMoveHorizontallyAndVerticallyInRange { get; protected set; }
         public bool CanMoveSideways { get; protected set; }
 
-        protected Piece(PlayerType ownerPlayer, string position)
+        protected Piece(Player ownerPlayer, string position)
         {
             OwnerPlayer = ownerPlayer;
             Position = position;
@@ -72,8 +72,8 @@ namespace Core.Shogi.Pieces
         {
             var possibleMovements = new List<string>();
 
-            if ((CanMoveForwardsDiagonally && OwnerPlayer == PlayerType.Black) ||
-                (CanMoveBackwardsDiagonally && OwnerPlayer == PlayerType.White))
+            if ((CanMoveForwardsDiagonally && OwnerPlayer == Player.Black) ||
+                (CanMoveBackwardsDiagonally && OwnerPlayer == Player.White))
             {
                 possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] + 1),
                     Convert.ToChar(Position[1] - 1)));
@@ -81,8 +81,8 @@ namespace Core.Shogi.Pieces
                     Convert.ToChar(Position[1] - 1)));
             }
 
-            if ((CanMoveBackwardsDiagonally && OwnerPlayer == PlayerType.Black) ||
-                (CanMoveForwardsDiagonally && OwnerPlayer == PlayerType.White))
+            if ((CanMoveBackwardsDiagonally && OwnerPlayer == Player.Black) ||
+                (CanMoveForwardsDiagonally && OwnerPlayer == Player.White))
             {
                 possibleMovements.Add(string.Concat(Position, Convert.ToChar(Position[0] + 1),
                     Convert.ToChar(Position[1] + 1)));
@@ -143,7 +143,7 @@ namespace Core.Shogi.Pieces
 
             if (CanMoveForwardInRange)
             {
-                if (OwnerPlayer == PlayerType.Black)
+                if (OwnerPlayer == Player.Black)
                     for (int i = Position[1] - 1; i >= 'a'; i--)
                         possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(i)));
                 else
@@ -171,9 +171,9 @@ namespace Core.Shogi.Pieces
         {
             var possibleMovements = new List<string>();
 
-            if ((OwnerPlayer == PlayerType.Black && CanMoveForwards) || (OwnerPlayer == PlayerType.White && CanMoveBack))
+            if ((OwnerPlayer == Player.Black && CanMoveForwards) || (OwnerPlayer == Player.White && CanMoveBack))
                 possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] - 1)));
-            if ((OwnerPlayer == PlayerType.White && CanMoveForwards) || (OwnerPlayer == PlayerType.Black && CanMoveBack))
+            if ((OwnerPlayer == Player.White && CanMoveForwards) || (OwnerPlayer == Player.Black && CanMoveBack))
                 possibleMovements.Add(string.Concat(Position, Position[0], Convert.ToChar(Position[1] + 1)));
 
             return possibleMovements;

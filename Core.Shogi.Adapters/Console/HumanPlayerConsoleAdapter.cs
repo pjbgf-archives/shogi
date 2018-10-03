@@ -4,22 +4,22 @@ namespace Core.Shogi.Adapters.Console
 {
     public class HumanPlayerConsoleAdapter : IBoardPlayer
     {
-        private HumanPlayerConsoleAdapter(PlayerType player)
+        private HumanPlayerConsoleAdapter(Player player)
         {
             Player = player;
         }
 
-        public static IBoardPlayer CreateFor(PlayerType player)
+        public static IBoardPlayer CreateFor(Player player)
         {
             return new HumanPlayerConsoleAdapter(player);
         }
 
         public string AskForNextMove()
         {
-            System.Console.WriteLine($"Next move for {Enum.GetName(typeof(PlayerType), Player)} Player: ");
+            System.Console.WriteLine($"Next move for {Enum.GetName(typeof(Player), Player)} Player: ");
             return System.Console.ReadLine();
         }
 
-        public PlayerType Player { get; private set; }
+        public Player Player { get; private set; }
     }
 }

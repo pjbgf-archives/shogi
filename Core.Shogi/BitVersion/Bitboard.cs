@@ -16,7 +16,7 @@ namespace Core.Shogi.BitVersion
 
         public FullBitboardState BitboardState { get; private set; }
 
-        public BoardResult Move(PlayerType player, string moveDescription)
+        public BoardResult Move(Player player, string moveDescription)
         {
             //TODO: Hack while drop is not implemented
             if (moveDescription.Contains("*"))
