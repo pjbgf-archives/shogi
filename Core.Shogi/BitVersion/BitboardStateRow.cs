@@ -31,12 +31,12 @@ namespace Core.Shogi.BitVersion
 
         public static bool operator ==(BitboardStateRow row1, BitboardStateRow row2)
         {
-            return (row1.Value == row2.Value);
+            return row1.Value == row2.Value;
         }
 
         public static bool operator !=(BitboardStateRow row1, BitboardStateRow row2)
         {
-            return (row1.Value != row2.Value);
+            return row1.Value != row2.Value;
         }
 
         public static BitboardStateRow operator ~(BitboardStateRow stateRow)
@@ -46,6 +46,9 @@ namespace Core.Shogi.BitVersion
 
         public static implicit operator BitboardStateRow(string boardRow)
         {
+            if (string.IsNullOrEmpty(boardRow))
+                return Empty;
+
             var rowState = Binary.ConvertToUInt16(boardRow);
             return new BitboardStateRow(rowState);
         }
@@ -69,7 +72,19 @@ namespace Core.Shogi.BitVersion
             return $"0x{Value:X}";
         }
 
-        //TODO: Override Equals
-        //TODO: Override GetHash
+        public override bool Equals(object obj)
+        {
+            BitboardStateRow row = (BitboardStateRow)obj;
+            
+            if (row == null)
+                return false;
+
+            return (this.Value == row.Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Value.GetHashCode();
+        }
     }
 }

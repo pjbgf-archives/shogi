@@ -9,7 +9,8 @@ namespace Core.Shogi.BitVersion
         {
             ushort value = 0;
 
-            if (Regex.IsMatch(binary, "^(0|1)+$", RegexOptions.Compiled | RegexOptions.Singleline))
+            if (!string.IsNullOrEmpty(binary) &&
+                Regex.IsMatch(binary, "^(0|1)+$", RegexOptions.Compiled | RegexOptions.Singleline))
             {
                 var pow = binary.Length - 1;
                 for (var i = 0; i < binary.Length; i++, pow--)
