@@ -71,16 +71,7 @@ namespace Core.Shogi.BitVersion
 
         public static bool operator ==(BitboardState bitboard1, BitboardState bitboard2)
         {
-            return
-                (bitboard1.StateRowA == bitboard2.StateRowA) &&
-                (bitboard1.StateRowB == bitboard2.StateRowB) &&
-                (bitboard1.StateRowC == bitboard2.StateRowC) &&
-                (bitboard1.StateRowD == bitboard2.StateRowD) &&
-                (bitboard1.StateRowE == bitboard2.StateRowE) &&
-                (bitboard1.StateRowF == bitboard2.StateRowF) &&
-                (bitboard1.StateRowG == bitboard2.StateRowG) &&
-                (bitboard1.StateRowH == bitboard2.StateRowH) &&
-                (bitboard1.StateRowI == bitboard2.StateRowI);
+            return bitboard1.Equals(bitboard2);
         }
 
         public static bool operator !=(BitboardState bitboard1, BitboardState bitboard2)
@@ -157,7 +148,36 @@ namespace Core.Shogi.BitVersion
             return $"{StateRowA} {StateRowB} {StateRowC} {StateRowD} {StateRowE} {StateRowF} {StateRowG} {StateRowH} {StateRowI}";
         }
 
-        //TODO: Override Equals
-        //TODO: Override GetHash
+        public override bool Equals(object bitboard)
+        {
+            BitboardState bitboard2 = (BitboardState)bitboard;
+
+            if (bitboard2 == null)
+                return false;
+
+            return
+                (this.StateRowA == bitboard2.StateRowA) &&
+                (this.StateRowB == bitboard2.StateRowB) &&
+                (this.StateRowC == bitboard2.StateRowC) &&
+                (this.StateRowD == bitboard2.StateRowD) &&
+                (this.StateRowE == bitboard2.StateRowE) &&
+                (this.StateRowF == bitboard2.StateRowF) &&
+                (this.StateRowG == bitboard2.StateRowG) &&
+                (this.StateRowH == bitboard2.StateRowH) &&
+                (this.StateRowI == bitboard2.StateRowI);
+        }
+
+        public override int GetHashCode()
+        {
+            return (this.StateRowA.GetHashCode() + 
+                    this.StateRowB.GetHashCode() + 
+                    this.StateRowC.GetHashCode() + 
+                    this.StateRowD.GetHashCode() + 
+                    this.StateRowE.GetHashCode() + 
+                    this.StateRowF.GetHashCode() + 
+                    this.StateRowG.GetHashCode() + 
+                    this.StateRowH.GetHashCode() + 
+                    this.StateRowI.GetHashCode());
+        }
     }
 }
